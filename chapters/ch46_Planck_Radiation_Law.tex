@@ -1,0 +1,160 @@
+\chapter{Planck Radiation Law}
+
+\section*{Introduction}
+
+The Planck radiation law, derived by Max Planck in December 1900, describes the spectral radiance of electromagnetic radiation emitted by a black body in thermal equilibrium at temperature $T$. It was the first successful derivation of the blackbody spectrum and marked the birth of quantum mechanics, as Planck was forced to assume that the energy of electromagnetic oscillators is quantized in discrete packets $E = nhf$. The law resolves the ultraviolet catastrophe of classical physics and interpolates between the Rayleigh--Jeans law at low frequencies and Wien's law at high frequencies.
+
+A black body is an idealized object that absorbs all incident radiation and re-emits it with a spectrum determined only by its temperature. The spectral radiance $B_{\nu}(T)$ gives the power radiated per unit area, per unit solid angle, per unit frequency. At low frequencies, $B_{\nu} \propto \nu^{2}T$ (Rayleigh--Jeans); at high frequencies, $B_{\nu} \propto \nu^{3}e^{-hf/kT}$ (Wien). The peak of the spectrum shifts with temperature according to Wien's displacement law: $\nu_{\text{peak}} \propto T$. The total power is the Stefan--Boltzmann law: $P = \sigma T^{4}$.
+\section*{Fundamental Equation Used}
+
+\begin{equation}
+\boxed{\; B_{\nu}(T) = \frac{2h\nu^{3}}{c^{2}}\;\frac{1}{e^{h\nu/kT} - 1}\;}
+\label{eq:planck-radiation}
+\end{equation}
+
+Equivalently, in terms of wavelength:
+\begin{equation}
+B_{\lambda}(T) = \frac{2hc^{2}}{\lambda^{5}}\;\frac{1}{e^{hc/\lambda kT} - 1}
+\label{eq:planck-wavelength}
+\end{equation}
+\section*{Assumptions}
+
+\textbf{Assumptions:} The cavity walls are in thermal equilibrium; the radiation field is isotropic and unpolarized; the oscillators have a discrete energy spectrum $E_{n} = nhf$.
+
+
+\textbf{Limitations:} Does not account for scattering, coherence effects, or non-equilibrium conditions; assumes Planck's quantization rule.
+
+
+\section*{Mathematical Derivation}
+
+\textbf{Step 1: Count the electromagnetic modes in a cavity.}
+
+In a cubic cavity of side $L$, the standing-wave boundary conditions require $k_x = n_x\pi/L$, etc., giving one mode per volume element $\pi^{3}/L^{3}$ in $k$-space. The density of modes per unit volume per unit frequency is:
+\begin{equation}
+g(\nu)\,d\nu = \frac{8\pi\nu^{2}}{c^{3}}\,d\nu,
+\end{equation}
+where the factor of 2 accounts for two polarization states.
+
+\textbf{Step 2: Compute the mean energy per mode classically.}
+
+By the equipartition theorem, each mode has two quadratic degrees of freedom (electric and magnetic), giving mean energy $\langle E \rangle = 2 \times \frac{1}{2}kT = kT$. This leads to the Rayleigh--Jeans law:
+\begin{equation}
+u(\nu) = g(\nu)\,\langle E\rangle = \frac{8\pi\nu^{2}}{c^{3}}\,kT \quad\longrightarrow\quad u(\nu) \propto \nu^{2}T,
+\end{equation}
+which diverges at high frequencies (the ultraviolet catastrophe).
+
+\textbf{Step 3: Introduce Planck's quantization hypothesis.}
+
+Planck postulated that each mode of frequency $\nu$ can only have energies $E_n = nh\nu$, where $n = 0, 1, 2, \ldots$ and $h$ is Planck's constant. The mean energy of a mode at temperature $T$ is:
+\begin{equation}
+\langle E \rangle = \frac{\sum_{n=0}^{\infty} nh\nu\,e^{-nh\nu/kT}}{\sum_{n=0}^{\infty} e^{-nh\nu/kT}}.
+\end{equation}
+
+\textbf{Step 4: Evaluate the geometric series.}
+
+Let $x = e^{-h\nu/kT}$. The denominator is:
+\begin{equation}
+Z = \sum_{n=0}^{\infty} x^{n} = \frac{1}{1-x},
+\end{equation}
+and the numerator is:
+\begin{equation}
+\sum_{n=0}^{\infty} nh\nu\,x^{n} = h\nu\,x\frac{d}{dx}\sum_{n=0}^{\infty} x^{n} = h\nu\,\frac{x}{(1-x)^{2}}.
+\end{equation}
+Therefore:
+\begin{equation}
+\langle E \rangle = \frac{h\nu\,x}{(1-x)^{2}}\cdot(1-x) = \frac{h\nu\,x}{1-x} = \frac{h\nu}{e^{h\nu/kT}-1}.
+\end{equation}
+
+\textbf{Step 5: Write the Planck spectral radiance.}
+
+Multiplying the mode density by the mean energy per mode:
+\begin{equation}
+u(\nu) = \frac{8\pi\nu^{2}}{c^{3}}\;\frac{h\nu}{e^{h\nu/kT}-1}.
+\end{equation}
+The spectral radiance (power per unit area per unit solid angle per unit frequency) is obtained by dividing by $4\pi$:
+\begin{equation}
+\boxed{\;B_{\nu}(T) = \frac{2h\nu^{3}}{c^{2}}\;\frac{1}{e^{h\nu/kT}-1}.\;}
+\end{equation}
+
+\textbf{Step 6: Verify the classical and high-frequency limits.}
+
+At low frequencies ($h\nu \ll kT$): $e^{h\nu/kT} - 1 \approx h\nu/kT$, so $B_{\nu} \to 2\nu^{2}kT/c^{2}$ (Rayleigh--Jeans). At high frequencies ($h\nu \gg kT$): $e^{h\nu/kT} \gg 1$, so $B_{\nu} \to (2h\nu^{3}/c^{2})\,e^{-h\nu/kT}$ (Wien's law). The total power is $P = \pi\int_0^{\infty} B_{\nu}\,d\nu = \sigma T^{4}$ with $\sigma = \pi^{2}k^{4}/(60\hbar^{3}c^{2})$, the Stefan--Boltzmann law.
+
+\section*{Characteristics of the Equation}
+
+\begin{itemize}
+  \item \textbf{UV catastrophe resolution:} Classical theory predicts $B_{\nu} \propto \nu^{2}T$ (Rayleigh--Jeans law), which diverges at high frequencies. The exponential factor $e^{-h\nu/kT}$ suppresses the high-frequency tail.
+  \item \textbf{Wien's displacement:} The peak frequency is $\nu_{\text{max}} \approx 2.82\,kT/h$, giving $\lambda_{\text{max}} T \approx 2.898 \times 10^{-3}$~m$\cdot$K.
+  \item \textbf{Stefan--Boltzmann law:} Integrating $B_{\nu}$ over all frequencies gives $P = \sigma T^{4}$ with $\sigma = 2\pi^{5}k^{4}/(15c^{2}h^{3}) \approx 5.67 \times 10^{-8}$~W$\cdot$m$^{-2}$K$^{-4}$.
+  \item \textbf{Classical limit:} At low frequencies ($hf \ll kT$), $e^{hf/kT} - 1 \approx hf/kT$ and $B_{\nu} \to 2\nu^{2}kT/c^{2}$, recovering the Rayleigh--Jeans law.
+\end{itemize}
+\section*{Solution Methods}
+
+\begin{enumerate}
+  \item \textbf{From statistical mechanics:} The average energy of a harmonic oscillator with discrete levels $E_{n} = nhf$ is $\langle E\rangle = hf/(e^{hf/kT} - 1)$. Multiplying by the density of modes $8\pi\nu^{2}/c^{3}$ and dividing by $4\pi$ gives $B_{\nu}$.
+  \item \textbf{From the partition function:} The partition function of a single oscillator is $Z = 1/(1 - e^{-hf/kT})$. The mean energy is $\langle E\rangle = -\partial\ln Z/\partial\beta = hf/(e^{\beta hf} - 1)$.
+  \item \textbf{Integration:} The total power is $P = \pi\int_{0}^{\infty} B_{\nu}\,d\nu = \sigma T^{4}$, evaluated using the integral $\int_{0}^{\infty} x^{3}/(e^{x}-1)\,dx = \pi^{4}/15$.
+\end{enumerate}
+\section*{Verifications}
+
+The Planck law has been verified to extraordinary precision. The COBE/FIRAS measurement of the CMB spectrum is the most perfect blackbody ever observed in nature. Laboratory blackbody sources (cavity radiators) confirm the frequency dependence to high accuracy. The Stefan--Boltzmann constant has been measured independently and agrees with the theoretical value derived from fundamental constants.
+\section*{Applications}
+
+\begin{itemize}
+  \item \textbf{CMB spectrum:} The cosmic microwave background is a near-perfect blackbody at $T = 2.725$~K, with a spectrum measured by COBE/FIRAS to agree with the Planck law to better than 50 parts per million.
+  \item \textbf{Pyrometry:} The temperature of hot objects (furnaces, stars) is determined by measuring the spectral distribution of emitted radiation.
+  \item \textbf{Stellar astrophysics:} The spectra of stars are approximately blackbody, with effective temperatures determined by fitting the Planck law.
+  \item \textbf{Incandescent lighting:} The efficiency of incandescent bulbs is limited by the Planck distribution; most radiation is in the infrared.
+\end{itemize}
+\section*{What Richard Feynman Would Have Asked}
+
+\subsection*{Plain-English Translation}
+\textit{``What is the Planck radiation law telling us, if I explain it to someone who has never heard of quantum mechanics?''}
+
+Every warm object glows---you can feel the heat from a campfire on your face. The Planck law tells you exactly how much of each color (frequency) of light the object emits. Cool objects glow mostly in infrared (you feel the heat but cannot see the light); hot objects glow in visible light (a red-hot iron, then white-hot); very hot objects glow in ultraviolet (the Sun). The law is a precise recipe: it says the amount of each frequency depends on the temperature in a specific way that can be calculated exactly. The deep surprise is that this recipe only works if you assume light comes in tiny packets of energy---quanta.
+
+\subsection*{Localized Mechanics}
+\textit{``At the level of a single oscillator in the cavity wall, what is the quantum mechanical process that produces the Planck spectrum?''}
+
+Consider a single electromagnetic mode in a cavity with frequency $\nu$. In classical physics, this mode can have any energy; in quantum mechanics, it can only have energies $E_{n} = nh\nu$ where $n = 0, 1, 2, \ldots$ At temperature $T$, the probability of having $n$ quanta is $p_{n} = e^{-nh\nu/kT}/Z$ where $Z = \sum_{n=0}^{\infty} e^{-nh\nu/kT} = 1/(1 - e^{-h\nu/kT})$. The mean energy is $\langle E\rangle = \sum n h\nu\, p_{n} = h\nu/(e^{h\nu/kT} - 1)$. At low frequency ($h\nu \ll kT$), the quanta are so small compared to $kT$ that many are excited and the mean energy approaches $kT$ (classical). At high frequency ($h\nu \gg kT$), the first excited state is rarely populated and $\langle E\rangle \approx h\nu\, e^{-h\nu/kT} \approx 0$---the mode is ``frozen out.'' This freeze-out of high-frequency modes is the physical origin of the exponential suppression that resolves the UV catastrophe.
+
+\subsection*{Testing Extreme Limits}
+\textit{``What happens to the Planck spectrum at extreme temperatures---near absolute zero, at stellar interior temperatures, or at the energy density of the early universe?''}
+
+At $T \to 0$, all modes are frozen out ($\langle E\rangle \to 0$ for all $\nu$) and the cavity is empty---the ground state of the electromagnetic field. At very high $T$ (e.g., $T \sim 10^{9}$~K in stellar interiors), the peak wavelength is in the X-ray range, and the total power $\sigma T^{4}$ is enormous---this is why massive stars have such high luminosities. At temperatures above the electroweak scale ($T > 10^{15}$~K, in the early universe), the photon gas was in thermal equilibrium with the primordial plasma, and the Planck spectrum describes the radiation that eventually became the CMB after cooling to 2.725~K. In the very early universe ($t < 10^{-35}$~s), quantum gravity effects may modify the Planck law, but this regime is not yet experimentally accessible.
+
+\subsection*{Dimensionality and Geometry}
+\textit{``How does the dimensionality of space and the geometry of the cavity affect the Planck spectrum?''}
+
+In $d$ spatial dimensions, the density of electromagnetic modes per unit frequency is $g(\nu) \propto \nu^{d-1}$ (from the surface area of a $(d-1)$-sphere in wave-vector space). The mean energy per mode is the same (it depends only on $\nu$ and $T$), so the spectral energy density becomes $u(\nu) \propto \nu^{d-1}/(e^{h\nu/kT} - 1)$. In 3D, this gives $u(\nu) \propto \nu^{3}/(e^{h\nu/kT} - 1)$, the standard Planck law. In 2D (e.g., electromagnetic waves confined to a surface), $u(\nu) \propto \nu/(e^{h\nu/kT} - 1)$, and the total energy per unit area is finite (no UV catastrophe even classically, because the density of modes grows only linearly). The geometry of the cavity (shape, boundary conditions) affects the spacing of modes but not their density on a coarse scale---this is the content of Weyl's law for the asymptotic mode count.
+
+\subsection*{Cross-Disciplinary Connection}
+\textit{``Where does the mathematical structure of the Planck law---a Bose--Einstein distribution multiplied by a density of states---appear in other fields?''}
+
+The Planck distribution is a Bose--Einstein distribution with zero chemical potential: $\langle n\rangle = 1/(e^{h\nu/kT} - 1)$. The same structure appears for phonons in a solid (the Debye model), where the density of states $\propto \nu^{2}$ gives the specific heat $C_{V} \propto T^{3}$ at low temperatures. In economics, the Bose--Einstein distribution appears in models of wealth distribution (the ``quantum finance'' analogy). In biology, the distribution of neural firing rates in some cortical models follows a Bose--Einstein-like statistics. In computer science, the partition function of a system with a geometrically growing number of states at each energy level has the same mathematical form. The deepest connection is to the theory of second quantization: the Planck law is the statement that the electromagnetic field is a gas of bosons (photons) at chemical potential $\mu = 0$, and the same formalism describes any collection of indistinguishable bosons.
+
+% ============================================================
+% CHAPTER 47 — Plate Equation
+% ============================================================
+\section*{FAQ}
+
+\begin{enumerate}
+\item \textbf{Why was the Planck law considered the birth of quantum mechanics?}
+Because Planck had to assume that oscillator energies are discrete ($E = nhf$) to derive the correct spectrum. This was the first use of quantization, though Planck himself initially regarded it as a mathematical trick rather than a physical reality.
+
+\item \textbf{What is the ultraviolet catastrophe?}
+Classical physics predicts that a black body emits infinite energy at high frequencies (the Rayleigh--Jeans law $B_{\nu} \propto \nu^{2}T$ diverges). This contradicts the finite total energy observed. Planck's law resolves this by introducing the exponential suppression $e^{-hf/kT}$.
+
+\item \textbf{Is the Sun a black body?}
+Approximately. The Sun's spectrum is close to a blackbody at $T \approx 5778$~K, with absorption lines superimposed. The Planck law gives a good fit to the continuum, and Wien's law correctly predicts the peak wavelength in the visible.
+\end{enumerate}
+\section*{Important Bibliography}
+
+\begin{enumerate}
+\item Planck, M., ``Zur Theorie des Gesetzes der Energieverteilung im Normalspektrum,'' \textit{Verhandlungen der Deutschen Physikalischen Gesellschaft} \textbf{2}, 237--245 (1900).
+\item Rybicki, G.B. and Lightman, A.P., \textit{Radiative Processes in Astrophysics} (Wiley-VCH, 2004), Chapter 1.
+\item Mandl, F. and Shaw, G., \textit{Quantum Field Theory}, 2nd ed. (Wiley, 2010), Chapter 1.
+\item Hawking, S.W., ``Particle Creation by Black Holes,'' \textit{Communications in Mathematical Physics} \textbf{43}, 199--220 (1975).
+\end{enumerate}
+
+

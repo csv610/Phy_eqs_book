@@ -1,0 +1,136 @@
+\chapter{Rotational Kinetic Energy}
+
+\section*{Introduction}
+
+Every spinning object---from a figure skater to a planet---carries energy in its rotation. The rotational kinetic energy formula $K = \frac{1}{2}I\omega^2$ maps the distribution of mass in a rotating body (encoded in $I$) and its rotational speed ($\omega$) onto the scalar quantity of stored energy. It explains why a spinning wheel resists changes in its rotation and why energy must be supplied to spin it up.
+\section*{Fundamental Equation Used}
+
+\begin{equation}
+K = \frac{1}{2}I\omega^2
+\end{equation}
+\section*{Assumptions}
+
+\textbf{Assumptions:} Rigid body rotation about a fixed axis; the moment of inertia $I$ is constant during the motion.
+
+
+\textbf{Limitations:} Does not account for deformation of the rotating body; relativistic corrections needed for extremely fast rotation.
+
+
+\section*{Mathematical Derivation}
+
+\textbf{Step 1: Consider a rigid body as a collection of mass elements.}
+
+Divide the rigid body into infinitesimal mass elements $dm$, each at a distance $r_i$ from the rotation axis. Each element moves in a circle with angular speed $\omega$ (the same for all elements in rigid body rotation), so its tangential speed is $v_i = r_i\,\omega$.
+
+\textbf{Step 2: Write the kinetic energy of each element.}
+
+The translational kinetic energy of the $i$-th element is
+\begin{equation}
+dK = \frac{1}{2}\,dm\,v_i^2 = \frac{1}{2}\,dm\,(r_i\,\omega)^2 = \frac{1}{2}\,r_i^2\,\omega^2\,dm.
+\end{equation}
+
+\textbf{Step 3: Integrate over the entire body.}
+
+Summing (integrating) over all mass elements:
+\begin{equation}
+K = \int dK = \int \frac{1}{2}\,r^2\,\omega^2\,dm = \frac{1}{2}\omega^2\int r^2\,dm.
+\end{equation}
+The factor $\omega^2$ comes outside the integral because $\omega$ is the same for every element in a rigid body.
+
+\textbf{Step 4: Identify the moment of inertia.}
+
+Define the moment of inertia about the rotation axis:
+\begin{equation}
+I = \int r^2\,dm.
+\end{equation}
+This quantity encodes how mass is distributed relative to the axis. Substituting:
+\begin{equation}
+K = \frac{1}{2}I\omega^2.
+\end{equation}
+
+\textbf{Step 5: Write the final result and express in terms of angular momentum.}
+
+\begin{equation}
+\boxed{K = \frac{1}{2}I\omega^2.}
+\end{equation}
+Since angular momentum $L = I\omega$, this can equivalently be written as $K = L^2/(2I)$. The analogy with translational kinetic energy $K = p^2/(2m)$ is exact: $L$ plays the role of $p$, and $I$ plays the role of $m$.
+
+\section*{Characteristics of the Equation}
+
+\begin{itemize}
+    \item $I$ depends on both the mass distribution and the choice of axis: $I = \int r^2\,dm$.
+    \item The total kinetic energy of a rolling object is $K = \frac{1}{2}mv_{cm}^2 + \frac{1}{2}I\omega^2$.
+    \item Angular momentum is $L = I\omega$, so $K = \frac{L^2}{2I}$.
+    \item Euler's work on rigid body dynamics in the 1750s established the foundations of rotational mechanics.
+\end{itemize}
+\section*{Solution Methods}
+
+\begin{itemize}
+    \item \textbf{Direct computation:} Given $I$ and $\omega$, compute $K$ directly.
+    \item \textbf{From angular momentum:} Use $K = L^2/(2I)$ when angular momentum is known.
+    \item \textbf{Energy conservation:} Relate rotational KE to potential energy or work done by torques.
+    \item \textbf{Parallel axis theorem:} Compute $I$ about any axis using $I = I_{cm} + Md^2$.
+\end{itemize}
+\section*{Verifications}
+
+\begin{itemize}
+    \item A solid sphere of mass $M$ and radius $R$ spinning at $\omega$ has $K = \frac{1}{5}MR^2\omega^2$, consistent with $I = \frac{2}{5}MR^2$.
+    \item Energy conservation in a falling cylinder rolling without slipping correctly converts gravitational PE into both translational and rotational KE.
+    \item The work-energy theorem $\tau\Delta\theta = \Delta K_{rot}$ is confirmed in laboratory experiments.
+\end{itemize}
+\section*{Applications}
+
+\begin{itemize}
+    \item Flywheel energy storage systems in mechanical engineering.
+    \item Gyroscopic stabilization in spacecraft and navigation.
+    \item Rotational dynamics of celestial bodies and accretion disks.
+    \item Sports physics: figure skating spins, baseball bat swing dynamics.
+\end{itemize}
+\section*{What Richard Feynman Would Have Asked}
+
+\subsection*{Plain-English Translation}
+\textit{``What is rotational kinetic energy, and why is it separate from the regular kinetic energy of motion?''}
+
+Rotational kinetic energy is the energy stored in the spinning of an object. It is separate from translational kinetic energy because a body can spin without moving through space, and it can move through space without spinning. When both happen simultaneously (like a rolling ball), you must add both contributions to get the total kinetic energy. The rotational part depends on how the mass is distributed relative to the axis of rotation---mass farther from the axis contributes more to $I$ and hence to the rotational energy.
+
+\subsection*{Localized Mechanics}
+\textit{``At a single point within a rotating body, what does the rotational kinetic energy look like? Does each point carry its own share?''}
+
+At any point within the rotating body, the local contribution to the rotational kinetic energy is $\frac{1}{2}(\rho\,dV)\,v^2$, where $v = r\omega$ is the tangential speed at that point. Points farther from the axis move faster and contribute more energy per unit mass. This is why $I = \int r^2\,dm$: the moment of inertia weights each mass element by the square of its distance from the axis. The rotational kinetic energy is simply the integral of these local contributions over the entire body.
+
+\subsection*{Testing Extreme Limits}
+\textit{``What happens to rotational kinetic energy in the extreme limit where the body is a thin ring with all mass at radius $R$, compared to a solid disk of the same mass and radius?''}
+
+For a thin ring, all the mass is at distance $R$, so $I = MR^2$ and $K = \frac{1}{2}MR^2\omega^2$. For a solid disk, $I = \frac{1}{2}MR^2$ and $K = \frac{1}{4}MR^2\omega^2$---half as much at the same angular velocity. This shows that the distribution of mass matters enormously. In the extreme limit of a point mass at radius $R$, the ring result is recovered. In the opposite extreme of all mass concentrated at the axis, $I = 0$ and the rotational kinetic energy vanishes regardless of $\omega$.
+
+\subsection*{Dimensionality and Geometry}
+\textit{``How does rotational kinetic energy work in two dimensions versus three? What about rotation about an arbitrary axis in 3D?''}
+
+In two dimensions, rotation is always about a point (the axis is perpendicular to the plane), and the moment of inertia is a single number. In three dimensions, the moment of inertia becomes a tensor $\mathbf{I}$, and the kinetic energy is $K = \frac{1}{2}\boldsymbol{\omega}\cdot\mathbf{I}\cdot\boldsymbol{\omega}$. The tensor accounts for the possibility that the mass distribution is not symmetric about the rotation axis. For symmetric bodies rotating about their symmetry axis, the tensor reduces to a scalar and the formula simplifies back to $\frac{1}{2}I\omega^2$.
+
+\subsection*{Cross-Disciplinary Connection}
+\textit{``Where does the same $\frac{1}{2}(\text{inertia})(\text{rate})^2$ structure appear elsewhere in physics?''}
+
+This $\frac{1}{2}(\text{inertia})(\text{rate})^2$ pattern is universal: translational kinetic energy $\frac{1}{2}mv^2$, electrical energy $\frac{1}{2}CV^2$, magnetic energy $\frac{1}{2}LI^2$, and spring potential energy $\frac{1}{2}kx^2$ all share it. The pattern reflects the quadratic dependence of energy on the ``velocity'' variable, which arises whenever the kinetic energy is a quadratic form in generalized velocities---a consequence of the underlying geometry of the configuration space. This universality is why the same mathematical techniques (Lagrangian mechanics, Hamiltonian mechanics) apply to mechanical, electrical, and mixed systems.
+
+% ------------------------------------------------------------
+\section*{FAQ}
+
+\textbf{Q: Why does a figure skater spin faster when pulling in her arms?}
+A: Angular momentum $L = I\omega$ is conserved in the absence of external torques. When the skater pulls in her arms, $I$ decreases, so $\omega$ must increase. The rotational kinetic energy actually increases---the extra energy comes from the work done by the skater's muscles pulling inward against the centrifugal effect.
+
+\textbf{Q: Can rotational kinetic energy be negative?}
+A: No. Both $I$ (a sum of $r^2\,dm$ terms) and $\omega^2$ are non-negative, so $K \geq 0$ always. The rotational kinetic energy is a positive-definite quantity.
+
+\textbf{Q: How is rotational kinetic energy different from angular momentum?}
+A: Angular momentum $L = I\omega$ is a vector quantity that is conserved when no external torque acts. Rotational kinetic energy $K = \frac{1}{2}I\omega^2$ is a scalar that is generally not conserved (it changes when work is done by torques). They are related by $K = L^2/(2I)$.
+\section*{Important Bibliography}
+
+\begin{enumerate}
+\item Goldstein, H., Poole, C. and Safko, J., \textit{Classical Mechanics}, 3rd ed. (Addison-Wesley, 2002), Chapter 5.
+\item Marion, J.B. and Thornton, S.T., \textit{Classical Dynamics of Particles and Systems}, 5th ed. (Brooks/Cole, 2004), Chapter 7.
+\item Taylor, J.R., \textit{Classical Mechanics}, 2nd ed. (University Science Books, 2005), Chapter 10.
+\item Symon, K.R., \textit{Mechanics}, 3rd ed. (Addison-Wesley, 1971), Chapter 11.
+\end{enumerate}
+
+

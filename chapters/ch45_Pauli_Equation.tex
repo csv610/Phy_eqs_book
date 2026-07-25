@@ -1,0 +1,164 @@
+\chapter{Pauli Equation}
+
+\section*{Introduction}
+
+The Pauli equation, formulated by Wolfgang Pauli in 1927, is the non-relativistic wave equation for a spin-1/2 particle (such as an electron) in an electromagnetic field. It extends the Schrödinger equation by incorporating the electron's spin degree of freedom and its interaction with the magnetic field through the Pauli spin matrices. The equation provides a correct non-relativistic description of spin-orbit coupling, the Zeeman effect, and the anomalous magnetic moment, and it serves as the bridge between the non-relativistic Schrödinger theory and the fully relativistic Dirac equation.
+
+The Pauli equation adds a magnetic interaction term $-\boldsymbol{\mu}\cdot\mathbf{B}$ to the Hamiltonian, where the magnetic moment $\boldsymbol{\mu} = -g_{s}\mu_{B}\boldsymbol{\sigma}/2$ is proportional to the Pauli matrices $\boldsymbol{\sigma} = (\sigma_{x}, \sigma_{y}, \sigma_{z})$. The spin matrices act on a two-component spinor $\psi = (\psi_{\uparrow}, \psi_{\downarrow})^{T}$, and the equation accounts for the fact that the electron has an intrinsic magnetic moment that interacts with magnetic fields, producing the Zeeman splitting of spectral lines.
+\section*{Fundamental Equation Used}
+
+\begin{equation}
+\boxed{\; i\hbar\frac{\partial\psi}{\partial t} = \left[\frac{1}{2m}\left(-i\hbar\nabla - e\mathbf{A}\right)^{2} + e\varphi - \frac{g_{s}\mu_{B}}{2}\boldsymbol{\sigma}\cdot\mathbf{B}\right]\psi\;}
+\label{eq:pauli}
+\end{equation}
+
+where $\boldsymbol{\sigma} = (\sigma_{x}, \sigma_{y}, \sigma_{z})$ are the Pauli matrices:
+\begin{equation}
+\sigma_{x} = \begin{pmatrix}0&1\\1&0\end{pmatrix}, \quad
+\sigma_{y} = \begin{pmatrix}0&-i\\i&0\end{pmatrix}, \quad
+\sigma_{z} = \begin{pmatrix}1&0\\0&-1\end{pmatrix}
+\label{eq:pauli-matrices}
+\end{equation}
+\section*{Assumptions}
+
+\textbf{Assumptions:} The electron is non-relativistic ($v \ll c$); the spin--orbit coupling is treated as a perturbation; $g_{s} \approx 2$.
+
+
+\textbf{Limitations:} Does not predict spin-orbit coupling from first principles (this comes from the Dirac equation); does not account for relativistic effects; requires $g_{s}$ as an input.
+
+
+\section*{Mathematical Derivation}
+
+\textbf{Step 1: Start from the non-relativistic Schr\"odinger equation with minimal coupling.}
+
+The Schr\"odinger equation for a particle of charge $q = -e$ in an electromagnetic field uses the canonical momentum $\boldsymbol{\pi} = \mathbf{p} - q\mathbf{A} = -i\hbar\nabla + e\mathbf{A}$:
+\begin{equation}
+i\hbar\frac{\partial\psi}{\partial t} = \left[\frac{1}{2m}\bigl(-i\hbar\nabla + e\mathbf{A}\bigr)^{2} + e\varphi\right]\psi.
+\end{equation}
+This equation describes a spinless particle and does not account for the magnetic moment of the electron.
+
+\textbf{Step 2: Expand the kinetic energy operator.}
+
+Expanding the squared operator:
+\begin{equation}
+\bigl(-i\hbar\nabla + e\mathbf{A}\bigr)^{2} = -\hbar^{2}\nabla^{2} + ie\hbar\bigl(\nabla\cdot\mathbf{A} + \mathbf{A}\cdot\nabla\bigr) + e^{2}A^{2}.
+\end{equation}
+In the Coulomb gauge ($\nabla\cdot\mathbf{A} = 0$), this becomes:
+\begin{equation}
+-\hbar^{2}\nabla^{2} + ie\hbar\,\mathbf{A}\cdot\nabla + e^{2}A^{2}.
+\end{equation}
+
+\textbf{Step 3: Introduce the spin interaction by analogy with classical magnetic moment.}
+
+A classical magnetic dipole $\boldsymbol{\mu}$ in a field $\mathbf{B}$ has energy $-\boldsymbol{\mu}\cdot\mathbf{B}$. The electron's magnetic moment is $\boldsymbol{\mu} = -g_s \mu_B \boldsymbol{\sigma}/2$, where $\mu_B = e\hbar/2m$ is the Bohr magneton and $g_s \approx 2$. We postulate that this interaction appears as an additional term in the Hamiltonian:
+\begin{equation}
+H_{\text{spin}} = -\boldsymbol{\mu}\cdot\mathbf{B} = \frac{g_s \mu_B}{2}\,\boldsymbol{\sigma}\cdot\mathbf{B}.
+\end{equation}
+
+\textbf{Step 4: Write the full Pauli Hamiltonian.}
+
+Combining the kinetic energy, scalar potential, and spin interaction:
+\begin{equation}
+H = \frac{1}{2m}\bigl(-i\hbar\nabla + e\mathbf{A}\bigr)^{2} + e\varphi - \frac{g_s\mu_B}{2}\,\boldsymbol{\sigma}\cdot\mathbf{B}.
+\end{equation}
+The wave function is now a two-component spinor:
+\begin{equation}
+\psi = \begin{pmatrix}\psi_{\uparrow}\\\psi_{\downarrow}\end{pmatrix},
+\end{equation}
+and the Pauli matrices $\boldsymbol{\sigma} = (\sigma_x, \sigma_y, \sigma_z)$ act on this spinor space.
+
+\textbf{Step 5: Write the Pauli equation explicitly.}
+
+Applying $H$ to $\psi$:
+\begin{equation}
+\boxed{\;i\hbar\frac{\partial\psi}{\partial t} = \left[\frac{1}{2m}\bigl(-i\hbar\nabla - e\mathbf{A}\bigr)^{2} + e\varphi - \frac{g_s\mu_B}{2}\,\boldsymbol{\sigma}\cdot\mathbf{B}\right]\psi.\;}
+\end{equation}
+This is the Pauli equation. For $\mathbf{B} = B\hat{z}$, the spinor components decouple and the energy eigenvalues are:
+\begin{equation}
+E_{\uparrow} = E_0 - \frac{g_s\mu_B B}{2}, \qquad E_{\downarrow} = E_0 + \frac{g_s\mu_B B}{2},
+\end{equation}
+where $E_0$ is the orbital energy, yielding the Zeeman splitting $\Delta E = g_s\mu_B B$.
+
+\textbf{Step 6: Show consistency with the Dirac equation.}
+
+In the non-relativistic limit of the Dirac equation, the squared Dirac operator yields the Pauli Hamiltonian plus the Darwin term and the spin-orbit coupling. The $g_s = 2$ result emerges naturally from the Dirac equation's structure, and the Pauli equation is thus the leading-order non-relativistic reduction of the Dirac theory.
+
+\section*{Characteristics of the Equation}
+
+\begin{itemize}
+  \item \textbf{Spinor structure:} The wave function has two components, one for spin-up and one for spin-down, enabling interference between spin states.
+  \item \textbf{Zeeman effect:} In a uniform magnetic field, the energy levels split into $E_{\pm} = E_{0} \pm \mu_{B}B$, producing the anomalous Zeeman pattern.
+  \item \textbf{Spin-orbit coupling:} In an atom, the electron's motion through the nuclear electric field produces an effective magnetic field that couples to the spin, lifting the degeneracy of states with different $j$ but the same $\ell$.
+  \item \textbf{Stern--Gerlach:} The equation predicts the spatial splitting of a spin-1/2 beam in an inhomogeneous magnetic field.
+\end{itemize}
+\section*{Solution Methods}
+
+\begin{enumerate}
+  \item \textbf{Perturbation theory:} For weak magnetic fields, the Zeeman and spin-orbit terms are treated as perturbations to the atomic Hamiltonian, giving energy corrections to first and second order.
+  \item \textbf{Diagonalization:} For a uniform field, the $2\times 2$ Hamiltonian in spin space is diagonalized directly, yielding the spin-up and spin-down energy eigenvalues.
+  \item \textbf{From the Dirac equation:} Taking the non-relativistic limit ($v \ll c$) of the Dirac equation yields the Pauli equation plus the Darwin and spin-orbit corrections.
+  \item \textbf{Numerical:} For complex atomic systems, the Pauli Hamiltonian is diagonalized numerically in a basis set.
+\end{enumerate}
+\section*{Verifications}
+
+The Pauli equation's predictions are confirmed by the precise measurement of the Zeeman splitting in alkali atoms, the fine structure of hydrogen, and the Stern--Gerlach experiment. The measured value of $g_{s} = 2.0023\ldots$ agrees with QED corrections to the Pauli prediction of $g_{s} = 2$.
+\section*{Applications}
+
+\begin{itemize}
+  \item \textbf{Atomic spectroscopy:} The Zeeman and fine-structure splittings of atomic spectral lines are calculated using the Pauli equation.
+  \item \textbf{Spintronics:} The manipulation of electron spin in semiconductors and nanostructures is described by Pauli-type equations.
+  \item \textbf{Quantum computing:} Qubit states are two-component spinors, and single-qubit gates are implemented via Pauli-type Hamiltonians.
+  \item \textbf{MRI:} Nuclear spin dynamics in a magnetic field is governed by the Pauli equation (with the appropriate $g$-factor for the nucleus).
+\end{itemize}
+\section*{What Richard Feynman Would Have Asked}
+
+\subsection*{Plain-English Translation}
+\textit{``If I had to explain the Pauli equation to a physicist who knows the Schrödinger equation but not quantum field theory, what would I say?''}
+
+The Schrödinger equation tells you how a particle moves in a potential. But electrons are tiny magnets---they have an intrinsic magnetic moment called spin. The Pauli equation is the Schrödinger equation with an extra term that says: ``This particle also has a magnetic moment, and it interacts with magnetic fields.'' The mathematical machinery is a set of $2 \times 2$ matrices (the Pauli matrices) that act on the spin degree of freedom, turning a single-component wave function into a two-component spinor. It is the minimum modification needed to make the Schrödinger equation describe electrons correctly.
+
+\subsection*{Localized Mechanics}
+\textit{``At the level of a single electron in a magnetic field, what does the Pauli equation predict, and why is it a $2 \times 2$ matrix equation?''}
+
+An electron in a uniform magnetic field $\mathbf{B} = B\hat{z}$ has two energy states: spin aligned with the field ($E_{\uparrow} = -\mu_{B}B$) and spin anti-aligned ($E_{\downarrow} = +\mu_{B}B$). The energy splitting $\Delta E = 2\mu_{B}B$ is the Zeeman splitting. The Pauli matrices enter because the spin operator $\mathbf{S}$ for a spin-1/2 particle cannot be represented by numbers---it requires $2 \times 2$ matrices (since a spin-1/2 system has two basis states). The matrix structure is not a trick; it is a deep consequence of the fact that a rotation by $2\pi$ returns a spinor to its negative (not to itself), a property observed experimentally in neutron interferometry. The $2 \times 2$ structure is the minimal faithful representation of the rotation group SU(2) for spin-1/2.
+
+\subsection*{Testing Extreme Limits}
+\textit{``What happens to the Pauli equation in extreme magnetic fields or at extreme energies?''}
+
+At very strong fields ($B > 10^{5}$~T, achievable in neutron star atmospheres), the magnetic energy $\mu_{B}B$ becomes comparable to the atomic binding energy, and the Coulomb potential can be treated as a perturbation---this is the ``strong-field'' regime. At temperatures where $kT \sim \mu_{B}B$, spin-up and spin-down states are equally populated, and the Zeeman splitting is washed out (this is the Curie regime for paramagnets). At energies where $E \sim mc^{2}$, the non-relativistic approximation breaks down and the full Dirac equation must be used. The Pauli equation fails to predict the correct $g$-factor ($g_{s} = 2.0023\ldots$ vs.\ $g_{s} = 2$); the anomaly arises from virtual electron--positron pairs in QED and requires quantum field theory to explain.
+
+\subsection*{Dimensionality and Geometry}
+\textit{``How does the spinor structure relate to the geometry of spacetime, and what role does the dimensionality play?''}
+
+The Pauli matrices are related to the quaternions discovered by Hamilton (1843), and they generate the algebra of rotations in three-dimensional space. In two spatial dimensions, the spin algebra is Abelian (commuting), and the Pauli equation does not have the same richness. In three dimensions, the non-commutativity of rotations ($[J_{x}, J_{y}] = i\hbar J_{z}$) requires the Pauli matrices, and the spin-1/2 representation is the smallest non-trivial representation of SU(2). In four spacetime dimensions, the Dirac matrices ($\gamma^{\mu}$) are $4 \times 4$, and the Pauli matrices appear as their building blocks. The connection to geometry is deep: the spinor is a representation of the Spin group, the double cover of the rotation group SO(3), and the Pauli matrices are the Clebsch--Gordan coefficients that couple spin-1/2 to the vector representation.
+
+\subsection*{Cross-Disciplinary Connection}
+\textit{``Where does the $2 \times 2$ spinor structure appear outside of electron spin?''}
+
+In particle physics, the weak interaction couples only to left-handed particles, which are described by SU(2) doublets---direct generalizations of the Pauli spinor. In condensed matter physics, the Kane--Mele model for topological insulators uses a Pauli-type Hamiltonian where the ``spin'' is a pseudospin representing sublattice degree of freedom. In quantum information, the Bloch sphere representation of a qubit is a direct visualization of the two-component spinor: any single-qubit state is a point on the unit sphere, and quantum gates are rotations described by SU(2) matrices---exactly the matrices generated by the Pauli matrices. In robotics and computer graphics, quaternion rotations (closely related to Pauli matrices) are used for efficient attitude control and 3D rotations. The $2 \times 2$ Pauli structure is the simplest non-trivial example of the representation theory of Lie groups, and it appears wherever a system has two states connected by a symmetry.
+
+% ============================================================
+% CHAPTER 46 — Planck Radiation Law
+% ============================================================
+\section*{FAQ}
+
+\begin{enumerate}
+\item \textbf{What is the physical meaning of the Pauli matrices?}
+They represent the observable spin angular momentum components: $\mathbf{S} = \hbar\boldsymbol{\sigma}/2$. They satisfy the commutation relations of angular momentum ($[S_{i}, S_{j}] = i\hbar\epsilon_{ijk}S_{k}$) and have eigenvalues $\pm\hbar/2$, corresponding to spin-up and spin-down.
+
+\item \textbf{Why does the Pauli equation need spin, while the Schrödinger equation does not?}
+The Schrödinger equation describes spinless particles. Electrons have spin-1/2, which gives them a magnetic moment. The Pauli equation is the simplest equation that correctly describes this magnetic interaction in the non-relativistic limit.
+
+\item \textbf{How does the Pauli equation differ from the Dirac equation?}
+The Dirac equation is fully relativistic and predicts spin as a consequence of combining quantum mechanics with special relativity. The Pauli equation is its non-relativistic limit, with spin added ``by hand'' through the spin matrices.
+\end{enumerate}
+\section*{Important Bibliography}
+
+\begin{enumerate}
+\item Sakurai, J.J. and Napolitano, J., \textit{Modern Quantum Mechanics}, 2nd ed. (Cambridge University Press, 2017), Chapter 5.
+\item Griffiths, D.J., \textit{Introduction to Quantum Mechanics}, 3rd ed. (Cambridge University Press, 2018), Chapter 6.
+\item Shankar, R., \textit{Principles of Quantum Mechanics}, 2nd ed. (Springer, 2011), Chapter 16.
+\item Pauli, W., ``Zur Quantenmechanik des magnetischen Elektrons,'' \textit{Zeitschrift f\"ur Physik} \textbf{43}, 601--623 (1927).
+\end{enumerate}
+
+

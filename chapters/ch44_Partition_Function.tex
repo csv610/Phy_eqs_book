@@ -1,0 +1,167 @@
+\chapter{Partition Function}
+
+\section*{Introduction}
+
+The partition function is the central object of statistical mechanics, encoding all thermodynamic information about a system in a single generating function. Introduced by Ludwig Boltzmann (1877) and formalized by Josiah Willard Gibbs (1902), the canonical partition function $Z = \sum_{i} e^{-E_{i}/kT}$ sums the Boltzmann factors over all microstates $i$ with energy $E_{i}$. From $Z$, one can derive the free energy, entropy, specific heat, chemical potential, and every other thermodynamic quantity. It is, in a precise sense, the ``master key'' of equilibrium statistical mechanics.
+
+The partition function measures the effective number of thermally accessible microstates. At $T = 0$, only the ground state contributes ($Z = e^{-E_{0}/kT}$). As $T$ increases, higher-energy states become accessible and $Z$ grows. The free energy $F = -kT\ln Z$ is the thermodynamic potential that governs equilibrium at fixed temperature and volume. The partition function bridges the microscopic world of discrete energy levels and the macroscopic world of measurable thermodynamic quantities.
+\section*{Fundamental Equation Used}
+
+\begin{equation}
+\boxed{\; Z = \sum_{i} e^{-E_{i}/kT}\;}
+\label{eq:partition-function}
+\end{equation}
+
+For a continuum of states: $Z = \int e^{-E(\mathbf{x})/kT}\,d\mathbf{x}$.
+
+The Helmholtz free energy is:
+\begin{equation}
+F = -kT\ln Z
+\label{eq:free-energy}
+\end{equation}
+\section*{Assumptions}
+
+\textbf{Assumptions:} The system is in thermal equilibrium with a heat bath at temperature $T$; the energy levels $E_{i}$ are known; the system is classical.
+
+
+\textbf{Limitations:} The canonical ensemble assumes a fixed number of particles $N$ and volume $V$; does not directly describe non-equilibrium systems.
+
+
+\section*{Mathematical Derivation}
+
+\textbf{Step 1: Start from the Boltzmann distribution for a system in thermal equilibrium.}
+
+Consider a system in thermal equilibrium with a heat bath at temperature $T$. The probability of finding the system in microstate $i$ with energy $E_i$ is given by the Boltzmann distribution:
+\begin{equation}
+p_i = \frac{e^{-E_i/kT}}{Z},
+\end{equation}
+where $k$ is Boltzmann's constant and $Z$ is the normalization constant (the partition function).
+
+\textbf{Step 2: Determine the partition function from normalization.}
+
+Requiring $\sum_i p_i = 1$:
+\begin{equation}
+\sum_i p_i = \frac{1}{Z}\sum_i e^{-E_i/kT} = 1 \quad\Longrightarrow\quad Z = \sum_i e^{-E_i/kT}.
+\end{equation}
+Defining $\beta = 1/kT$, the partition function is:
+\begin{equation}
+\boxed{Z = \sum_i e^{-\beta E_i}.}
+\end{equation}
+
+\textbf{Step 3: Derive the internal energy from the partition function.}
+
+The mean energy is:
+\begin{equation}
+\langle E \rangle = \sum_i E_i\,p_i = \frac{1}{Z}\sum_i E_i\,e^{-\beta E_i}.
+\end{equation}
+Differentiating $Z$ with respect to $\beta$:
+\begin{equation}
+\frac{\partial Z}{\partial \beta} = -\sum_i E_i\,e^{-\beta E_i},
+\end{equation}
+so:
+\begin{equation}
+\langle E \rangle = -\frac{1}{Z}\frac{\partial Z}{\partial \beta} = -\frac{\partial \ln Z}{\partial \beta}.
+\end{equation}
+
+\textbf{Step 4: Derive the entropy.}
+
+The entropy is $S = -k\sum_i p_i \ln p_i$. Substituting $p_i = e^{-\beta E_i}/Z$ and $\ln p_i = -\beta E_i - \ln Z$:
+\begin{equation}
+S = -k\sum_i p_i(-\beta E_i - \ln Z) = k\beta\langle E\rangle + k\ln Z = k\ln Z + \frac{\langle E\rangle}{T}.
+\end{equation}
+
+\textbf{Step 5: Derive the Helmholtz free energy.}
+
+Define $F = \langle E\rangle - TS$. Using the expression for $S$:
+\begin{equation}
+F = \langle E\rangle - T\!\left(k\ln Z + \frac{\langle E\rangle}{T}\right) = -kT\ln Z.
+\end{equation}
+This is the fundamental thermodynamic relation: $F = -kT\ln Z$.
+
+\textbf{Step 6: Derive the specific heat.}
+
+The heat capacity at constant volume is:
+\begin{equation}
+C_V = \left(\frac{\partial \langle E\rangle}{\partial T}\right)_V = \frac{\partial}{\partial T}\!\left(-\frac{\partial \ln Z}{\partial \beta}\right) = \frac{\partial \beta}{\partial T}\,\frac{\partial^{2}\ln Z}{\partial \beta^{2}} = \frac{1}{kT^{2}}\,\frac{\partial^{2}\ln Z}{\partial \beta^{2}}.
+\end{equation}
+Equivalently, $\sigma_E^{2} = \langle E^{2}\rangle - \langle E\rangle^{2} = kT^{2}C_V$, linking fluctuations to the specific heat.
+
+\section*{Characteristics of the Equation}
+
+\begin{itemize}
+  \item \textbf{Factorizability:} For non-interacting subsystems, $Z = Z_{1}Z_{2}\cdots Z_{N}$ (distinguishable) or $Z = Z_{1}^{N}/N!$ (indistinguishable).
+  \item \textbf{Thermodynamic derivatives:} $\langle E\rangle = -\partial\ln Z/\partial\beta$ (where $\beta = 1/kT$), $C_{V} = \beta^{2}\partial^{2}\ln Z/\partial\beta^{2}$, $S = k(\ln Z + \beta\langle E\rangle)$.
+  \item \textbf{Generating function:} All thermodynamic potentials and response functions are derivatives or combinations of $\ln Z$.
+  \item \textbf{Fluctuations:} $\sigma_{E}^{2} = \langle E^{2}\rangle - \langle E\rangle^{2} = kT^{2}C_{V}$, linking energy fluctuations to specific heat.
+\end{itemize}
+\section*{Solution Methods}
+
+\begin{enumerate}
+  \item \textbf{Direct summation:} For systems with a few discrete levels (e.g., spin-1/2 in a magnetic field), sum the Boltzmann factors explicitly.
+  \item \textbf{Continuous approximation:} For translational motion, replace the sum with an integral: $Z_{\text{trans}} = V(2\pi mkT/h^{2})^{3/2}$.
+  \item \textbf{Generating functions:} The grand partition function $\mathcal{Z} = \sum_{N} e^{\beta\mu N}Z_{N}$ handles variable particle number.
+  \item \textbf{Numerical methods:} For complex systems (lattice models, polymers), Monte Carlo or transfer-matrix methods compute $Z$ numerically.
+\end{enumerate}
+\section*{Verifications}
+
+The partition function formalism is verified through its predictions of specific heats, equations of state, and equilibrium constants. For the ideal gas, the partition function yields $PV = nRT$ exactly. For the harmonic oscillator, it gives the correct quantum heat capacity at low temperatures ($C_{V} \to 0$ as $T \to 0$). For the Ising model, numerical evaluation of $Z$ on a lattice produces the known critical exponents.
+\section*{Applications}
+
+\begin{itemize}
+  \item \textbf{Phase transitions:} Non-analyticities of $\ln Z$ in the thermodynamic limit signal phase transitions (e.g., the Ising model ferromagnetic transition).
+  \item \textbf{Chemical equilibrium:} The partition functions of reactants and products determine the equilibrium constant via $\Delta G^{0} = -kT\ln(K)$.
+  \item \textbf{Blackbody radiation:} The partition function of the electromagnetic field modes yields the Planck distribution and the Stefan--Boltzmann law.
+  \item \textbf{Configurational statistics:} The partition function of a polymer chain gives its mean-square end-to-end distance and radius of gyration.
+\end{itemize}
+\section*{What Richard Feynman Would Have Asked}
+
+\subsection*{Plain-English Translation}
+\textit{``What is the partition function, if I explain it without any equations?''}
+
+Imagine you have a box with many energy levels, and you want to know how a gas distributes itself among those levels at a given temperature. The partition function is like a weighted guest list: each energy level gets a ``vote'' proportional to $e^{-E/kT}$. Low-energy levels get strong votes (they are popular at low temperature), and high-energy levels get weak votes (they become accessible only at high temperature). The partition function is the total number of votes, and from it you can read off every property of the gas---its energy, its entropy, even how it responds to being squeezed.
+
+\subsection*{Localized Mechanics}
+\textit{``How does the partition function connect to the microscopic dynamics of the system?''}
+
+The partition function is a sum over stationary states of the Hamiltonian. It does not depend on the dynamics (how the system moves between states) but only on the energy spectrum. However, the dynamics determines how quickly the system reaches thermal equilibrium, which is a prerequisite for the partition function to be applicable. The ergodic hypothesis---that the time average equals the ensemble average---bridges the gap: if the system explores all accessible microstates over long times, then the partition function correctly describes the equilibrium properties. For chaotic systems (like a gas of hard spheres), ergodicity is well-established; for glassy or frustrated systems, it may fail, and the partition function may not describe the observed state.
+
+\subsection*{Testing Extreme Limits}
+\textit{``What happens to the partition function at extreme temperatures or for extreme systems?''}
+
+At $T \to 0$, $Z \to e^{-E_{0}/kT}$ and the system is in its ground state. All thermodynamic quantities approach their ground-state values. At $T \to \infty$, all Boltzmann factors approach 1, and $Z \to g$ (the total number of states). The entropy approaches $S = k\ln g$, the maximum entropy for a system with $g$ states. For a system with a continuous spectrum (free particle), $Z$ diverges unless the system is confined to a finite volume. For a system with unbounded energy (harmonic oscillator), $Z = \sum_{n=0}^{\infty} e^{-\hbar\omega n/kT} = 1/(1 - e^{-\hbar\omega/kT})$, which converges for all finite $T$. In the limit $\hbar\omega \ll kT$ (classical limit), $Z \approx kT/\hbar\omega$, recovering the classical equipartition result.
+
+\subsection*{Dimensionality and Geometry}
+\textit{``How does the partition function depend on the geometry and dimensionality of the system?''}
+
+For a free particle in a box of volume $V$, $Z_{\text{trans}} \propto V$, independent of the shape. But for a particle in a confining potential, the shape matters: in 1D ($V(x) = \frac{1}{2}kx^{2}$), $Z \propto kT/\hbar\omega$; in 3D isotropic ($V(r) = \frac{1}{2}kr^{2}$), $Z \propto (kT/\hbar\omega)^{3}$. For a particle on a ring (periodic boundary conditions), the translational partition function is simply 1 (no translational entropy). For a polymer on a lattice, the number of configurations $\Omega$ depends on the lattice geometry (square, cubic, etc.), and the partition function $Z = \Omega\,e^{-E_{\text{bond}}/kT}$ encodes both the entropy and the energy. The geometry enters through the density of states, which is the number of states per unit energy interval: $Z = \int g(E)\,e^{-E/kT}\,dE$. Different geometries and dimensionalities give different $g(E)$, and hence different $Z$.
+
+\subsection*{Cross-Disciplinary Connection}
+\textit{``Where does the partition function structure---summing exponential weights over states---appear outside of physics?''}
+
+In machine learning, the softmax function $p(i) = e^{-\beta E_{i}}/Z$ is a Boltzmann distribution, and simulated annealing uses a ``temperature'' to explore energy landscapes. In information theory, the maximum entropy principle (Jaynes, 1957) derives probability distributions by maximizing Shannon entropy subject to constraints, yielding exponential families identical to the canonical partition function. In biology, the fitness landscape of evolutionary dynamics has a structure analogous to the energy landscape, and the ``temperature'' corresponds to the mutation rate. In economics, the random utility model (McFadden, 1974) assumes that agents choose alternatives with probabilities proportional to $e^{U_{i}/\mu}$, where $U_{i}$ is utility and $\mu$ is a noise parameter---exactly a Boltzmann distribution. The partition function is the universal mathematical structure for systems with competing energy (or utility) and entropy (or uncertainty).
+
+% ============================================================
+% CHAPTER 45 — Pauli Equation
+% ============================================================
+\section*{FAQ}
+
+\begin{enumerate}
+\item \textbf{What does $Z$ physically represent?}
+$Z$ is a measure of the effective number of thermally accessible microstates. At low $T$, $Z \approx e^{-E_{0}/kT}$ (only the ground state matters); at high $T$, $Z$ counts all states equally.
+
+\item \textbf{Why is $Z$ called a ``partition'' function?}
+Boltzmann called it a ``Zustandssumme'' (sum over states). The English term ``partition'' refers to the partitioning of probability among microstates, not to physical partitions.
+
+\item \textbf{Can $Z$ be computed exactly for real systems?}
+Only for simple systems (ideal gas, harmonic oscillator, Ising model in 2D). For most real systems, approximations are necessary.
+\end{enumerate}
+\section*{Important Bibliography}
+
+\begin{enumerate}
+\item Pathria, R.K. and Beale, P.D., \textit{Statistical Mechanics}, 4th ed. (Academic Press, 2021), Chapter 1.
+\item Huang, K., \textit{Statistical Mechanics}, 2nd ed. (Wiley, 1987), Chapter 3.
+\item Schroeder, D.V., \textit{An Introduction to Thermal Physics} (Addison-Wesley, 2000), Chapter 6.
+\item Reif, F., \textit{Fundamentals of Statistical and Thermal Physics} (McGraw-Hill, 1965), Chapter 3.
+\end{enumerate}
+
+

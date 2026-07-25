@@ -1,0 +1,143 @@
+\chapter{Single-Slit Diffraction}
+
+\section*{Introduction}
+
+When light passes through a narrow slit, it does not simply cast a geometric shadow. Instead, the wave nature of light causes it to spread out and form a characteristic pattern of bright and dark fringes. The single-slit diffraction formula maps the physical geometry of the slit (width $a$) and the wavelength $\lambda$ onto the precise angular distribution of light intensity. It is a direct manifestation of the wave nature of light.
+\section*{Fundamental Equation Used}
+
+\begin{equation}
+I(\theta) = I_0\,\operatorname{sinc}^2\!\left(\frac{\pi a \sin\theta}{\lambda}\right)
+\end{equation}
+\section*{Assumptions}
+
+\textbf{Assumptions:} Fraunhofer (far-field) diffraction; the slit is narrow compared to the distance to the screen; the incident light is monochromatic and spatially coherent.
+
+
+\textbf{Limitations:} Does not apply near the slit (Fresnel diffraction needed); the scalar wave approximation may fail for very narrow slits; polarization effects ignored.
+
+
+\section*{Mathematical Derivation}
+
+\textbf{Step 1: Set up the Huygens--Fresnel construction.}
+
+Consider a slit of width $a$ illuminated by a monochromatic plane wave of wavelength $\lambda$. Each point $y$ across the slit ($-a/2 \leq y \leq a/2$) acts as a secondary source of spherical wavelets (Huygens' principle). At a distant screen, the wavelet from position $y$ arrives at angle $\theta$ with a path difference $\delta = y\sin\theta$ relative to the wavelet from the origin, giving a phase difference
+\begin{equation}
+\Delta\phi = \frac{2\pi}{\lambda}\,y\sin\theta.
+\end{equation}
+
+\textbf{Step 2: Write the total amplitude as an integral.}
+
+The electric field at angle $\theta$ is the superposition of all wavelets from the slit. Assuming uniform illumination and amplitude $E_0$ per unit width:
+\begin{equation}
+E(\theta) = C\int_{-a/2}^{a/2} e^{i(2\pi/\lambda)\,y\sin\theta}\,dy,
+\end{equation}
+where $C$ is a constant incorporating the overall amplitude and propagation factors.
+
+\textbf{Step 3: Evaluate the integral.}
+
+Let $\alpha = \pi a\sin\theta/\lambda$. Changing variable to $u = 2y/a$ (so $du = 2\,dy/a$):
+\begin{equation}
+E(\theta) = C\,a\int_{-1}^{1} e^{i\alpha u}\,\frac{du}{2} = Ca\,\frac{\sin\alpha}{\alpha}.
+\end{equation}
+The integral of $e^{i\alpha u}$ from $-1$ to $1$ is $2\sin\alpha/\alpha$, giving
+\begin{equation}
+E(\theta) = E_0\,\frac{\sin\alpha}{\alpha}, \qquad \alpha = \frac{\pi a\sin\theta}{\lambda}.
+\end{equation}
+
+\textbf{Step 4: Compute the intensity.}
+
+The intensity is proportional to $|E|^2$:
+\begin{equation}
+I(\theta) = I_0\left(\frac{\sin\alpha}{\alpha}\right)^2 = I_0\,\operatorname{sinc}^2\alpha,
+\end{equation}
+where $I_0$ is the peak intensity at $\theta = 0$ and $\operatorname{sinc}(x) = \sin(x)/x$.
+
+\textbf{Step 5: Identify the minima and central maximum.}
+
+Minima occur where $\sin\alpha = 0$ but $\alpha \neq 0$, i.e., $\alpha = m\pi$ for $m = \pm 1, \pm 2, \ldots$
+\begin{equation}
+\frac{\pi a\sin\theta}{\lambda} = m\pi \implies a\sin\theta = m\lambda.
+\end{equation}
+The central maximum spans from the first minimum at $\sin\theta = -\lambda/a$ to the first minimum at $\sin\theta = +\lambda/a$, giving
+\begin{equation}
+\boxed{I(\theta) = I_0\,\operatorname{sinc}^2\!\left(\frac{\pi a\sin\theta}{\lambda}\right), \qquad \text{minima at } a\sin\theta = m\lambda.}
+\end{equation}
+
+\section*{Characteristics of the Equation}
+
+\begin{itemize}
+    \item The central maximum has width $2\lambda/a$ (angle from first minimum to first minimum).
+    \item Minima occur at $a\sin\theta = m\lambda$ for $m = \pm 1, \pm 2, \ldots$
+    \item The central maximum contains approximately 85\% of the total power.
+    \item Named after Joseph von Fraunhofer, who studied diffraction patterns systematically (1818).
+\end{itemize}
+\section*{Solution Methods}
+
+\begin{itemize}
+    \item \textbf{Huygens-Fresnel principle:} Treat each point in the slit as a source of secondary wavelets and sum their contributions with appropriate phases.
+    \item \textbf{Fourier transform:} The far-field pattern is the Fourier transform of the slit transmission function.
+    \item \textbf{Phasor diagram:} Add phasors from each strip of the slit to find the resultant amplitude.
+\end{itemize}
+\section*{Verifications}
+
+\begin{itemize}
+    \item The angular positions of minima match experimental measurements for slits of known width.
+    \item The ratio of central peak width to slit width is inversely proportional, as predicted.
+    \item The sinc-squared envelope agrees with numerical solutions of the Fresnel-Kirchhoff integral.
+\end{itemize}
+\section*{Applications}
+
+\begin{itemize}
+    \item Determining slit widths and particle sizes from diffraction patterns.
+    \item Resolution limits of optical instruments (Rayleigh criterion).
+    \item Spectroscopy: diffraction gratings are arrays of slits.
+    \item X-ray diffraction for crystal structure determination.
+\end{itemize}
+\section*{What Richard Feynman Would Have Asked}
+
+\subsection*{Plain-English Translation}
+\textit{``Why does light spread out when it goes through a narrow slit? Isn't light supposed to travel in straight lines?''}
+
+Light does travel in straight lines---in the geometric optics limit where the wavelength is much smaller than the apertures it encounters. But when the slit is comparable in size to the wavelength, the wave nature of light becomes apparent. Every point in the slit acts as a source of secondary wavelets (Huygens' principle), and these wavelets interfere with each other, producing the diffraction pattern. The spreading is not a failure of light to travel straight; it is the inevitable consequence of wave propagation through a finite aperture.
+
+\subsection*{Localized Mechanics}
+\textit{``At a single point on the screen, what determines whether it is bright or dark? What is the physical mechanism?''}
+
+At any point on the screen, the brightness is determined by the superposition of wavelets arriving from every point in the slit. If the path lengths from different parts of the slit differ by exactly $\lambda/2$, the wavelets cancel pairwise and the point is dark (destructive interference). If they add in phase, the point is bright. The minima occur at angles where the path difference across the slit is an integer number of wavelengths, ensuring perfect cancellation. The physical mechanism is purely the phase relationship between wavelets.
+
+\subsection*{Testing Extreme Limits}
+\textit{``What is the diffraction pattern if the slit is replaced by a single edge---half the plane is open and half is blocked?''}
+
+A single edge produces a diffraction pattern that is exactly half of the single-slit pattern in the limit of an infinitely wide slit. Near the geometric shadow boundary, there are Fresnel diffraction fringes that gradually fade into uniform illumination on the open side and darkness on the blocked side. The edge diffraction pattern is the limiting case that connects geometric optics (sharp shadow) with wave optics (smooth transitions), and it was one of the earliest phenomena used to demonstrate the wave nature of light.
+
+\subsection*{Dimensionality and Geometry}
+\textit{``How does diffraction change if the slit is replaced by a circular aperture? Is the pattern still a sinc-squared?''}
+
+For a circular aperture, the diffraction pattern becomes the Airy pattern: $I(\theta) = I_0\left(\frac{2J_1(ka\sin\theta)}{ka\sin\theta}\right)^2$, where $J_1$ is a Bessel function. The pattern has circular symmetry with a central bright disk (Airy disk) surrounded by faint rings. The first minimum occurs at $\sin\theta \approx 1.22\lambda/d$ instead of $\lambda/a$. The Bessel function is the circular analog of the sinc function---both are Fourier transforms of the aperture shape (rectangle vs. circle).
+
+\subsection*{Cross-Disciplinary Connection}
+\textit{``Where does the same diffraction phenomenon appear in fields other than optics?''}
+
+Diffraction is universal for all waves. In acoustics, sound diffracts around doorways and buildings, which is why you can hear around corners. In electron microscopy, electron waves diffract through atomic lattices, producing the patterns used for crystal structure determination. In quantum mechanics, matter waves diffract through slits, as demonstrated in the famous double-slit experiment with electrons. The mathematical structure is identical in every case: the diffraction pattern is always the Fourier transform of the aperture, regardless of whether the waves are electromagnetic, acoustic, or quantum mechanical.
+
+% ------------------------------------------------------------
+\section*{FAQ}
+
+\textbf{Q: What happens as the slit gets wider and wider?}
+A: As $a \to \infty$, the diffraction pattern narrows and approaches a geometric shadow---the central maximum becomes infinitely narrow and the fringes merge. This is the geometric optics limit, where wave effects become negligible.
+
+\textbf{Q: What happens as the slit gets narrower?}
+A: As $a \to \lambda$, the central maximum spreads over nearly the full $180^\circ$. The Fraunhofer approximation breaks down and Fresnel diffraction must be used. For $a < \lambda$, very little light passes through and the concept of diffraction fringes loses meaning.
+
+\textbf{Q: Why does the sinc-squared function appear instead of a simpler shape?}
+A: The sinc function is the Fourier transform of a rectangular function (the slit). The intensity is the square of the amplitude, giving sinc$^2$. The rectangular shape of the slit---sharp edges with uniform transmission---is what produces the sinc pattern. A different slit shape (e.g., Gaussian) would produce a different diffraction pattern.
+\section*{Important Bibliography}
+
+\begin{enumerate}
+\item Hecht, E., \textit{Optics}, 5th ed. (Cambridge University Press, 2017), Chapter 10.
+\item Born, M. and Wolf, E., \textit{Principles of Optics}, 7th ed. (Cambridge University Press, 1999), Chapter 8.
+\item Feynman, R.P., \textit{The Feynman Lectures on Physics}, Vol.\ I (Addison-Wesley, 1963), Chapter 27.
+\item Pedrotti, F.L., Pedrotti, L.S. and Pedrotti, L.M., \textit{Introduction to Optics}, 3rd ed. (Prentice Hall, 2006), Chapter 18.
+\end{enumerate}
+
+

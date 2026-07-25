@@ -1,0 +1,155 @@
+\chapter{Snell's Law of Refraction}
+
+\section*{Introduction}
+
+Snell's law describes how light bends when it crosses the boundary between two transparent media with different optical densities. Named after Willebrord Snellius (who discovered it around 1621, though it was published later by Descartes), this law is the cornerstone of geometrical optics. It explains why a straw looks bent in a glass of water, why pools appear shallower than they are, how lenses focus light, and how optical fibers guide internet traffic across oceans. Snell's law is so deeply embedded in everyday experience that most people apply it intuitively without knowing its name.
+
+When a light wave hits the surface of water from air, part of it is reflected and part of it is transmitted into the water. The transmitted wave changes direction because its speed changes: light travels slower in water ($v = c/n$, where $n \approx 1.33$) than in air ($n \approx 1.00$). The boundary forces the wavefronts on both sides to stay in phase, and the only way this can happen when the speeds differ is for the transmitted ray to bend toward the normal (the line perpendicular to the surface). Snell's law quantifies this bending: $n_1\sin\theta_1 = n_2\sin\theta_2$, where $\theta_1$ and $\theta_2$ are measured from the normal. The higher the refractive index, the more the light bends toward the normal.
+\section*{Fundamental Equation Used}
+
+\begin{equation}
+n_1\sin\theta_1 = n_2\sin\theta_2
+\end{equation}
+\section*{Assumptions}
+
+\textbf{Assumptions:} The interface between the two media is smooth and flat (planar on the scale of the wavelength). The light is monochromatic (a single wavelength---dispersion means $n$ varies with $\lambda$, so white light splits into colors). The media are isotropic and linear (the refractive index does not depend on direction or on the light intensity).
+
+
+\textbf{Limitations:} Does not account for diffraction effects (which become important when the interface features are comparable to the wavelength). Does not apply to metamaterials with negative refractive index (which require a generalized form). Fails at Brewster's angle for p-polarized light if you need the reflected amplitude (Fresnel equations are needed). Does not handle absorption or gain in the media (complex refractive indices require the full Fresnel treatment).
+
+
+\section*{Mathematical Derivation}
+
+\textbf{Step 1: Start from the wave equation and boundary conditions.}
+
+Consider a plane electromagnetic wave incident on a planar interface between two media with refractive indices $n_1$ and $n_2$. The wave in medium $i$ has the form:
+\begin{equation}
+\Psi_i = A_i\,e^{i(\mathbf{k}_i\cdot\mathbf{r} - \omega_i t)}
+\end{equation}
+At the boundary, the wave must satisfy continuity conditions: the tangential components of $\mathbf{E}$ and $\mathbf{H}$ must be continuous across the interface.
+
+\textbf{Step 2: Apply phase-matching at the boundary.}
+
+Let the interface be the $xz$-plane ($y = 0$). The phase of the incident wave at the boundary is $e^{i(k_{1x}x + k_{1z}z - \omega_1 t)}$. For the reflected and transmitted waves, the same phase must hold for all $x$ and $z$ at $y = 0$ (the boundary conditions must be satisfied at every point on the interface simultaneously). This requires:
+\begin{equation}
+k_{1x} = k_{1x}' = k_{2x}
+\end{equation}
+where primed quantities refer to the reflected wave and subscript 2 to the transmitted wave. Since $\omega_1 = \omega_2$ (frequency is conserved at the interface), the magnitudes of the wave vectors are:
+\begin{equation}
+k_1 = n_1\frac{\omega}{c}, \qquad k_2 = n_2\frac{\omega}{c}
+\end{equation}
+
+\textbf{Step 3: Relate the wave vector components to angles.}
+
+Define the angles of incidence $\theta_1$, reflection $\theta_1'$, and refraction $\theta_2$ measured from the normal ($y$-axis). The $x$-components of the wave vectors are:
+\begin{align}
+k_{1x} &= k_1\sin\theta_1 = \frac{n_1\omega}{c}\sin\theta_1 \\
+k_{1x}' &= k_1\sin\theta_1' = \frac{n_1\omega}{c}\sin\theta_1' \\
+k_{2x} &= k_2\sin\theta_2 = \frac{n_2\omega}{c}\sin\theta_2
+\end{align}
+
+\textbf{Step 4: Equate the tangential components.}
+
+From the phase-matching condition $k_{1x} = k_{1x}'$:
+\begin{equation}
+n_1\sin\theta_1 = n_1\sin\theta_1' \implies \theta_1' = \theta_1
+\end{equation}
+This is the law of reflection: the angle of incidence equals the angle of reflection. From $k_{1x} = k_{2x}$:
+\begin{equation}
+n_1\sin\theta_1 = n_2\sin\theta_2
+\end{equation}
+This is Snell's law of refraction.
+
+\textbf{Step 5: Derive from Fermat's principle of least time.}
+
+Alternatively, consider light traveling from point $A$ in medium 1 to point $B$ in medium 2. Let the crossing point on the interface be at horizontal distance $x$ from the foot of the perpendicular from $A$. The total travel time is:
+\begin{equation}
+t = \frac{\sqrt{h_1^2 + x^2}}{v_1} + \frac{\sqrt{h_2^2 + (d-x)^2}}{v_2}
+\end{equation}
+where $h_1, h_2$ are the perpendicular distances and $v_i = c/n_i$. Minimizing with respect to $x$ ($dt/dx = 0$):
+\begin{equation}
+\frac{x}{v_1\sqrt{h_1^2+x^2}} = \frac{d-x}{v_2\sqrt{h_2^2+(d-x)^2}}
+\end{equation}
+Recognizing $x/\sqrt{h_1^2+x^2} = \sin\theta_1$ and $(d-x)/\sqrt{h_2^2+(d-x)^2} = \sin\theta_2$:
+\begin{equation}
+\frac{\sin\theta_1}{v_1} = \frac{\sin\theta_2}{v_2} \implies \frac{\sin\theta_1}{c/n_1} = \frac{\sin\theta_2}{c/n_2}
+\end{equation}
+which gives $n_1\sin\theta_1 = n_2\sin\theta_2$.
+
+\textbf{Step 6: Derive from the electromagnetic boundary conditions.}
+
+For s-polarized light (electric field perpendicular to the plane of incidence), the Fresnel equations give the transmission coefficient:
+\begin{equation}
+t_s = \frac{2n_1\cos\theta_1}{n_1\cos\theta_1 + n_2\cos\theta_2}
+\end{equation}
+and for p-polarized light:
+\begin{equation}
+t_p = \frac{2n_1\cos\theta_1}{n_2\cos\theta_1 + n_1\cos\theta_2}
+\end{equation}
+Both are derived from the same phase-matching condition, and both require $n_1\sin\theta_1 = n_2\sin\theta_2$ for consistency with Maxwell's equations at the boundary.
+
+\textbf{Step 7: Total internal reflection.}
+
+When light travels from a denser to a rarer medium ($n_1 > n_2$), setting $\theta_2 = 90^\circ$ gives the critical angle:
+\begin{equation}
+\sin\theta_c = \frac{n_2}{n_1}
+\end{equation}
+For $\theta_1 > \theta_c$, no real $\theta_2$ satisfies Snell's law---all light is reflected. This is total internal reflection, the basis of optical fibers and prismatic devices.
+
+\section*{Characteristics of the Equation}
+
+Snell's law is symmetric: if you reverse the direction of the light ray, it follows the same path (principle of reversibility). When $n_1 > n_2$ (light going from dense to rare medium), there exists a critical angle $\theta_c = \arcsin(n_2/n_1)$ beyond which all light is reflected---total internal reflection. This is the operating principle of optical fibers and prisms in binoculars. When $n_1 = n_2$, the law gives $\theta_1 = \theta_2$: no bending, as expected. The bending is zero at normal incidence ($\theta_1 = 0$, $\theta_2 = 0$) regardless of the refractive indices.
+\section*{Solution Methods}
+
+Snell's law is typically used to find the angle of refraction given the angle of incidence and the two refractive indices: $\theta_2 = \arcsin[(n_1/n_2)\sin\theta_1]$. For multiple layered media, apply Snell's law sequentially at each interface; the product $n\sin\theta$ is invariant through all layers. For curved surfaces, use the paraxial (small-angle) approximation: $n_1/s + n_2/s' = (n_2 - n_1)/R$ (the lensmaker's equation), where $s$ is object distance, $s'$ is image distance, and $R$ is the surface radius. For non-paraxial rays, trace each ray through each surface using Snell's law numerically (ray tracing). The Fresnel equations give the amplitudes of reflected and transmitted light at each interface.
+\section*{Verifications}
+
+Snell's law is verified daily in every optics laboratory. The classic experiment: shine a laser at a glass block at known angles, measure the refracted angle with a protractor, and plot $\sin\theta_1$ versus $\sin\theta_2$. The slope gives $n_2/n_1$, and the result matches the independently measured refractive index. Total internal reflection provides a precise method: measure the critical angle $\theta_c$ for a glass--air interface, compute $n = 1/\sin\theta_c$, and compare with the value from an Abbe refractometer. Agreement is typically within 0.1\%.
+\section*{Applications}
+
+Lens design (eyeglasses, cameras, telescopes, microscopes---all rely on Snell's law at each lens surface), optical fiber telecommunications (total internal reflection confines light in the fiber core), fiber-optic endoscopes and illumination, prismatic spectrometers (dispersion separates white light into its spectrum), mirages (Snell's law applied to temperature-gradient layers in the atmosphere with varying $n$), the apparent depth of swimming pools ($d_{\text{apparent}} = d_{\text{actual}}/n$ for near-normal viewing), and atmospheric refraction (which makes the sun visible before it rises above the horizon).
+\section*{What Richard Feynman Would Have Asked}
+
+\textit{``Why does light slow down in glass? Doesn't it travel at $c$ always?''}
+
+Feynman would love this because the answer reveals a common misconception. The photons that make up the light field always travel at $c$ between atoms. What ``slows down'' is the macroscopic wave: the oscillating electric field of the light wave drives the electron clouds in the glass atoms, which re-radiate electromagnetic waves. The re-radiated waves interfere with the original wave, and the net result is a wave whose phase velocity is less than $c$. It is an emergent, collective phenomenon---like a stadium wave in a sports arena where each person stands up and sits down in sequence; the wave moves slowly, but each person's motion is quick. The atoms in the glass do not ``hold'' the light; they re-emit it with a slight delay, and this delay, averaged over billions of atoms, produces the macroscopic refractive index. The photon picture (individual particles traveling at $c$ between absorption and emission) and the wave picture (a slowed-down continuous wave) give the same answer for all measurable quantities.
+
+\textit{``What would happen to Snell's law in a universe with two spatial dimensions?''}
+
+In 2D, Snell's law still holds in the same form: $n_1\sin\theta_1 = n_2\sin\theta_2$, but now $\theta$ is the angle in the 2D plane (there is only one plane). The critical angle and total internal reflection still exist. The main difference is that ``optical fibers'' in 2D are just lines (boundaries between media), and a 2D lens is just a circular interface. The paraxial lensmaker's equation becomes $n_1/s + n_2/s' = (n_2 - n_1)/R$ with the same form. The deep physics---phase matching at the boundary---is identical regardless of the number of spatial dimensions.
+
+\textit{``If I had a material with a refractive index of exactly zero, what would Snell's law predict?''}
+
+If $n_2 = 0$, Snell's law gives $\sin\theta_2 = (n_1/n_2)\sin\theta_1 = \infty \cdot \sin\theta_1$, which has no real solution for any $\theta_1 \neq 0$. This means light cannot propagate in a medium with $n = 0$; it is totally reflected for all angles except normal incidence. At normal incidence, Snell's law gives $\theta_2 = 0$, but the wave velocity $v = c/n = \infty$ is unphysical. In reality, materials with $n$ very close to zero (epsilon-near-zero materials, or metamaterials with engineered plasma frequencies) exhibit extreme refraction: the light bends to nearly grazing angles and propagates with effectively infinite phase velocity, which has applications in cloaking and waveguiding. Truly $n = 0$ is an idealization that marks the boundary between propagating and evanescent behavior.
+
+\textit{``How does Snell's law relate to Fermat's principle of least time?''}
+
+Feynman would emphasize that Snell's law is not a separate postulate---it is a \emph{consequence} of Fermat's principle (light takes the path that minimizes travel time between two points). Consider light traveling from point $A$ in medium 1 to point $B$ in medium 2. The travel time depends on where the ray crosses the interface. Minimizing this time with respect to the crossing point yields Snell's law exactly. This is one of the great unifying principles of optics: the entire edifice of geometrical optics (Snell's law, reflection law, lens equations, ray tracing) can be derived from the single statement that light minimizes travel time. Feynman would point out that this is also a deep hint about quantum mechanics: in the path integral formulation, the classical path (the one satisfying Snell's law) is the one where the phase of the quantum amplitude is stationary.
+
+\textit{``Can Snell's law explain a mirage?''}
+
+Absolutely---and Feynman would walk you through the physics step by step. A mirage on a hot road occurs because the air near the hot surface is less dense (and therefore has lower $n$) than the air above it. This creates a continuous $n$-gradient. Light from the sky (or a distant object) traveling downward enters layers of progressively lower $n$, and by Snell's law, it bends away from the normal---eventually bending so much that it turns back upward toward your eye. Your brain interprets the upward-traveling light as coming from below the ground, producing the illusion of a reflective surface (like water) on the road. The same physics explains desert mirages, the Fata Morgana (complex mirages over cold water), and why distant objects shimmer above hot pavement: turbulent mixing of hot and cold air creates rapidly varying $n$, and Snell's law at each layer bends the light erratically.
+
+\bigskip
+\hrule
+\bigskip
+%=============================================================================
+\section*{FAQ}
+
+\textit{Q: Why does a pool look shallower than it really is?}
+A: Light from the pool bottom refracts away from the normal as it exits the water into air, bending toward your eye. Your brain traces the rays back in straight lines, placing the apparent image of the bottom above its true position. The apparent depth is $d_{\text{apparent}} = d_{\text{actual}}\cos\theta/\cos\theta'$ (for viewing at angle $\theta$ from normal in air); at near-normal incidence, this simplifies to $d_{\text{apparent}} \approx d_{\text{actual}}/n_{\text{water}} \approx 0.75\,d_{\text{actual}}$.
+
+\textit{Q: What happens at Brewster's angle?}
+A: At Brewster's angle ($\theta_B = \arctan(n_2/n_1)$), the reflected light is completely p-polarized (the electric field oscillates parallel to the reflecting surface). This is not predicted by Snell's law alone---it comes from the Fresnel equations, which give the amplitudes of reflected and transmitted light. At Brewster's angle, the reflected amplitude for p-polarized light vanishes entirely.
+
+\textit{Q: Can light bend in a single medium?}
+A: Yes, if the refractive index varies continuously within the medium (a graded-index medium). In this case, Snell's law becomes a differential equation, and the light follows a curved path. This happens in the atmosphere (where temperature gradients create density gradients and hence $n$-gradients) and in graded-index optical fibers (designed to reduce signal dispersion). The bending is always toward the region of higher $n$.
+\section*{Important Bibliography}
+\begin{enumerate}
+\item Hecht, E., \textit{Optics}, 5th ed. (Pearson, 2017), Chapters 4--5.
+\item Born, M. and Wolf, E., \textit{Principles of Optics}, 7th ed. (Cambridge University Press, 1999), Chapter 1.
+\item Feynman, R.P., Leighton, R.B., and Sands, M., \textit{The Feynman Lectures on Physics}, Vol. I (Pearson, 2011), Chapter 26.
+\item Pedrotti, F.L., Pedrotti, L.S., and Pedrotti, L.M., \textit{Introduction to Optics}, 3rd ed. (Pearson, 2006), Chapter 7.
+\end{enumerate}
+
+

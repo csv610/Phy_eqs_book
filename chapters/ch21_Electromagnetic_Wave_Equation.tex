@@ -1,0 +1,172 @@
+\chapter{Electromagnetic Wave Equation}
+
+\section*{Introduction}
+
+When you shake an electric charge, you create a disturbance that propagates outward at the speed of light. This disturbance is a wave: the electric field oscillates, creating an oscillating magnetic field, which creates an oscillating electric field---each field regenerates the other. Empty space has electrical ($\epsilon_0$) and magnetic ($\mu_0$) properties determining how fast this regeneration occurs. The product $c = 1/\sqrt{\mu_0 \epsilon_0} \approx 3 \times 10^8$\,m/s is the speed of light---not because light is special, but because light is an electromagnetic wave.
+\section*{Fundamental Equation Used}
+
+In vacuum, the electric field $\mathbf{E}$ satisfies:
+\[
+\nabla^2 \mathbf{E} = \mu_0 \epsilon_0 \frac{\partial^2 \mathbf{E}}{\partial t^2}
+\]
+with speed of propagation:
+\[
+c = \frac{1}{\sqrt{\mu_0 \epsilon_0}} \approx 2.998 \times 10^8 \;\text{m/s}
+\]
+\section*{Assumptions}
+
+\textbf{Assumptions:} Fields are in vacuum (no charges/currents). The medium is linear, isotropic, non-dispersive. Fields are small enough that nonlinear effects are negligible.
+
+
+\textbf{Limitations:} Does not account for quantum effects (QED needed). Breaks down in nonlinear media. In dispersive media, speed depends on frequency.
+
+
+\section*{Mathematical Derivation}
+
+\textbf{Step 1: Start from Maxwell's equations in vacuum.}
+
+In the absence of charges and currents ($\rho = 0$, $\mathbf{J} = 0$), Maxwell's equations are:
+\begin{align}
+\nabla \cdot \mathbf{E} &= 0 \\
+\nabla \cdot \mathbf{B} &= 0 \\
+\nabla \times \mathbf{E} &= -\frac{\partial \mathbf{B}}{\partial t} \\
+\nabla \times \mathbf{B} &= \mu_0\epsilon_0\frac{\partial \mathbf{E}}{\partial t}
+\end{align}
+
+\textbf{Step 2: Take the curl of Faraday's law.}
+
+Apply the curl to the third equation:
+\begin{equation}
+\nabla \times (\nabla \times \mathbf{E}) = -\frac{\partial}{\partial t}(\nabla \times \mathbf{B})
+\end{equation}
+
+\textbf{Step 3: Use the vector identity.}
+
+The left side simplifies via the identity:
+\begin{equation}
+\nabla \times (\nabla \times \mathbf{E}) = \nabla(\nabla \cdot \mathbf{E}) - \nabla^2 \mathbf{E}
+\end{equation}
+Since $\nabla \cdot \mathbf{E} = 0$ (vacuum, no charges), this becomes $-\nabla^2 \mathbf{E}$.
+
+\textbf{Step 4: Substitute Amp\`ere--Maxwell law.}
+
+The right side becomes:
+\begin{equation}
+-\frac{\partial}{\partial t}(\nabla \times \mathbf{B}) = -\frac{\partial}{\partial t}\left(\mu_0\epsilon_0\frac{\partial \mathbf{E}}{\partial t}\right) = -\mu_0\epsilon_0\frac{\partial^2 \mathbf{E}}{\partial t^2}
+\end{equation}
+
+\textbf{Step 5: Combine to get the wave equation.}
+
+Equating the two sides:
+\begin{equation}
+-\nabla^2 \mathbf{E} = -\mu_0\epsilon_0\frac{\partial^2 \mathbf{E}}{\partial t^2}
+\end{equation}
+Rearranging:
+\begin{equation}
+\boxed{\nabla^2 \mathbf{E} = \mu_0\epsilon_0\frac{\partial^2 \mathbf{E}}{\partial t^2}}
+\end{equation}
+
+\textbf{Step 6: Identify the speed of light.}
+
+This is a wave equation of the form $\nabla^2 \mathbf{E} = \frac{1}{v^2}\frac{\partial^2 \mathbf{E}}{\partial t^2}$ with propagation speed:
+\begin{equation}
+c = \frac{1}{\sqrt{\mu_0\epsilon_0}} = \frac{1}{\sqrt{(4\pi \times 10^{-7})(8.854 \times 10^{-12})}} \approx 2.998 \times 10^8 \;\text{m/s}
+\end{equation}
+The identical equation holds for $\mathbf{B}$. The fields are transverse: for a plane wave $\mathbf{E} = \mathbf{E}_0 e^{i(\mathbf{k}\cdot\mathbf{r} - \omega t)}$, the divergence-free condition gives $\mathbf{k} \cdot \mathbf{E}_0 = 0$ (the electric field is perpendicular to propagation). The dispersion relation is $\omega = c|\mathbf{k}|$, confirming that all electromagnetic waves travel at $c$ in vacuum regardless of frequency.
+
+\section*{Characteristics of the Equation}
+
+\begin{itemize}
+\item \textbf{Universality:} All EM waves travel at $c$ in vacuum, regardless of frequency, amplitude, or source.
+\item \textbf{Transversality:} Electric and magnetic fields oscillate perpendicular to propagation.
+\item \textbf{Polarization:} The direction of $\mathbf{E}$ defines polarization---linear, circular, and elliptical are possible.
+\item \textbf{Energy transport:} Poynting vector $\mathbf{S} = \frac{1}{\mu_0}\mathbf{E} \times \mathbf{B}$. Energy density $u = \frac{1}{2}(\epsilon_0 E^2 + B^2/\mu_0)$.
+\item \textbf{Dispersion in matter:} In a medium with refractive index $n = c/v$, the speed is $v = c/n$. Wavelength is shortened by $n$; frequency unchanged.
+\end{itemize}
+\section*{Solution Methods}
+
+\begin{enumerate}
+\item \textbf{Plane waves:} $\mathbf{E} = \mathbf{E}_0 \cos(\mathbf{k} \cdot \mathbf{r} - \omega t)$, with $\omega = ck$. Simplest solutions forming a complete basis.
+\item \textbf{Fourier decomposition:} Any field decomposes into plane waves. The spectrum is obtained by Fourier transforming in space and time.
+\item \textbf{Green's function:} Retarded Green's function $G(\mathbf{r}, t) = \frac{\delta(t - r/c)}{4\pi r}$ gives the field from a point source---basis of antenna theory.
+\item \textbf{Numerical methods:} FDTD methods solve Maxwell's equations on a grid, simulating propagation through complex geometries.
+\end{enumerate}
+\section*{Verifications}
+
+\begin{itemize}
+\item \textbf{Speed of light:} Measured $c = 2.997\,924\,58 \times 10^8$\,m/s matches $1/\sqrt{\mu_0 \epsilon_0}$ from independently measured constants.
+\item \textbf{Hertz's experiment:} 1887 demonstration of radio wave generation/detection confirmed Maxwell's prediction.
+\item \textbf{Polarization:} Measured polarization states match wave equation predictions, including Malus's law and wave plates.
+\item \textbf{Antenna patterns:} Measured radiation patterns match theoretical predictions.
+\end{itemize}
+\section*{Applications}
+
+\begin{itemize}
+\item \textbf{Radio/telecom:} Antenna design, signal propagation, wireless communication.
+\item \textbf{Optics:} Lenses, mirrors, fiber optics, laser systems.
+\item \textbf{Medical imaging:} MRI uses radio waves in magnetic fields.
+\item \textbf{Radar:} Electromagnetic waves detect objects, measure distances, map terrain.
+\item \textbf{Astronomy:} Observations across the EM spectrum reveal different aspects of the universe.
+\end{itemize}
+\section*{What Richard Feynman Would Have Asked}
+
+\subsection*{1. Plain-English Translation}
+\textit{``What is the electromagnetic wave equation telling us, in the plainest possible language?''}
+
+It says: ``Light, radio, X-rays, and gamma rays are all the same thing---ripples in the electromagnetic field traveling at the speed of light.'' When you wiggle an electric charge, the disturbance propagates outward as a wave. The speed is determined by two numbers describing empty space: how strongly it resists electric fields ($\epsilon_0$) and how strongly it supports magnetic fields ($\mu_0$). The wave speed is $1/\sqrt{\mu_0 \epsilon_0}$, matching light's speed because light is one of these waves.
+
+The deep message is unification: electricity, magnetism, and optics are not three phenomena---they are one. Maxwell's equations predicted radio waves before they were discovered, predicted light is EM before confirmation, and provided the foundation for all modern electromagnetic technology.
+
+\subsection*{2. Localized Mechanics}
+\textit{``What is happening at a single point as an EM wave passes through?''}
+
+At any point, the electric field is changing, and this creates a magnetic field. The magnetic field is also changing, creating an electric field. The two fields are in perpetual mutual creation, each regenerating the other as the wave propagates. Fields are perpendicular to each other and to propagation---the wave is transverse.
+
+He would press you on energy: the energy density at any point is $u = \frac{1}{2}(\epsilon_0 E^2 + B^2/\mu_0)$, oscillating between electric and magnetic forms. The Poynting vector $\mathbf{S} = \mathbf{E} \times \mathbf{B}/\mu_0$ gives energy flow direction and magnitude.
+
+\subsection*{3. Testing Extreme Limits}
+\textit{``What happens at extremely high or low frequencies?''}
+
+At gamma-ray frequencies ($> 10^{19}$\,Hz), photons have enough energy ($E > 1$\,MeV) to create electron--positron pairs. Classical wave description breaks down---QED is needed. At ELF frequencies ($< 30$\,Hz), wavelengths are thousands of kilometers. The equation still applies, but generating/detecting such waves is extremely challenging.
+
+At zero frequency, there is no wave---just a static field. Feynman might argue this is a ``wave'' with infinite wavelength, but the Poynting vector is zero for static fields.
+
+\subsection*{4. Dimensionality and Geometry}
+\textit{``How does the wave behave in different dimensions?''}
+
+In 1D, the equation describes waves on a string or transmission line. In 2D, waves on a drumhead or surface plasmons. In 3D, EM waves in free space. Dimensionality affects amplitude decay: 1D does not decay; 2D decays as $1/\sqrt{r}$ (cylindrical spreading); 3D as $1/r$ (spherical).
+
+In waveguides, boundary conditions modify solutions---only certain frequencies propagate, and effective speed depends on frequency (dispersion). The geometry shapes the solution, but the underlying equation is unchanged.
+
+\subsection*{5. Cross-Disciplinary Connection}
+\textit{``Where else does this exact same equation appear?''}
+
+The wave equation describes any system where restoring force (proportional to displacement) and inertia (proportional to acceleration) are balanced. Sound in air, seismic waves, guitar vibrations, and quantum probability waves all satisfy the same equation (with different coefficients). The Schr\"odinger equation is a modified wave equation (first time derivative instead of second). The same mathematics applies because the physical mechanism---mutual regeneration of two coupled quantities---is universal.
+
+
+%=============================================================
+% Chapter 22: Entropy
+%=============================================================
+\section*{FAQ}
+
+\textbf{Q1: Why is the speed of light what it is?}
+
+A: It is determined by two vacuum properties: $\epsilon_0$ (how strongly charges interact) and $\mu_0$ (how strongly magnetic poles interact). These tell you how ``stiff'' the EM field is. The speed $c = 1/\sqrt{\mu_0 \epsilon_0}$ is the ratio of this stiffness to field inertia. It is not a coincidence that $c$ matches light's speed---light is an EM wave.
+
+\textbf{Q2: Can EM waves travel through a vacuum?}
+
+A: Yes---they require no medium. Unlike sound (which needs air), EM waves are self-sustaining: the electric field creates the magnetic field, and vice versa. This mutual regeneration propagates through empty space indefinitely.
+
+\textbf{Q3: What determines polarization?}
+
+A: The direction of electric field oscillation. A vertical antenna produces vertically polarized radio waves. A laser can produce linearly, circularly, or elliptically polarized light depending on internal optical elements. Unpolarized light is a random mixture of all polarization states.
+\section*{Important Bibliography}
+
+\begin{enumerate}
+\item Griffiths, D.J., \textit{Introduction to Electrodynamics}, 4th ed. (Cambridge University Press, 2017), Chapter 9.
+\item Jackson, J.D., \textit{Classical Electrodynamics}, 3rd ed. (Wiley, 1999), Chapter 6.
+\item Feynman, R.P., Leighton, R.B., and Sands, M., \textit{The Feynman Lectures on Physics}, Vol. II (Addison-Wesley, 1964), Chapter 20.
+\item Zangwill, A., \textit{Modern Electrodynamics} (Cambridge University Press, 2013), Chapter 22.
+\end{enumerate}
+
+

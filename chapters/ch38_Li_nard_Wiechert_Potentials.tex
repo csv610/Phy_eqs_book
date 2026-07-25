@@ -1,0 +1,175 @@
+\chapter{Liénard--Wiechert Potentials}
+
+\section*{Introduction}
+
+When a point charge moves through space, the electromagnetic potentials it generates at any field point depend not on the charge's present position but on its position at the retarded time---the instant in the past when a light signal leaving the charge would just now arrive at the observer. The Liénard--Wiechert potentials, derived independently by André-Marie Liénard (1898) and Emil Wiechert (1900), provide the exact relativistic solution for the scalar and vector potentials of a point charge in arbitrary motion. They form the foundation for calculating radiation fields, synchrotron emission, and bremsstrahlung.
+
+The key insight is retardation: information propagates at the speed of light, so the field at $(\mathbf{r}, t)$ is determined by the charge at the retarded position $\mathbf{r}_{\text{ret}} = \mathbf{r}_{q}(t_{\text{ret}})$ where $t_{\text{ret}} = t - |\mathbf{r} - \mathbf{r}_{q}(t_{\text{ret}})|/c$. The Liénard--Wiechert solution encodes this implicit equation through the factor $R - \mathbf{R}\cdot\mathbf{v}/c$, where $\mathbf{R}$ is the vector from the retarded position to the field point and $\mathbf{v}$ is the charge's velocity at the retarded time.
+\section*{Fundamental Equation Used}
+
+\begin{equation}
+\boxed{\;\varphi(\mathbf{r},t) = \frac{1}{4\pi\varepsilon_{0}}\;\frac{q}{\left(R - \dfrac{\mathbf{R}\cdot\mathbf{v}}{c}\right)}\;}
+\label{eq:lienard-wiechert-phi}
+\end{equation}
+\begin{equation}
+\boxed{\;\mathbf{A}(\mathbf{r},t) = \frac{\mathbf{v}}{c}\;\varphi(\mathbf{r},t)\;}
+\label{eq:lienard-wiechert-A}
+\end{equation}
+where $\mathbf{R} = \mathbf{r} - \mathbf{r}_{q}(t_{\text{ret}})$ and $\mathbf{v} = \dot{\mathbf{r}}_{q}(t_{\text{ret}})$.
+\section*{Assumptions}
+
+\textbf{Assumptions:} The charge is a point particle; the medium is vacuum; special relativity applies.
+
+
+\textbf{Limitations:} Valid only for a single point charge; does not include quantum electrodynamic corrections; self-interaction (radiation reaction) must be treated separately.
+
+
+\section*{Mathematical Derivation}
+
+\textbf{Step 1: Start from the retarded Green's function for the wave operator.}
+
+The Lorenz gauge condition $\nabla\cdot\mathbf{A} + \frac{1}{c^{2}}\frac{\partial\varphi}{\partial t} = 0$ decouples the potentials into two independent wave equations:
+\begin{equation}
+\Box^{2}\varphi = -\frac{\rho}{\varepsilon_{0}}, \qquad \Box^{2}\mathbf{A} = -\mu_{0}\mathbf{J},
+\end{equation}
+where $\Box^{2} = \nabla^{2} - \frac{1}{c^{2}}\frac{\partial^{2}}{\partial t^{2}}$ is the d'Alembertian. The retarded Green's function satisfying $\Box^{2}G_{\text{ret}}(\mathbf{r},t;\mathbf{r}',t') = \delta^{3}(\mathbf{r}-\mathbf{r}')\,\delta(t-t')$ is:
+\begin{equation}
+G_{\text{ret}}(\mathbf{r},t;\mathbf{r}',t') = \frac{\delta\!\bigl(t' - t + |\mathbf{r}-\mathbf{r}'|/c\bigr)}{4\pi|\mathbf{r}-\mathbf{r}'|}.
+\end{equation}
+
+\textbf{Step 2: Write the retarded integral for the scalar potential.}
+
+The general retarded solution is:
+\begin{equation}
+\varphi(\mathbf{r},t) = \frac{1}{4\pi\varepsilon_{0}}\int \frac{\rho(\mathbf{r}',t_{\text{ret}})}{|\mathbf{r}-\mathbf{r}'|}\,d^{3}r',
+\label{eq:retarded-phi-integral}
+\end{equation}
+where $t_{\text{ret}} = t - |\mathbf{r}-\mathbf{r}'|/c$ is the retarded time. For a point charge $q$ moving along trajectory $\mathbf{r}_{q}(t')$, the charge density is:
+\begin{equation}
+\rho(\mathbf{r}',t') = q\,\delta^{3}\!\bigl(\mathbf{r}' - \mathbf{r}_{q}(t')\bigr).
+\end{equation}
+
+\textbf{Step 3: Evaluate the integral over the charge's worldline.}
+
+Substituting the point-charge density into the retarded integral and performing the spatial integration over $\mathbf{r}'$ using the delta function:
+\begin{equation}
+\varphi(\mathbf{r},t) = \frac{q}{4\pi\varepsilon_{0}}\int_{-\infty}^{\infty} \frac{\delta\!\bigl(t' - t + |\mathbf{r}-\mathbf{r}_{q}(t')|/c\bigr)}{|\mathbf{r}-\mathbf{r}_{q}(t')|}\,dt'.
+\end{equation}
+Let $\mathbf{R}(t') = \mathbf{r} - \mathbf{r}_{q}(t')$ and $R(t') = |\mathbf{R}(t')|$. The argument of the delta function is:
+\begin{equation}
+g(t') = t' - t + \frac{R(t')}{c}.
+\end{equation}
+
+\textbf{Step 4: Use the delta function identity to perform the time integration.}
+
+The delta function integral picks out the root $t' = t_{\text{ret}}$ where $g(t_{\text{ret}}) = 0$, weighted by $1/|g'(t_{\text{ret}})|$:
+\begin{equation}
+\varphi(\mathbf{r},t) = \frac{q}{4\pi\varepsilon_{0}}\;\frac{1}{|g'(t_{\text{ret}})|\;R(t_{\text{ret}})}.
+\end{equation}
+Computing the derivative:
+\begin{equation}
+g'(t') = 1 + \frac{1}{c}\frac{dR}{dt'} = 1 + \frac{1}{c}\,\frac{d}{dt'}|\mathbf{r}-\mathbf{r}_{q}(t')|.
+\end{equation}
+Using the chain rule:
+\begin{equation}
+\frac{dR}{dt'} = \frac{d}{dt'}\sqrt{(\mathbf{r}-\mathbf{r}_{q}(t'))\cdot(\mathbf{r}-\mathbf{r}_{q}(t'))} = -\frac{(\mathbf{r}-\mathbf{r}_{q}(t'))\cdot\dot{\mathbf{r}}_{q}(t')}{|\mathbf{r}-\mathbf{r}_{q}(t')|} = -\frac{\mathbf{R}(t')\cdot\mathbf{v}(t')}{R(t')},
+\end{equation}
+where $\mathbf{v}(t') = \dot{\mathbf{r}}_{q}(t')$. Therefore:
+\begin{equation}
+g'(t_{\text{ret}}) = 1 - \frac{\mathbf{R}(t_{\text{ret}})\cdot\mathbf{v}(t_{\text{ret}})}{c\,R(t_{\text{ret}})}.
+\end{equation}
+
+\textbf{Step 5: Assemble the Li\'enard--Wiechert scalar potential.}
+
+Combining the results:
+\begin{equation}
+\varphi(\mathbf{r},t) = \frac{q}{4\pi\varepsilon_{0}}\;\frac{1}{R\!\left(1 - \dfrac{\mathbf{R}\cdot\mathbf{v}}{cR}\right)} = \frac{1}{4\pi\varepsilon_{0}}\;\frac{q}{R - \dfrac{\mathbf{R}\cdot\mathbf{v}}{c}},
+\end{equation}
+where all quantities on the right are evaluated at the retarded time $t_{\text{ret}}$. This is the Li\'enard--Wiechert scalar potential.
+
+\textbf{Step 6: Derive the vector potential using the Lorenz gauge relation.}
+
+The same calculation for the vector potential yields $\mathbf{A}(\mathbf{r},t) = \frac{\mu_{0}}{4\pi}\frac{q\,\mathbf{v}}{R - \mathbf{R}\cdot\mathbf{v}/c}$. Comparing with the scalar potential:
+\begin{equation}
+\mathbf{A}(\mathbf{r},t) = \frac{\mathbf{v}}{c}\;\varphi(\mathbf{r},t),
+\end{equation}
+which is the Li\'enard--Wiechert vector potential. It can be verified that these potentials satisfy the Lorenz gauge condition by direct substitution.
+
+\section*{Characteristics of the Equation}
+
+\begin{itemize}
+  \item \textbf{Retardation:} The denominator $R - \mathbf{R}\cdot\mathbf{v}/c$ diverges when the charge approaches the observer at speed $c$ (Cherenkov-like condition in vacuum is forbidden).
+  \item \textbf{Coulomb limit:} When $v = 0$, the potentials reduce to the static Coulomb and zero-vector-potential results.
+  \item \textbf{Radiation field:} The electric field derived from these potentials contains both a $1/R^{2}$ Coulomb-like part and a $1/R$ radiation part proportional to the transverse acceleration.
+  \item \textbf{Gauge:} These potentials are in the Lorenz gauge, $\nabla\cdot\mathbf{A} + \frac{1}{c^{2}}\frac{\partial\varphi}{\partial t} = 0$.
+\end{itemize}
+\section*{Solution Methods}
+
+\begin{enumerate}
+  \item \textbf{Retarded Green's function:} Start from $\Box\varphi = -\rho/\varepsilon_{0}$ in the Lorenz gauge and use the retarded Green's function $G_{\text{ret}}(\mathbf{r},t;\mathbf{r}',t') = \delta(t' - t + |\mathbf{r}-\mathbf{r}'|/c)/(4\pi|\mathbf{r}-\mathbf{r}'|)$. Integrating over the charge's worldline yields the Liénard--Wiechert result.
+  \item \textbf{Direct differentiation:} Compute $\mathbf{E} = -\nabla\varphi - \partial\mathbf{A}/\partial t$ and $\mathbf{B} = \nabla\times\mathbf{A}$, using the chain rule carefully with the retarded time as an implicit function of $(\mathbf{r}, t)$.
+  \item \textbf{Numerical evaluation:} For arbitrary trajectories, solve for $t_{\text{ret}}$ iteratively and evaluate the potentials numerically at each field point.
+\end{enumerate}
+\section*{Verifications}
+
+The Liénard--Wiechert potentials reproduce the correct Larmor formula for non-relativistic radiation, the relativistic generalization by Lienard, and are consistent with the energy--momentum conservation of classical electrodynamics. Experimental confirmation comes from synchrotron light sources, where observed radiation patterns match theoretical predictions to high precision.
+\section*{Applications}
+
+\begin{itemize}
+  \item \textbf{Synchrotron radiation:} Charged particles in circular accelerators radiate power proportional to $\gamma^{4}/R^{2}$; the Liénard--Wiechert potentials give the exact field pattern.
+  \item \textbf{Bremsstrahlung:} Deceleration of charges near nuclei produces X-rays; the potentials describe the radiation field.
+  \item \textbf{Antenna theory:} The radiation from oscillating dipoles is a special case of the Liénard--Wiechert solution with harmonic motion.
+  \item \textbf{Astrophysics:} Pulsar emission, relativistic jets in active galactic nuclei, and gamma-ray burst models all rely on these potentials.
+\end{itemize}
+\section*{What Richard Feynman Would Have Asked}
+
+\subsection*{Plain-English Translation}
+\textit{``Suppose I know nothing about field theory. What is the Liénard--Wiechert potential telling me in plain words?''}
+
+It says: ``Don't look at where the charge is now; look at where it was when its light left for you.'' If a charge is moving toward you, its field appears concentrated in front (like a headlight) because successive wavefronts are emitted closer together. If it is moving away, the field is stretched behind. The factor $R - \mathbf{R}\cdot\mathbf{v}/c$ in the denominator is a Doppler-like compression or rarefaction of the field lines. For a charge moving at constant velocity, the field is still a pure Coulomb field, just ``squashed'' in the direction of motion. The interesting physics---radiation---only appears when the charge accelerates.
+
+\subsection*{Localized Mechanics}
+\textit{``At the level of a small patch of spacetime around a single charge, what determines the field, and how does the retarded-time equation work?''}
+
+At the retarded time, a light cone from the field point $(\mathbf{r}, t)$ intersects the charge's worldline at a unique event (assuming $v < c$). The Liénard--Wiechert factor $\mathcal{D} = 1 - \hat{\mathbf{R}}\cdot\boldsymbol{\beta}$ (with $\boldsymbol{\beta} = \mathbf{v}/c$) encodes the rate at which the charge is ``chasing'' or ``retreating from'' its own field. When $\mathcal{D}$ is small (charge approaching at near-$c$), the field intensity is amplified; when $\mathcal{D}$ is large, the field is diminished. This is the classical analogue of the relativistic beaming observed in astrophysical jets.
+
+\subsection*{Testing Extreme Limits}
+\textit{``What happens to the Liénard--Wiechert potentials as $v \to c$, and what does this imply for ultra-relativistic particle beams?''}
+
+As $v \to c$, $\gamma \to \infty$ and $\mathcal{D} \to 1 - \cos\theta$ for a charge moving along $\hat{z}$. The radiated power per solid angle is peaked within a cone of opening angle $\sim 1/\gamma$ about the velocity direction. For a 1~GeV electron ($\gamma \approx 2000$), this cone is about 0.5~mrad---a pencil beam of radiation. This explains why synchrotron radiation is so brightly collimated and why storage-ring light sources produce such brilliant X-ray beams. In the limit $\gamma \to \infty$, the radiation becomes a delta-function ``shock'' in the forward direction, which is the classical limit of the Weizsäcker--Williams approximation.
+
+\subsection*{Dimensionality and Geometry}
+\textit{``How do the Liénard--Wiechert potentials fit into the geometric structure of electrodynamics?''}
+
+In the language of differential forms, the potentials are $A = A_{\mu}\,dx^{\mu}$ and the field strength $F = dA$. The retarded Green's function for the wave operator $\Box$ is a delta function on the backward light cone. The Liénard--Wiechert solution is the pullback of this Green's function onto the charge's worldline. Geometrically, the factor $\mathcal{D}$ is the inner product of the charge's four-velocity with the null separation vector between the retarded event and the field event. This four-dimensional inner product is what makes the solution manifestly covariant, even though the written form appears to depend on the observer's frame.
+
+\subsection*{Cross-Disciplinary Connection}
+\textit{``Does the retardation principle in the Liénard--Wiechert potentials have analogues in other areas of physics?''}
+
+Yes. In acoustics, the retarded potential for a moving sound source is mathematically identical (with $c$ replaced by the speed of sound), and it gives the acoustic analogue of Doppler shift and shock formation (sonic booms). In gravitation, the retarded potentials of a moving mass in the linearized Einstein field equations (the ``gravitoelectromagnetic'' potentials) have exactly the same structure, with $q/4\pi\varepsilon_{0}$ replaced by $-Gm$. In seismology, retarded Green's functions propagate elastic waves from source to receiver. The universal lesson is that any field satisfying a wave equation must respect causality through retardation---the Liénard--Wiechert potentials are the archetype of this principle.
+
+% ============================================================
+% CHAPTER 39 — Mass–Energy Equivalence
+% ============================================================
+\section*{FAQ}
+
+\begin{enumerate}
+\item \textbf{Why does the charge's future motion not matter?}
+Electromagnetic information travels at $c$; only the charge's state at the retarded time has had time to influence the field at the observer's location. Future events are causally disconnected.
+
+\item \textbf{Can the denominator $R - \mathbf{R}\cdot\mathbf{v}/c$ become zero?}
+Only if $v = c$ and $\mathbf{R}$ is parallel to $\mathbf{v}$, meaning the charge reaches the observer exactly at $c$. For massive charges ($v < c$), the denominator is strictly positive.
+
+\item \textbf{How do you handle radiation reaction from these potentials?}
+The potentials themselves do not include self-force. Radiation reaction is obtained by considering the force exerted by the charge on itself, leading to the Abraham--Lorentz or Landau--Lifshitz equation of motion.
+\end{enumerate}
+\section*{Important Bibliography}
+
+\begin{enumerate}
+\item Jackson, J.D., \textit{Classical Electrodynamics}, 3rd ed. (Wiley, 1999), Chapter 12.
+\item Griffiths, D.J., \textit{Introduction to Electrodynamics}, 4th ed. (Cambridge University Press, 2017), Chapter 10.
+\item Zangwill, A., \textit{Modern Electrodynamics} (Cambridge University Press, 2013), Chapter 21.
+\item Panofsky, W.K.H. and Phillips, M., \textit{Classical Electricity and Magnetism}, 2nd ed. (Addison-Wesley, 1962), Chapter 14.
+\end{enumerate}
+
+

@@ -1,0 +1,189 @@
+\chapter{Wien's Displacement Equation}
+
+\section*{Introduction}
+
+Astronomers determine the surface temperature of stars by measuring the color of their light. A red star (Betelgeuse, $\sim 3000$ K) is cooler than a yellow star (the Sun, $\sim 5800$ K), which is cooler than a blue star (Rigel, $\sim 12000$ K). Infrared cameras detect heat signatures because warm objects emit radiation peaking in the infrared. The equation is used in everything from furnace temperature measurement to predicting the color of hot metal in manufacturing.
+
+\section*{Fundamental Equation Used}
+
+\[
+\lambda_{\max} T = b = 2.898 \times 10^{-3} \text{ m}\cdot\text{K}
+\]
+\section*{Assumptions}
+
+\textbf{Assumptions:} The source is a perfect blackbody (ideal radiator). The radiation is thermal (equilibrium). The spectrum is described by Planck's radiation law.
+
+
+\textbf{Limitations:} Real objects are not perfect blackbodies---their emissivity varies with wavelength. Non-thermal sources (lasers, LEDs, fluorescent lights) do not obey this law. Narrow-band emitters or atomic emission lines don't follow the smooth blackbody curve.
+
+
+\section*{Mathematical Derivation}
+
+\textbf{Step 1: Planck's Radiation Law.}
+
+The spectral radiance of a blackbody at temperature $T$, per unit wavelength, is given by Planck's radiation law:
+
+\begin{equation}
+B_\lambda(T) = \frac{2hc^2}{\lambda^5}\,\frac{1}{e^{hc/(\lambda k_B T)} - 1},
+\end{equation}
+
+where $h$ is Planck's constant, $c$ is the speed of light, $k_B$ is Boltzmann's constant, and $\lambda$ is the wavelength. This was Planck's revolutionary result from 1900, obtained by postulating that electromagnetic energy is quantized.
+
+\textbf{Step 2: Finding the Peak Wavelength.}
+
+Wien's displacement law states that the peak wavelength $\lambda_{\max}$ is where $B_\lambda(T)$ reaches its maximum. To find it, differentiate $B_\lambda$ with respect to $\lambda$ and set the result to zero:
+
+\begin{equation}
+\frac{dB_\lambda}{d\lambda} = 0.
+\end{equation}
+
+\textbf{Step 3: Carrying Out the Differentiation.}
+
+Define the dimensionless variable:
+
+\begin{equation}
+x = \frac{hc}{\lambda k_B T},
+\end{equation}
+
+so that $\lambda = hc/(x\,k_B T)$ and $B_\lambda$ becomes a function of $x$:
+
+\begin{equation}
+B_\lambda = \frac{2hc^2}{(hc)^5}\,(k_B T)^5\,x^5\,\frac{1}{e^x - 1} = \frac{2(k_B T)^5}{h^4 c^3}\,\frac{x^5}{e^x - 1}.
+\end{equation}
+
+Since the prefactor depends only on $T$, maximizing $B_\lambda$ with respect to $\lambda$ is equivalent to maximizing:
+
+\begin{equation}
+g(x) = \frac{x^5}{e^x - 1}
+\end{equation}
+
+with respect to $x$.
+
+\textbf{Step 4: Setting the Derivative to Zero.}
+
+Differentiate $g(x)$:
+
+\begin{equation}
+g'(x) = \frac{5x^4(e^x - 1) - x^5\,e^x}{(e^x - 1)^2} = 0.
+\end{equation}
+
+The numerator must vanish:
+
+\begin{equation}
+5x^4(e^x - 1) - x^5\,e^x = 0.
+\end{equation}
+
+Factor out $x^4$ (noting $x = 0$ is a minimum, not the peak):
+
+\begin{equation}
+5(e^x - 1) = x\,e^x.
+\end{equation}
+
+Rearranging:
+
+\begin{equation}
+5\,e^x - 5 = x\,e^x \quad \Longrightarrow \quad e^x(5 - x) = 5.
+\end{equation}
+
+\textbf{Step 5: Solving the Transcendental Equation.}
+
+The equation $e^x(5 - x) = 5$ is transcendental and must be solved numerically. Substituting $y = 5 - x$:
+
+\begin{equation}
+y\,e^{5-y} = 5 \quad \Longrightarrow \quad y\,e^{-y} = 5\,e^{-5}.
+\end{equation}
+
+This can be expressed using the Lambert $W$ function: $y = -W(-5e^{-5})$. Numerically:
+
+\begin{equation}
+x_{\max} \approx 4.96511.
+\end{equation}
+
+\textbf{Step 6: Wien's Displacement Law.}
+
+Substituting back $x = hc/(\lambda k_B T)$:
+
+\begin{equation}
+\frac{hc}{\lambda_{\max}\,k_B T} = 4.96511.
+\end{equation}
+
+Solving for $\lambda_{\max}\,T$:
+
+\begin{equation}
+\boxed{\lambda_{\max}\,T = \frac{hc}{4.96511\,k_B} \equiv b = 2.898 \times 10^{-3}\;\text{m}\cdot\text{K}.}
+\end{equation}
+
+The Wien displacement constant is:
+
+\begin{equation}
+b = \frac{hc}{4.96511\,k_B} = \frac{(6.626\times10^{-34})(2.998\times10^8)}{(4.96511)(1.381\times10^{-23})} \approx 2.898\times10^{-3}\;\text{m}\cdot\text{K}.
+\end{equation}
+
+\textbf{Step 7: Physical Significance.}
+
+The result $\lambda_{\max} \propto 1/T$ has a simple interpretation: the typical photon energy at temperature $T$ is $\sim k_B T$, and since $E = hc/\lambda$, we get $\lambda \sim hc/(k_B T)$. The exact numerical factor (4.965) comes from the detailed shape of the Planck distribution. Hotter objects peak at shorter wavelengths: the Sun ($T \approx 5800$ K) peaks at $\lambda_{\max} \approx 500$ nm (green-yellow), while the cosmic microwave background ($T \approx 2.725$ K) peaks at $\lambda_{\max} \approx 1$ mm (microwave).
+
+\section*{Characteristics of the Equation}
+
+The peak wavelength scales inversely with temperature: double the temperature, halve the peak wavelength. The total radiated power scales as $T^4$ (Stefan-Boltzmann law). The Wien constant $b = 2.898 \times 10^{-3}$ m$\cdot$K is a fundamental combination of $h$, $c$, and $k$.
+\section*{Solution Methods}
+
+Direct application of $\lambda_{\max} = b/T$. Derivation from Planck's law: differentiate $B_\lambda(T)$ with respect to $\lambda$ and set to zero. For non-blackbody sources, use the emissivity-corrected spectrum.
+\section*{Verifications}
+
+Measure the spectrum of a blackbody source at known temperatures and verify $\lambda_{\max} T = b$. Comparison with Planck's law across the full spectrum. NIST maintains blackbody standards for calibration.
+\section*{Applications}
+
+Pyrometry (non-contact temperature measurement), stellar classification, infrared thermography, color temperature of light sources, furnace monitoring, climate science (Earth's emission spectrum peaks at $\sim 10\,\mu$m).
+\section*{What Richard Feynman Would Have Asked}
+
+\subsection*{1. The Plain-English Translation}
+\textit{``What does it mean for the peak wavelength to shift with temperature?''}
+
+The Core Meaning: Hotter objects emit radiation at shorter wavelengths. This is because the atoms in a hot object vibrate faster and more energetically, producing higher-frequency (shorter-wavelength) electromagnetic waves. The peak wavelength tells you the ``color'' of the thermal radiation, just as the dominant frequency tells you the ``note'' of a musical sound.
+
+The Metaphor: Imagine a crowd of people all shouting at once. At low energy (low temperature), they mostly murmur (infrared). As you add energy (raise temperature), they start shouting louder and at higher pitches (visible light, then ultraviolet). The peak wavelength is the ``loudest'' wavelength---the one that dominates the clamor.
+
+\subsection*{2. The Localized Mechanics}
+\textit{``At the surface of the radiator, what determines the peak wavelength?''}
+
+He would press you on the quantum origin. Planck's law says that the energy of a photon is $E = hf = hc/\lambda$. At temperature $T$, the typical photon energy is $\sim kT$. Equating $hc/\lambda_{\max} \sim kT$ gives $\lambda_{\max} \sim hc/kT$---Wien's law with the correct scaling. The exact numerical factor comes from the shape of the Planck distribution.
+
+The Smoothness Check: He would ask why classical physics predicted the ``ultraviolet catastrophe.'' Classical theory (Rayleigh-Jeans) predicted infinite energy at short wavelengths---every mode has energy $kT$. Planck's quantum hypothesis ($E = nhf$) suppresses high-frequency modes because they require large energy quanta, resolving the catastrophe and producing Wien's law.
+
+\subsection*{3. Testing the Extreme Limits}
+\textit{``What happens at extreme temperatures?''}
+
+The Cosmic Microwave Background: At $T = 2.725$ K (the CMB temperature), $\lambda_{\max} \approx 1$ mm---microwave radiation. This is the cooled remnant of the Big Bang, shifted from visible light to microwaves by 13.8 billion years of cosmic expansion.
+
+The Stellar Interior: At the center of the Sun ($T \sim 1.5 \times 10^7$ K), $\lambda_{\max} \sim 0.2$ nm---X-rays. But this radiation is absorbed and re-emitted many times before reaching the surface, where $T \sim 5800$ K and the peak shifts to visible light.
+
+The Planck Scale: At the Planck temperature ($T_P \sim 1.4 \times 10^{32}$ K), $\lambda_{\max}$ approaches the Planck length ($\sim 10^{-35}$ m). At this scale, quantum gravity effects dominate and the concept of thermal radiation breaks down.
+
+\subsection*{4. Dimensionality and Geometry}
+\textit{``Does the shape of the radiator affect the peak wavelength?''}
+
+He would point out that Wien's law is independent of shape, size, or material---it depends only on temperature. A hot cube, sphere, or irregular shape all have the same $\lambda_{\max}$ if they are at the same temperature (assuming they are good approximations to blackbodies). The geometry affects the total power (Stefan-Boltzmann law) but not the peak wavelength.
+
+\subsection*{5. Cross-Disciplinary Connection}
+\textit{``Where else does this same temperature-wavelength relationship appear?''}
+
+The same $kT$ energy scale appears in: semiconductor physics (thermal energy determines carrier concentration), chemistry (reaction rates depend on $kT$), biology (enzyme function has optimal temperature ranges), and even in finance (``market temperature''---volatility---determines the typical scale of price fluctuations). The concept of ``thermal energy setting the dominant scale'' is universal in physics.
+\section*{FAQ}
+
+\textbf{Q: Why doesn't a red-hot object emit only red light?}\\
+\textbf{A:} Wien's law gives the \emph{peak} wavelength, not the only wavelength. A blackbody emits at all wavelengths---it just emits most intensely at $\lambda_{\max}$. A red-hot object ($\sim 1000$ K) emits mostly in the infrared with a tail extending into visible red.
+
+\textbf{Q: What color is the Sun?}\\
+\textbf{A:} The Sun's surface temperature ($\sim 5800$ K) gives $\lambda_{\max} \approx 500$ nm, which is green-yellow light. But the Sun emits significant light across the entire visible spectrum, so it appears white (not green) when seen from space.
+\section*{Important Bibliography}
+
+\begin{enumerate}
+\item Planck, M., ``\"Uber das Gesetz der Energieverteilung im Normalspektrum,'' \textit{Annalen der Physik} \textbf{309}, 553--563 (1901).
+\item Wien, W., ``\"Ueber die Energieverteilung im Emissionsspektrum eines schwarzen K\"orpers,'' \textit{Annalen der Physik} \textbf{293}, 233--240 (1896).
+\item Mandel, L. and Wolf, E., \textit{Optical Coherence and Quantum Optics} (Cambridge University Press, 1995), Chapters 1--2.
+\item Loudon, R., \textit{The Quantum Theory of Light}, 3rd ed. (Oxford University Press, 2000), Chapter 2.
+\item Rybicki, G.B. and Lightman, A.P., \textit{Radiative Processes in Astrophysics} (Wiley, 1979), Chapter 1.
+\end{enumerate}
+
+

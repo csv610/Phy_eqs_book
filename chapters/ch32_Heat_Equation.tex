@@ -1,0 +1,142 @@
+\chapter{Heat Equation}
+
+\section*{Introduction}
+
+The heat equation is $\partial u/\partial t = \alpha\,\nabla^2 u$, where $u(\mathbf{r}, t)$ is the temperature, $\alpha = k/(\rho c_p)$ is the thermal diffusivity, $k$ is the thermal conductivity, $\rho$ is the density, and $c_p$ is the specific heat capacity. High $\alpha$ means heat spreads quickly (metals have $\alpha \sim 10^{-4}$ m$^2$/s); low $\alpha$ means heat spreads slowly (wood has $\alpha \sim 10^{-7}$ m$^2$/s). The Laplacian $\nabla^2 u$ measures how much the temperature at a point deviates from the average of its surroundings. If $\nabla^2 u > 0$ (the point is cooler than average), the temperature there rises. If $\nabla^2 u < 0$ (the point is hotter than average), it falls. The equation is first-order in time and second-order in space, reflecting the irreversible, diffusive nature of heat flow.
+\section*{Fundamental Equation Used}
+
+\[
+\frac{\partial u}{\partial t}=\alpha\,\nabla^2 u
+\]
+\section*{Assumptions}
+
+\textbf{Assumptions:} The thermal conductivity $k$, density $\rho$, and specific heat $c_p$ are constant (or at most slowly varying with temperature). No internal heat sources (if sources exist, add a source term: $\partial u/\partial t = \alpha\nabla^2 u + Q/(\rho c_p)$). The material is isotropic (heat conducts equally in all directions).
+
+
+\textbf{Limitations:} Does not account for heat radiation (dominant at high temperatures). Breaks down at very short times (the hyperbolic heat equation, with a finite speed of heat propagation, is needed when the Fourier heat flux law is replaced by Cattaneo's law). Fails at the nanoscale where ballistic transport dominates. Does not include convection (heat carried by fluid motion).
+
+
+\section*{Mathematical Derivation}
+
+\textbf{Step 1: Fourier's law of heat conduction.}
+
+Consider a material with temperature field $u(\mathbf{r}, t)$. The fundamental empirical law of heat conduction (Fourier's law) states that the heat flux $\mathbf{q}$ (energy per unit area per unit time) is proportional to the negative temperature gradient:
+\begin{align}
+\mathbf{q} = -k\,\nabla u,
+\end{align}
+where $k$ is the thermal conductivity (W/(m$\cdot$K)). The negative sign ensures heat flows from hot to cold. This is a phenomenological law valid for small temperature gradients.
+
+\textbf{Step 2: Energy conservation in a volume element.}
+
+Apply energy conservation to a small volume element $dV$. The rate of energy leaving through the surface is $\oint_S \mathbf{q}\cdot d\mathbf{A}$. By the divergence theorem:
+\begin{align}
+\oint_S \mathbf{q}\cdot d\mathbf{A} = \int_V \nabla\cdot\mathbf{q}\,dV.
+\end{align}
+If there are no internal heat sources, the rate of temperature change is related to the net outflow of heat by
+\begin{align}
+\rho c_p \frac{\partial u}{\partial t} = -\nabla\cdot\mathbf{q},
+\end{align}
+where $\rho$ is the density (kg/m$^3$) and $c_p$ is the specific heat capacity at constant pressure (J/(kg$\cdot$K)). The product $\rho c_p$ is the volumetric heat capacity.
+
+\textbf{Step 3: Combine to obtain the heat equation.}
+
+Substituting Fourier's law into the energy conservation equation:
+\begin{align}
+\rho c_p\frac{\partial u}{\partial t} = -\nabla\cdot(-k\,\nabla u) = k\,\nabla^2 u,
+\end{align}
+where we have used the fact that $k$ is spatially uniform. Dividing both sides by $\rho c_p$:
+\begin{align}
+\boxed{\frac{\partial u}{\partial t} = \alpha\,\nabla^2 u,}
+\end{align}
+where the thermal diffusivity is defined as
+\begin{align}
+\alpha = \frac{k}{\rho c_p} \qquad (\text{m}^2/\text{s}).
+\end{align}
+
+\textbf{Step 4: 1D form and the fundamental solution.}
+
+In one dimension, $\partial u/\partial t = \alpha\,\partial^2 u/\partial x^2$. For an infinite rod with initial condition $u(x, 0) = \delta(x)$ (a point source of heat), the solution is obtained by Fourier transform. Let $\hat{u}(k, t) = \int u(x, t)\,e^{-ikx}\,dx$. Then:
+\begin{align}
+\frac{\partial\hat{u}}{\partial t} = -\alpha k^2\hat{u} \implies \hat{u}(k, t) = e^{-\alpha k^2 t}.
+\end{align}
+Inverting the Fourier transform (using the Gaussian integral):
+\begin{align}
+u(x, t) = \frac{1}{\sqrt{4\pi\alpha t}}\exp\!\left(-\frac{x^2}{4\alpha t}\right).
+\end{align}
+This is the heat kernel: a Gaussian that spreads out over time with width $\sim\sqrt{\alpha t}$.
+
+\section*{Characteristics of the Equation}
+
+The heat equation has the remarkable smoothing property: no matter how rough or discontinuous the initial temperature distribution, the solution becomes smooth ($C^\infty$) for all $t > 0$. This is in stark contrast to the wave equation, which preserves discontinuities. The equation is also irreversible: information about the initial state is progressively lost as the temperature smooths out. This irreversibility is the macroscopic manifestation of the second law of thermodynamics. The fundamental solution (Green's function) in free space is the Gaussian: $u(\mathbf{r}, t) = \frac{1}{(4\pi\alpha t)^{n/2}}e^{-|\mathbf{r}-\mathbf{r}_0|^2/(4\alpha t)}$, which describes how a point source of heat spreads out over time.
+\section*{Solution Methods}
+
+\textbf{Separation of variables:} Assume $u(\mathbf{r}, t) = R(\mathbf{r})T(t)$ and solve the resulting eigenvalue problem. This works for simple geometries (slab, cylinder, sphere) with homogeneous boundary conditions. \textbf{Green's functions:} The solution is $u(\mathbf{r}, t) = \int G(\mathbf{r}, \mathbf{r}', t) u_0(\mathbf{r}')\,d^n r'$, where $G$ is the heat kernel. \textbf{Transform methods:} Fourier transforms convert the PDE to an ODE in frequency space. Laplace transforms handle time-dependent boundary conditions. \textbf{Numerical methods:} Finite difference (explicit, Crank--Nicolson), finite element, and spectral methods.
+\section*{Verifications}
+
+For a 1D rod with ends held at $T = 0$ and initial temperature $u(x, 0) = \sin(\pi x/L)$, the exact solution is $u(x, t) = \sin(\pi x/L)e^{-\alpha\pi^2 t/L^2}$. Check that this satisfies both the PDE and the boundary conditions. Verify the maximum principle: the maximum temperature can only decrease in the interior (no heat sources). For the fundamental solution, verify that $\int u\,d^nx = \text{const}$ (conservation of energy). Compare numerical solutions with the analytical solution for the cooling of a sphere.
+\section*{Applications}
+
+The heat equation describes temperature evolution in buildings, engines, and electronic circuits. It governs the cooling of molten metal in casting and welding. In geophysics, it determines the temperature profile of the Earth's interior. In finance, the Black--Scholes equation for option pricing is a disguised heat equation. In biology, it describes the diffusion of morphogens during embryonic development. In image processing, the heat equation is used for image denoising (Gaussian smoothing). In neuroscience, the cable equation (describing voltage propagation along neurons) is a modified heat equation.
+\section*{What Richard Feynman Would Have Asked}
+
+\subsection*{1. Plain-English Translation}
+\textit{``What is the heat equation really saying? Why does heat flow from hot to cold?''}
+
+The heat equation says: temperature evens out. If one spot is hotter than its neighbors, it cools down; if it is colder, it warms up. The rate of even-ing-out is proportional to how ``pointy'' the temperature profile is: where the temperature curve is sharply curved, the flow is fast; where it is flat, nothing happens. This is not a force---it is a statistical inevitability. There are overwhelmingly more ways for energy to be spread out than concentrated, so the system evolves toward uniformity.
+
+The Laplacian $\nabla^2 u$ is the mathematical measure of ``how pointy'' the temperature is at a point. If the temperature at a point is lower than the average of its neighbors, the Laplacian is positive, and the temperature rises. If it is higher, the Laplacian is negative, and it falls. The equation says: the rate of change equals the diffusivity times this ``pointiness.'' Simple, universal, and profound.
+
+\subsection*{2. Localized Mechanics}
+\textit{``At a single atom, what causes the heat to flow?''}
+
+At the atomic level, heat conduction is carried by phonons (quantized lattice vibrations) and, in metals, by electrons. A hot atom vibrates vigorously and transfers energy to its neighbors through collisions. The heat equation is the macroscopic average of billions of these microscopic transfers. The thermal conductivity $k$ encodes the efficiency of these transfers: it depends on how strongly atoms are coupled (stiffness of the spring constants), how often they collide (mean free path), and how fast they move (sound speed).
+
+The irreversibility appears at this level: phonons scatter and lose their memory of direction. A phonon traveling from a hot region into a cold region does not know it came from a hot region---it simply propagates until it scatters, depositing its energy. The aggregate effect of billions of such random walks is the smooth, deterministic flow described by the heat equation.
+
+\subsection*{3. Testing Extreme Limits}
+\textit{``What happens at very short times, very long times, and at the nanoscale?''}
+
+Short Times: Immediately after a sudden temperature change (e.g., quenching), the heat equation predicts infinite propagation speed---the temperature changes instantaneously at all points. This is unphysical and signals the breakdown of Fourier's law. At very short times, the Cattaneo equation (hyperbolic heat equation) is needed, which includes a finite speed of heat propagation $\sim \sqrt{\alpha/\tau}$ where $\tau$ is the relaxation time.
+
+Long Times: After a very long time, the temperature becomes uniform everywhere (maximum entropy). The approach to equilibrium is exponential, with a time constant determined by the geometry and diffusivity. For a rod of length $L$, the time constant is $\sim L^2/(\pi^2\alpha)$.
+
+Nanoscale: At length scales comparable to the phonon mean free path ($\sim 100$ nm in silicon), ballistic transport dominates---phonons travel without scattering, and Fourier's law fails. The heat equation must be replaced by the Boltzmann transport equation or molecular dynamics.
+
+\subsection*{4. Dimensionality and Geometry}
+\textit{``How does the shape of the object affect how it cools?''}
+
+The geometry enters through the boundary conditions and the eigenvalues of the Laplacian. For a sphere, the eigenvalues are $\ell(\ell+1)/R^2$, giving a cooling rate proportional to $\alpha/R^2$. For a thin film of thickness $L$, the fundamental mode decays as $e^{-\alpha\pi^2 t/L^2}$. The thinner the film, the faster it cools---this is why nanoscale structures cool much faster than bulk materials.
+
+The eigenfunctions of the Laplacian encode the spatial pattern of cooling. The fundamental mode (lowest eigenvalue) decays slowest and dominates at long times. Higher modes decay faster and matter only at short times. The geometry of the object determines which modes exist and how quickly they decay.
+
+\subsection*{5. Cross-Disciplinary Connection}
+\textit{``Where else does this exact same equation appear?''}
+
+The heat equation appears everywhere. In finance, the Black--Scholes equation for option pricing is a heat equation with a variable coefficient. In image processing, Gaussian blur is the solution of the heat equation applied to pixel intensities. In probability theory, the heat equation describes the evolution of the probability density of a Brownian particle. In number theory, the solution of the heat equation on a lattice is related to the distribution of prime numbers (via the Selberg trace formula).
+
+In biology, the diffusion of chemicals during embryonic development follows the heat equation. In ecology, the spread of a pollutant in groundwater is governed by the heat equation. The deep reason for this universality is that any process involving the random redistribution of a conserved quantity---be it heat, probability, money, or chemical concentration---obeys the same mathematical structure.
+
+%=============================================================
+\section*{FAQ}
+
+\textbf{Q: Why is the heat equation irreversible when Newton's laws are reversible?}
+
+A: The heat equation is a macroscopic, statistical description of the collective behavior of $\sim 10^{23}$ particles. While each particle follows reversible Newton's laws, the probability of all particles spontaneously returning to their initial configuration is astronomically small. The irreversibility emerges from the coarse-graining---averaging over microscopic details to obtain a macroscopic temperature field.
+
+\textbf{Q: What is thermal diffusivity, physically?}
+
+A: Thermal diffusivity $\alpha = k/(\rho c_p)$ measures how quickly a material responds to temperature changes. It is the ratio of the ability to conduct heat ($k$) to the ability to store heat ($\rho c_p$). Metals have high $\alpha$ because they conduct well and store little heat. Insulators have low $\alpha$ because they conduct poorly and/or store a lot of heat.
+
+\textbf{Q: Can the heat equation be derived from the first principles of statistical mechanics?}
+
+A: Yes. The Boltzmann transport equation, when applied to phonons (lattice vibrations) in the relaxation-time approximation and linearized around equilibrium, yields the heat equation. The thermal diffusivity is then expressed in terms of the phonon mean free path, velocity, and specific heat.
+\section*{Important Bibliography}
+
+\begin{enumerate}
+\item Carslaw, H.S. and Jaeger, J.C., \textit{Conduction of Heat in Solids}, 2nd ed. (Oxford University Press, 1959), Chapter 1.
+\item Crank, J., \textit{The Mathematics of Diffusion}, 2nd ed. (Oxford University Press, 1975), Chapter 2.
+\item Fourier, J.B.J., \textit{Th\'eorie analytique de la chaleur} (Firmin Didot, Paris, 1822), Chapters I--II.
+\item\"Ozisik, M.N., \textit{Heat Conduction}, 2nd ed. (Wiley, 1993), Chapter 1.
+\end{enumerate}
+
+

@@ -1,0 +1,141 @@
+\chapter{Fresnel Equations}
+
+\section*{Introduction}
+
+The two fundamental polarizations are $s$ (electric field perpendicular to the plane of incidence) and $p$ (electric field parallel to the plane of incidence). For $s$-polarization: $r_s = (n_1\cos\theta_i - n_2\cos\theta_t)/(n_1\cos\theta_i + n_2\cos\theta_t)$ and $t_s = 2n_1\cos\theta_i/(n_1\cos\theta_i + n_2\cos\theta_t)$. For $p$-polarization: $r_p = (n_2\cos\theta_i - n_1\cos\theta_t)/(n_2\cos\theta_i + n_1\cos\theta_t)$ and $t_p = 2n_1\cos\theta_i/(n_2\cos\theta_i + n_1\cos\theta_t)$. At Brewster's angle $\theta_B = \arctan(n_2/n_1)$, $r_p = 0$: $p$-polarized light is perfectly transmitted. For total internal reflection ($n_1 > n_2$ and $\theta_i > \theta_C = \arcsin(n_2/n_1)$), all light is reflected and the transmitted wave becomes evanescent.
+\section*{Fundamental Equation Used}
+
+\[
+r_s = \frac{n_1\cos\theta_i - n_2\cos\theta_t}{n_1\cos\theta_i + n_2\cos\theta_t},\qquad r_p = \frac{n_2\cos\theta_i - n_1\cos\theta_t}{n_2\cos\theta_i + n_1\cos\theta_t}
+\]
+
+\[
+t_s = \frac{2n_1\cos\theta_i}{n_1\cos\theta_i + n_2\cos\theta_t},\qquad t_p = \frac{2n_1\cos\theta_i}{n_2\cos\theta_i + n_1\cos\theta_t}
+\]
+\section*{Assumptions}
+
+\textbf{Assumptions:} The interface is planar and infinitely large (no edge effects). The media are linear, isotropic, and non-magnetic ($\mu_1 = \mu_2 = \mu_0$). The incident wave is a monochromatic plane wave. The interface is sharp (no gradual transition between media).
+
+
+\textbf{Limitations:} Does not apply to rough surfaces, thin films (need multiple-beam interference), or metamaterials with negative refractive index. Assumes normal dispersion; anomalous dispersion near absorption resonances requires complex refractive indices. Does not account for nonlinear optical effects (high intensities).
+
+
+\section*{Mathematical Derivation}
+
+\textbf{Step 1: Boundary conditions at the interface.}
+
+Consider a monochromatic plane wave incident from medium 1 (refractive index $n_1$) onto a planar interface with medium 2 (refractive index $n_2$). The interface lies in the $yz$-plane at $x = 0$. Maxwell's equations require the tangential components of $\mathbf{E}$ and $\mathbf{H}$ to be continuous across the interface. For non-magnetic media ($\mu_1 = \mu_2 = \mu_0$), this gives two sets of boundary conditions, one for each polarization. Snell's law $n_1\sin\theta_i = n_2\sin\theta_t$ follows from phase matching along the interface.
+
+\textbf{Step 2: $s$-polarization (TE mode).}
+
+For $s$-polarization, $\mathbf{E}$ is perpendicular to the plane of incidence (parallel to the interface). All field components are parallel to the interface, so the boundary condition is simply that the total $E_y$ is continuous:
+\begin{align}
+E_i + E_r = E_t, \tag{1}
+\end{align}
+where $E_i$, $E_r$, $E_t$ are the incident, reflected, and transmitted field amplitudes. The magnetic field components tangential to the interface (along $z$) must also be continuous. Using $H = nE/(\mu_0 c)$ and resolving into the $z$-component:
+\begin{align}
+\frac{n_1}{\mu_0 c}(E_i - E_r)\cos\theta_i = \frac{n_2}{\mu_0 c}E_t\cos\theta_t. \tag{2}
+\end{align}
+
+\textbf{Step 3: Solve for $r_s$ and $t_s$.}
+
+From Eq.\ (1), $E_t = E_i + E_r$. Substituting into Eq.\ (2) and dividing by $E_i$:
+\begin{align}
+n_1\cos\theta_i(1 - r_s) &= n_2\cos\theta_t(1 + r_s),
+\end{align}
+where $r_s = E_r/E_i$. Solving for $r_s$:
+\begin{align}
+r_s = \frac{n_1\cos\theta_i - n_2\cos\theta_t}{n_1\cos\theta_i + n_2\cos\theta_t}.
+\end{align}
+Similarly, $t_s = E_t/E_i = 1 + r_s$ gives:
+\begin{align}
+t_s = \frac{2n_1\cos\theta_i}{n_1\cos\theta_i + n_2\cos\theta_t}.
+\end{align}
+
+\textbf{Step 4: $p$-polarization (TM mode).}
+
+For $p$-polarization, $\mathbf{H}$ is perpendicular to the plane of incidence. The boundary conditions on the tangential $E$ and $H$ components yield, after analogous algebra:
+\begin{align}
+r_p = \frac{n_2\cos\theta_i - n_1\cos\theta_t}{n_2\cos\theta_i + n_1\cos\theta_t}, \qquad t_p = \frac{2n_1\cos\theta_i}{n_2\cos\theta_i + n_1\cos\theta_t}.
+\end{align}
+Note the reversal of $n_1$ and $n_2$ in the numerator of $r_p$ compared to $r_s$, reflecting the different orientation of the electric field relative to the interface.
+
+\textbf{Step 5: Brewster's angle and limiting cases.}
+
+Setting $r_p = 0$ gives $n_2\cos\theta_i = n_1\cos\theta_t$. Combining with Snell's law $n_1\sin\theta_i = n_2\sin\theta_t$ and using $\cos\theta_t = \sqrt{1 - \sin^2\theta_t}$, one obtains $\tan\theta_B = n_2/n_1$. At normal incidence ($\theta_i = 0$), both polarizations give the same result: $r = (n_1 - n_2)/(n_1 + n_2)$ and $t = 2n_1/(n_1 + n_2)$. The reflectance is $R = |r|^2$ and the transmittance includes the factor $n_2\cos\theta_t/(n_1\cos\theta_i)$ to ensure energy conservation.
+
+\section*{Characteristics of the Equation}
+
+The Fresnel equations have several important features. At normal incidence ($\theta_i = 0$), $r_s = r_p$ and the polarization dependence vanishes: $r = (n_1 - n_2)/(n_1 + n_2)$. At Brewster's angle, $r_p = 0$ but $r_s \neq 0$, so reflected light is completely $s$-polarized. For total internal reflection, $|r_s| = |r_p| = 1$ but the reflected wave acquires a polarization-dependent phase shift. The reflectance is $R = |r|^2$ and the transmittance involves a factor of $n_2\cos\theta_t/(n_1\cos\theta_i)$ to account for the different wave impedances and beam cross-sections in the two media.
+\section*{Solution Methods}
+
+\textbf{Direct calculation:} Apply the Fresnel equations with Snell's law to find $r$ and $t$ for given $\theta_i$, $n_1$, $n_2$. \textbf{Transfer matrix method:} For multilayer films, represent each layer as a $2\times 2$ matrix and multiply to find the overall reflection and transmission. \textbf{Numerical computation:} For complex refractive indices (absorbing media), compute the Fresnel coefficients using complex arithmetic. \textbf{Ellipsometric fitting:} Measure the ratio $r_p/r_s$ (the ellipsometric ratio) and fit to determine film thickness and optical constants.
+\section*{Verifications}
+
+At normal incidence, check that $R = \left(\frac{n_1 - n_2}{n_1 + n_2}\right)^2$. For glass ($n = 1.5$) in air, this gives $R \approx 4\%$, consistent with the visible reflection from a glass surface. Verify Brewster's angle: for glass in air, $\theta_B = \arctan(1.5) \approx 56.3^\circ$, matching observations. Check energy conservation: $R + T = 1$ (for non-absorbing media). For total internal reflection, verify that $R = 1$ and that the transmitted field is evanescent.
+\section*{Applications}
+
+The Fresnel equations are used in anti-reflection coating design (choosing layer thickness and refractive index to minimize $R$), Brewster window design (lasers, where Brewster windows eliminate reflection losses for $p$-polarized light), fiber optics (total internal reflection confines light in the fiber core), ellipsometry (measuring thin-film properties by analyzing the polarization of reflected light), polarization optics (polarizers, beam splitters, and wave plates), and atmospheric optics (the polarization of skylight is explained by Fresnel reflection at air molecules).
+\section*{What Richard Feynman Would Have Asked}
+
+\subsection*{1. Plain-English Translation}
+\textit{``What do these equations really say? Why does light reflect at all?''}
+
+Light reflects because the electromagnetic boundary conditions at the interface demand it. The electric and magnetic fields must be continuous across the boundary, and the only way to satisfy this with an incident wave is to also have a reflected wave. It is not that the light ``bounces off'' the surface---it is that the surface forces the creation of a new wave to maintain continuity. The Fresnel equations are the quantitative expression of this requirement.
+
+The polarization dependence arises because the two polarizations ``see'' the interface differently. For $s$-polarization, the electric field is parallel to the surface and the boundary conditions are simple. For $p$-polarization, the electric field has a component perpendicular to the surface, and the boundary conditions are more complex. The different geometry leads to different reflection coefficients.
+
+\subsection*{2. Localized Mechanics}
+\textit{``At the interface itself, what happens to the electromagnetic fields at the microscopic level?''}
+
+At the atomic level, the incident wave drives oscillating dipoles in the second medium. These dipoles radiate both forward (transmitted wave) and backward (reflected wave). The reflected wave from all the dipoles in the second medium is what we observe as reflection. The Fresnel equations encode the collective response of all these dipoles. The transmitted wave is the forward radiation from the dipoles plus the original incident wave.
+
+At Brewster's angle, the dipoles that would produce the reflected $p$-polarized wave are oriented exactly along the reflected direction. Since a dipole does not radiate along its axis, no $p$-polarized reflected wave is produced. This is a geometric coincidence that depends on the refractive indices of the two media.
+
+\subsection*{3. Testing Extreme Limits}
+\textit{``What happens at grazing incidence, at Brewster's angle, and for metals?''}
+
+Grazing Incidence ($\theta_i \to 90^\circ$): Both $r_s$ and $r_p$ approach $-1$, meaning all light is reflected regardless of polarization. This is why even a poor mirror looks perfect at grazing incidence---the reflectance of glass approaches $100\%$ as $\theta_i \to 90^\circ$.
+
+Metals ($k \gg 0$): The complex refractive index means that the Fresnel coefficients are complex, and the reflectance is very high. For a good conductor at visible frequencies, $R \approx 1 - 2/\omega\tau$ (where $\omega\tau$ is the product of frequency and relaxation time), giving $R > 95\%$ for metals like silver and aluminum.
+
+Negative Refraction ($n_2 < 0$): If the second medium has a negative refractive index (metamaterial), Snell's law gives a negative refraction angle, and the Fresnel equations predict anomalous reflection and transmission behavior, including the possibility of a perfect lens.
+
+\subsection*{4. Dimensionality and Geometry}
+\textit{``Does the geometry of the interface matter? What about curved surfaces?''}
+
+The standard Fresnel equations apply to planar interfaces. For curved surfaces (lenses, mirrors), the local reflection and transmission are described by the Fresnel equations evaluated at the local angle of incidence. For surfaces with curvature comparable to the wavelength, diffraction effects become important and the Fresnel equations alone are insufficient.
+
+For multilayer structures (anti-reflection coatings, Bragg mirrors), the transfer matrix method extends the Fresnel equations to multiple interfaces. Each interface contributes Fresnel coefficients, and the interference between reflections from different interfaces determines the overall reflectance.
+
+\subsection*{5. Cross-Disciplinary Connection}
+\textit{``Where else does this reflection physics show up outside of optics?''}
+
+The same physics appears in acoustics (sound reflecting at the boundary between air and water), in seismology (seismic waves reflecting at geological boundaries), in quantum mechanics (particles reflecting at potential barriers---the quantum Fresnel equations give the transmission coefficient $T = 4k_1 k_2/(k_1 + k_2)^2$), and in electrical engineering (impedance mismatch at transmission line junctions, where the reflection coefficient is $(Z_2 - Z_1)/(Z_2 + Z_1)$, exactly analogous to the Fresnel equation at normal incidence).
+
+The common thread is wave propagation across an impedance discontinuity. Whenever a wave encounters a change in the medium's properties, part of it reflects and part transmits, and the partition is determined by the mismatch in the characteristic impedances of the two media.
+
+%=============================================================
+\section*{FAQ}
+
+\textbf{Q: Why does reflected light become polarized?}
+
+A: At Brewster's angle, $r_p = 0$, so only $s$-polarized light is reflected. This is because at Brewster's angle, the reflected and transmitted rays are perpendicular, and the oscillating dipoles in the second medium that would produce $p$-polarized reflected light are oriented along the reflected ray direction---and dipoles do not radiate along their axis.
+
+\textbf{Q: What happens in total internal reflection? Is any energy transmitted?}
+
+A: The reflected intensity is $100\%$, but an evanescent wave extends into the second medium. This evanescent wave carries no net energy away from the interface (it is a standing wave in the direction perpendicular to the surface). However, if a third medium is brought close (within a wavelength), the evanescent wave can tunnel through---this is frustrated total internal reflection, used in optical couplers.
+
+\textbf{Q: How do the Fresnel equations apply to metals?}
+
+A: Metals have complex refractive indices ($\tilde{n} = n + ik$) due to free electron absorption. The Fresnel equations still apply with complex arithmetic, giving complex $r$ and $t$. The result is that metals are highly reflective at visible frequencies (high $k$), and the reflected light acquires a phase shift that depends on polarization---this is the basis of ellipsometry for characterizing metallic surfaces.
+\section*{Important Bibliography}
+
+\begin{enumerate}
+\item Jackson, J.D., \textit{Classical Electrodynamics}, 3rd ed. (Wiley, 1999), Chapter 7.
+\item Hecht, E., \textit{Optics}, 5th ed. (McGraw-Hill, 2017), Chapter 9.
+\item Born, M. and Wolf, E., \textit{Principles of Optics}, 7th ed. (Cambridge University Press, 1999), Chapter 3.
+\item Fresnel, A.J., ``M\'emoire sur la loi des modifications que la r\'eflexion imprime \`a la lumi\`ere polaris\'ee,'' in \textit{ OEuvres compl\`etes} (Impr.\ imp\'eriale, 1866), Vol.\ 1.
+\end{enumerate}
+
+

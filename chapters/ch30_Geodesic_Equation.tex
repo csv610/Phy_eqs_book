@@ -1,0 +1,141 @@
+\chapter{Geodesic Equation}
+
+\section*{Introduction}
+
+The geodesic equation is $d^2 x^\mu/d\tau^2 + \Gamma^\mu_{\alpha\beta}\,dx^\alpha/d\tau\,dx^\beta/d\tau = 0$, where $x^\mu(\tau)$ are the coordinates of the particle as a function of proper time $\tau$, and $\Gamma^\mu_{\alpha\beta}$ are the Christoffel symbols, which encode the curvature of spacetime. The Christoffel symbols are determined entirely by the metric tensor $g_{\mu\nu}$ and its derivatives: $\Gamma^\mu_{\alpha\beta} = \frac{1}{2}g^{\mu\nu}(\partial_\alpha g_{\nu\beta} + \partial_\beta g_{\nu\alpha} - \partial_\nu g_{\alpha\beta})$. In flat spacetime (Minkowski metric), all Christoffel symbols vanish and the geodesic equation reduces to $d^2 x^\mu/d\tau^2 = 0$---uniform straight-line motion, Newton's first law. In the Schwarzschild metric (describing the spacetime around a spherical mass), the geodesic equation reproduces Newtonian orbits in the weak-field limit and predicts phenomena with no Newtonian analogue: perihelion precession, gravitational lensing, and frame dragging.
+\section*{Fundamental Equation Used}
+
+\[
+\frac{d^2 x^\mu}{d\tau^2}+\Gamma^\mu_{\alpha\beta}\frac{dx^\alpha}{d\tau}\frac{dx^\beta}{d\tau}=0
+\]
+\section*{Assumptions}
+
+\textbf{Assumptions:} The spacetime is described by a pseudo-Riemannian metric $g_{\mu\nu}$ (smooth, Lorentzian signature). The particle follows a timelike or null geodesic (no external non-gravitational forces). The connection is the Levi-Civita connection (torsion-free, metric-compatible).
+
+
+\textbf{Limitations:} Does not account for non-gravitational forces (electromagnetic, nuclear)---these must be added as source terms via the Lorentz force law or other force laws. Breaks down at the Planck scale where quantum gravity is needed. Cannot describe the interior of black hole singularities. Assumes point particles---extended bodies follow approximate geodesics (deviations described by the Mathisson--Papapetrou equations).
+
+
+\section*{Mathematical Derivation}
+
+\textbf{Step 1: Action principle for a free particle.}
+
+A free particle in curved spacetime follows a geodesic---the path that extremizes the proper time. The action is proportional to the spacetime interval:
+\begin{align}
+S = -mc\int ds = -mc\int \sqrt{-g_{\mu\nu}\,\frac{dx^\mu}{d\lambda}\frac{dx^\nu}{d\lambda}}\,d\lambda,
+\end{align}
+where $\lambda$ is an arbitrary parameter along the worldline. For convenience, we choose $\lambda = \tau/m$ (affine parameter proportional to proper time) and work with the squared Lagrangian (which gives the same extremum):
+\begin{align}
+\mathcal{L} = \frac{1}{2}g_{\mu\nu}\dot{x}^\mu\dot{x}^\nu, \qquad \dot{x}^\mu \equiv \frac{dx^\mu}{d\lambda}.
+\end{align}
+
+\textbf{Step 2: Euler--Lagrange equations.}
+
+Applying the Euler--Lagrange equation $\frac{d}{d\lambda}\frac{\partial\mathcal{L}}{\partial\dot{x}^\alpha} - \frac{\partial\mathcal{L}}{\partial x^\alpha} = 0$:
+\begin{align}
+\frac{\partial\mathcal{L}}{\partial\dot{x}^\alpha} &= g_{\alpha\nu}\dot{x}^\nu, \\
+\frac{d}{d\lambda}\bigl(g_{\alpha\nu}\dot{x}^\nu\bigr) &= \partial_\alpha g_{\mu\nu}\,\dot{x}^\mu\dot{x}^\nu + g_{\alpha\nu}\ddot{x}^\nu.
+\end{align}
+Meanwhile, $\partial\mathcal{L}/\partial x^\alpha = \frac{1}{2}\partial_\alpha g_{\mu\nu}\,\dot{x}^\mu\dot{x}^\nu$. The Euler--Lagrange equation becomes
+\begin{align}
+g_{\alpha\nu}\ddot{x}^\nu + \frac{1}{2}\bigl(2\partial_\mu g_{\alpha\nu} - \partial_\alpha g_{\mu\nu}\bigr)\dot{x}^\mu\dot{x}^\nu = 0.
+\end{align}
+
+\textbf{Step 3: Extract the Christoffel symbols.}
+
+Lowering the index $\alpha$ with $g_{\alpha\nu}$ and using the identity for the inverse metric:
+\begin{align}
+\ddot{x}^\beta + \frac{1}{2}g^{\beta\alpha}\bigl(\partial_\mu g_{\alpha\nu} + \partial_\nu g_{\alpha\mu} - \partial_\alpha g_{\mu\nu}\bigr)\dot{x}^\mu\dot{x}^\nu = 0.
+\end{align}
+Defining the Christoffel symbols of the second kind:
+\begin{align}
+\Gamma^\beta_{\mu\nu} = \frac{1}{2}g^{\beta\alpha}\bigl(\partial_\mu g_{\alpha\nu} + \partial_\nu g_{\alpha\mu} - \partial_\alpha g_{\mu\nu}\bigr),
+\end{align}
+we obtain the geodesic equation:
+\begin{align}
+\boxed{\frac{d^2 x^\mu}{d\lambda^2} + \Gamma^\mu_{\alpha\beta}\frac{dx^\alpha}{d\lambda}\frac{dx^\beta}{d\lambda} = 0.}
+\end{align}
+
+\textbf{Step 4: Conservation of the four-velocity norm.}
+
+Differentiating $g_{\mu\nu}\dot{x}^\mu\dot{x}^\nu = \epsilon$ (where $\epsilon = -c^2$ for timelike, $0$ for null geodesics) along the geodesic:
+\begin{align}
+\frac{d}{d\lambda}\bigl(g_{\mu\nu}\dot{x}^\mu\dot{x}^\nu\bigr) = 2g_{\mu\nu}\ddot{x}^\mu\dot{x}^\nu + \partial_\alpha g_{\mu\nu}\dot{x}^\alpha\dot{x}^\mu\dot{x}^\nu = 0,
+\end{align}
+which is automatically satisfied by the geodesic equation. This confirms that the geodesic preserves the norm of the tangent vector---a consequence of metric compatibility of the Levi-Civita connection ($\nabla_\alpha g_{\mu\nu} = 0$).
+
+\section*{Characteristics of the Equation}
+
+The geodesic equation has several remarkable properties. It is covariant under general coordinate transformations---it has the same form in every coordinate system. It conserves the norm of the four-velocity: $g_{\mu\nu}(dx^\mu/d\tau)(dx^\nu/d\tau) = -c^2$ (for timelike geodesics) or $= 0$ (for null geodesics). For time-independent metrics, there is a conserved energy associated with the timelike Killing vector, and for axisymmetric metrics, a conserved angular momentum. These conservation laws follow from Noether's theorem applied to the spacetime symmetries.
+\section*{Solution Methods}
+
+\textbf{Direct integration:} For simple metrics (Schwarzschild, Minkowski), the geodesic equation can be solved analytically using conservation laws and separation of variables. \textbf{Numerical integration:} For general metrics, solve the coupled ODEs using standard numerical methods (Runge--Kutta, symplectic integrators that preserve the constraint $g_{\mu\nu}u^\mu u^\nu = \text{const}$). \textbf{Variational method:} Derive the geodesic equation from the Lagrangian $L = \frac{1}{2}g_{\mu\nu}\dot{x}^\mu\dot{x}^\nu$ using the Euler--Lagrange equation. \textbf{Geodesic deviation:} Study how nearby geodesics converge or diverge using the geodesic deviation equation (Riemann curvature tensor).
+\section*{Verifications}
+
+For the Schwarzschild metric, verify that the geodesic equation reproduces Newtonian orbits in the weak-field limit ($GM/rc^2 \ll 1$). Check the perihelion precession: $\Delta\phi = 6\pi GM/(c^2 a(1-e^2))$ per orbit, which for Mercury gives $\sim 43$ arcseconds per century (confirmed to high precision). Verify that photons follow null geodesics: $ds^2 = 0$. Check that free particles in flat spacetime follow straight lines ($\Gamma = 0$). Compare numerical geodesic solutions with analytical results for the Kerr metric (rotating black hole).
+\section*{Applications}
+
+The geodesic equation is used to compute planetary orbits in general relativity (the perihelion precession of Mercury is a classic test). It predicts gravitational lensing---the bending of light by massive objects (confirmed during the 1919 solar eclipse). It describes the motion of photons in cosmology (cosmological redshift, CMB anisotropy). It is essential for GPS satellite navigation, where general relativistic time dilation must be corrected. It governs the propagation of gravitational waves. In astrophysics, it describes accretion disk dynamics around black holes and the trajectories of particles in gravitational wave detectors (LIGO, Virgo).
+\section*{What Richard Feynman Would Have Asked}
+
+\subsection*{1. Plain-English Translation}
+\textit{``What is a geodesic, really? Why does the moon not fly away?''}
+
+A geodesic is the straightest path you can take through a curved space. On the surface of the Earth, a geodesic is a great circle---the shortest path between two points on a sphere. In curved spacetime, a geodesic is the path that a freely falling object naturally follows. The moon does not fly away because it is following a geodesic---it is in free fall around the Earth. There is no ``force'' pulling it inward; the curvature of spacetime around the Earth simply defines a geometry where the moon's straightest path is an ellipse.
+
+Einstein's key insight was that gravity is not a force---it is the curvature of spacetime. A planet orbiting a star is not being ``pulled'' by a force; it is following the straightest possible path through the curved spacetime created by the star's mass. The geodesic equation is the mathematical expression of this idea.
+
+\subsection*{2. Localized Mechanics}
+\textit{``At a single point along the geodesic, what determines the direction of motion?''}
+
+At any point along the geodesic, the Christoffel symbols $\Gamma^\mu_{\alpha\beta}$ determine how the velocity changes. They act as a ``connection'' that parallel-transports the velocity vector from one point to the next. In flat space, this parallel transport preserves the direction (the vector does not change). In curved space, parallel transport around a closed loop rotates the vector---this is the geometric meaning of curvature.
+
+The Christoffel symbols are not tensors---they depend on the coordinate system. But they encode physically meaningful information: how the coordinate basis vectors change from point to point. In Schwarzschild coordinates, the Christoffel symbols near a star produce the familiar Newtonian gravitational acceleration $g = GM/r^2$. In freely falling coordinates (Riemann normal coordinates), the Christoffel symbols vanish at a single point---this is the equivalence principle in action: at any point, you can choose coordinates where gravity ``disappears.''
+
+\subsection*{3. Testing Extreme Limits}
+\textit{``What happens near a black hole, at the Planck scale, and for ultra-relativistic particles?''}
+
+Near a Black Hole: In the Schwarzschild metric, the geodesic equation predicts that particles spiral inward toward the singularity, photons orbit at the photon sphere ($r = 3GM/c^2$), and nothing can escape from inside the event horizon ($r = 2GM/c^2$). The geodesic equation is valid all the way to the horizon---it is the coordinate system that breaks down, not the physics.
+
+At the Planck Scale: The geodesic equation assumes a smooth spacetime manifold. At distances below the Planck length ($\sim 10^{-35}$ m), spacetime may become a quantum foam, and the concept of a geodesic loses meaning. A theory of quantum gravity (string theory, loop quantum gravity) is needed.
+
+Ultra-Relativistic Particles: For particles moving at nearly the speed of light ($v \approx c$), the geodesic equation still applies. Light rays follow null geodesics ($ds^2 = 0$). The equation handles all speeds from rest to $c$ without modification---it is naturally relativistic.
+
+\subsection*{4. Dimensionality and Geometry}
+\textit{``Does the geodesic equation depend on how many dimensions spacetime has?''}
+
+The geodesic equation has the same form in any number of dimensions. In 2D (the surface of a sphere), it reduces to the equation for great circles. In 3D Euclidean space, it gives straight lines. In 4D spacetime (our universe), it gives the trajectories of particles and light. The Christoffel symbols are determined by the metric, and the metric encodes the dimensionality and curvature of the space.
+
+In higher-dimensional theories (string theory has 10 or 11 dimensions), the geodesic equation applies to the full higher-dimensional spacetime. The extra dimensions are compactified (curled up into tiny shapes), and the effective 4D geodesic equation picks up corrections from the geometry of the extra dimensions. These corrections can modify gravitational physics at very small scales.
+
+\subsection*{5. Cross-Disciplinary Connection}
+\textit{``Where else does the geodesic equation appear outside of general relativity?''}
+
+The geodesic equation appears in any theory with a curved configuration space. In robotics, the configuration space of a robot arm is curved, and optimal trajectories are geodesics. In computer graphics, shortest paths on curved surfaces (for texture mapping, mesh editing) are computed using geodesic equations. In geodesy, the shape of the Earth is modeled as an oblate spheroid, and the shortest path between two points on its surface is a geodesic (used in aviation and shipping routes).
+
+In economics, the ``geodesic'' in a space of economic states represents the optimal trajectory for an economy evolving under constraints. In information geometry, the Fisher information metric defines a curved space of probability distributions, and the geodesic represents the most efficient way to change one distribution into another. The mathematical structure---a metric on a curved space, Christoffel symbols encoding the geometry, and a variational principle selecting the optimal path---is universal.
+
+%=============================================================
+\section*{FAQ}
+
+\textbf{Q: Is a geodesic the shortest or longest path?}
+
+A: In spacetime with Lorentzian signature, a geodesic maximizes the proper time between two events (it is the ``slowest'' path, not the ``fastest''). This is why the twin paradox has a unique resolution: the twin who stays home (follows a geodesic) ages more than the twin who accelerates (follows a non-geodesic path).
+
+\textbf{Q: How do you add electromagnetic forces to the geodesic equation?}
+
+A: The geodesic equation is modified to include the Lorentz force: $d^2 x^\mu/d\tau^2 + \Gamma^\mu_{\alpha\beta}(dx^\alpha/d\tau)(dx^\beta/d\tau) = (q/m)F^\mu_{\ \nu}(dx^\nu/d\tau)$. The left side is the gravitational contribution; the right side is the electromagnetic force. For a charged particle in a gravitational field, both terms matter.
+
+\textbf{Q: Do photons follow geodesics?}
+
+A: Yes, photons follow null geodesics ($ds^2 = 0$). However, the proper time $\tau$ is not well-defined for null geodesics, so one must use an affine parameter instead. The geodesic equation still applies, but with $\tau$ replaced by $\lambda$ such that $dx^\mu/d\lambda$ is tangent to the photon's worldline.
+\section*{Important Bibliography}
+
+\begin{enumerate}
+\item Carroll, S.M., \textit{Spacetime and Geometry: An Introduction to General Relativity}, 3rd ed. (Cambridge University Press, 2024), Chapter 3.
+\item Wald, R.M., \textit{General Relativity} (University of Chicago Press, 1984), Chapter 3.
+\item Misner, C.W., Thorne, K.S., and Wheeler, J.A., \textit{Gravitation} (W.H.\ Freeman, 1973), Chapters 8--11.
+\item Misner, C.W. and Fowles, G.R., ``Photographic measurement of light deflection in the 1973 solar eclipse,'' \textit{Nature} \textbf{246}, 102--105 (1973).
+\end{enumerate}
+
+

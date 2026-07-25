@@ -1,0 +1,141 @@
+\chapter{Kepler's Third Law}
+
+\section*{Introduction}
+
+Kepler's third law, published in 1619 in \textit{Harmonices Mundi}, states that the square of a planet's orbital period is proportional to the cube of its semi-major axis: $T^2 \propto a^3$. This elegant relation, which Kepler extracted from Tycho Brahe's meticulous observations of Mars, was one of the great triumphs of empirical science. Newton later derived it from his law of universal gravitation, revealing it to be a consequence of the inverse-square force rather than a mysterious cosmic harmony. Today, Kepler's third law is used to weigh stars, find exoplanets, map dark matter halos, and test general relativity.
+
+The law tells you that distant planets take longer to orbit their star---not just because their orbits are longer, but because they move more slowly at greater distances from the gravitational source. A planet at twice the distance from its star has an orbital period that is $2\sqrt{2} \approx 2.83$ times longer. The Keplerian period depends only on the mass of the central body and the orbital semi-major axis, not on the planet's mass or orbital eccentricity (for elliptical orbits). This universality is what makes the law so powerful: measure the period, and you immediately know the orbital distance (or vice versa), regardless of the nature of the orbiting body.
+\section*{Fundamental Equation Used}
+
+\begin{equation}
+T^2 = \frac{4\pi^2}{GM}\,a^3
+\end{equation}
+\section*{Assumptions}
+
+\textbf{Assumptions:} The orbiting body has mass $m \ll M$ (the central mass dominates; the two-body problem reduces to one body orbiting a fixed center). The gravitational force is the only force acting (no drag, no other massive bodies). The orbits are Keplerian ellipses---valid in Newtonian gravity without relativistic corrections.
+
+
+\textbf{Limitations:} For comparable masses ($m \sim M$), the two-body form $T^2 = \frac{4\pi^2}{G(M+m)}a^3$ must be used. General relativistic corrections become significant for orbits close to very massive objects (e.g., Mercury's perihelion precession, binary pulsars). Does not apply to chaotic $N$-body systems (e.g., closely packed exoplanetary systems with strong planet--planet interactions).
+
+
+\section*{Mathematical Derivation}
+
+\textbf{Step 1: Write Newton's second law for a gravitational orbit.}
+
+For a particle of mass $m$ orbiting a central mass $M$ under Newton's law of gravitation:
+\begin{equation}
+m\frac{d^2\mathbf{r}}{dt^2} = -\frac{GMm}{r^2}\hat{\mathbf{r}}
+\end{equation}
+Since the force is central, angular momentum is conserved: $\mathbf{L} = m\mathbf{r}\times\mathbf{v} = \text{const}$. The orbit lies in a plane.
+
+\textbf{Step 2: Derive the orbit equation.}
+
+Using the substitution $u = 1/r$ and $\theta$ as the polar angle, the radial equation of motion becomes:
+\begin{equation}
+\frac{d^2u}{d\theta^2} + u = \frac{GMm^2}{L^2}
+\end{equation}
+The solution is a conic section:
+\begin{equation}
+u = \frac{GMm^2}{L^2}(1 + e\cos\theta)
+\end{equation}
+which is an ellipse with semi-major axis $a = L^2/(GMm^2(1-e^2))$ for bound orbits ($0 \leq e < 1$).
+
+\textbf{Step 3: Find the orbital period using Kepler's second law.}
+
+Kepler's second law (equal areas in equal times) gives:
+\begin{equation}
+\frac{dA}{dt} = \frac{L}{2m} = \text{const}
+\end{equation}
+The area of an ellipse is $A = \pi ab$, where $b = a\sqrt{1-e^2}$ is the semi-minor axis. The period is:
+\begin{equation}
+T = \frac{\text{Area}}{dA/dt} = \frac{\pi a^2\sqrt{1-e^2}}{L/(2m)} = \frac{2\pi m a^2\sqrt{1-e^2}}{L}
+\end{equation}
+
+\textbf{Step 4: Express $L$ in terms of $a$ and $e$.}
+
+From the orbit equation at perihelion ($\theta = 0$): $r_{\text{min}} = a(1-e) = L^2/(GMm^2(1+e))$, giving:
+\begin{equation}
+L^2 = GMm^2 a(1-e^2)
+\end{equation}
+
+\textbf{Step 5: Substitute $L$ into the period expression.}
+
+Substituting into the period:
+\begin{align}
+T &= \frac{2\pi m a^2\sqrt{1-e^2}}{m\sqrt{GMa(1-e^2)}} \nonumber\\
+&= \frac{2\pi a^2\sqrt{1-e^2}}{\sqrt{GMa(1-e^2)}} \nonumber\\
+&= \frac{2\pi a^{3/2}}{\sqrt{GM}}
+\end{align}
+
+\textbf{Step 6: Square the result to obtain Kepler's third law.}
+
+Squaring both sides:
+\begin{equation}
+T^2 = \frac{4\pi^2}{GM}\,a^3
+\end{equation}
+This is Kepler's third law. The remarkable result is that the period depends only on the semi-major axis $a$ and the central mass $M$, not on the orbit's eccentricity $e$ or the orbiting mass $m$ (provided $m \ll M$).
+
+\textbf{Step 7: Extend to comparable masses.}
+
+When the orbiting mass $m$ is not negligible compared to $M$, the two-body problem reduces to a one-body problem with reduced mass $\mu = mM/(M+m)$ orbiting a fixed center. The derivation proceeds identically, replacing $m$ with $\mu$ in the angular momentum and using $G(M+m)$ instead of $GM$. The result generalizes to:
+\begin{equation}
+T^2 = \frac{4\pi^2}{G(M+m)}\,a^3
+\end{equation}
+
+\section*{Characteristics of the Equation}
+
+The law is scale-invariant: it applies to moons orbiting planets, planets orbiting stars, and stars orbiting galactic centers. The proportionality constant depends only on the central mass $M$. For circular orbits ($a = r$), the relation simplifies: $T = 2\pi\sqrt{r^3/(GM)}$. The mean orbital speed is $v = 2\pi a/T = \sqrt{GM/a}$, which decreases with distance. The law can be recast as $\omega^2 = GM/a^3$, where $\omega$ is the mean angular velocity---a form reminiscent of Kepler's original statement that the ``harmonies'' of the planets follow simple ratios.
+\section*{Solution Methods}
+
+\textbf{Direct application:} Given $T$ and $a$, compute $M = 4\pi^2 a^3/(GT^2)$. \textbf{Scaling:} If you know the period and distance for one object, you can find them for another orbiting the same mass: $(T_2/T_1)^2 = (a_2/a_1)^3$. \textbf{Binary stars:} For a visual binary where both masses are comparable, measure the orbital period $T$ and the total semi-major axis $a$ (sum of the two component semi-major axes) to get the total mass $M_1 + M_2 = 4\pi^2 a^3/(GT^2)$. \textbf{Exoplanets:} Measure the radial velocity semi-amplitude $K$ and period $T$ to get $M_p\sin i = (4\pi^2 G)^{1/3} M_\star^{2/3} T^{-1/3} K / (2\pi)^{1/3}$, where $i$ is the orbital inclination. \textbf{Kepler's third law in natural units:} If $T$ is in years, $a$ in AU, and $M$ in solar masses, then $T^2 = a^3/M$ exactly.
+\section*{Verifications}
+
+Kepler's third law is verified to extraordinary precision. The periods and semi-major axes of the solar system planets agree with $T^2 \propto a^3$ to better than 0.01\% (after accounting for perturbations from other planets). The Hulse--Taylor binary pulsar has an orbital decay rate (from gravitational wave emission) that matches general relativistic predictions to within 0.2\% over 30 years of observation---deviations from Kepler's third law are themselves predicted by general relativity and confirmed. In exoplanet science, the thousands of transiting systems discovered by Kepler confirm the $T^2 \propto a^3$ relation across a vast range of orbital parameters.
+\section*{Applications}
+
+Determining stellar masses from binary star orbits (the most reliable method for measuring stellar masses), discovering and characterizing exoplanets (Kepler and TESS missions measure transit periods to infer orbital radii), calculating the mass of the central black hole in galaxies (by measuring the orbital periods of nearby stars, as done for Sgr~A*), testing general relativity (deviations from Kepler's law in binary pulsars, especially the Hulse--Taylor pulsar PSR B1913+16), estimating the mass of galaxy clusters from orbital velocities of member galaxies, and predicting the return of periodic comets (Halley's period $\approx 76$ years corresponds to a semi-major axis of $\sim 18\,\text{AU}$).
+\section*{What Richard Feynman Would Have Asked}
+
+\textit{``Kepler found $T^2 \propto a^3$ empirically. Newton derived it from his gravity law. Is there a way to see this result without doing any calculation at all?''}
+
+Feynman would try to give you the most physical, intuitive argument possible. Here is one: imagine two planets orbiting the same star. The farther planet moves more slowly ($v \propto a^{-1/2}$ from energy considerations) and has a longer path to travel ($2\pi a$). The period is the ratio of circumference to speed: $T = 2\pi a/v \propto a/a^{-1/2} = a^{3/2}$. Squaring: $T^2 \propto a^3$. That is the entire derivation---three lines, no calculus. The physical content is: gravity gets weaker as $1/r^2$, which means orbital speed drops as $1/\sqrt{r}$, which combined with the longer circumference gives $T^2 \propto a^3$. Feynman would say: the math is just a formalization of this physical picture.
+
+\textit{``What would Kepler's third law look like if gravity were a $1/r^3$ force instead of $1/r^2$?''}
+
+Feynman would immediately recognize this as a question about orbital stability. For a $1/r^n$ central force, the effective potential is $V_{\text{eff}}(r) = L^2/(2mr^2) + U(r)$, where $U(r) \propto -r^{1-n}/(1-n)$ for $n\neq 1$. For $n = 3$ ($U \propto -1/r^2$), the effective potential is dominated by the $1/r^2$ centrifugal barrier and the $1/r^2$ attraction---they have the same radial dependence. If the attraction is slightly stronger, the particle spirals into the center; if slightly weaker, it escapes to infinity. There are no stable circular orbits for a pure $1/r^3$ force (except for the special case where the coefficients balance exactly, which is unstable to the slightest perturbation). Kepler's third law becomes ill-defined because there are no stable orbits to have periods. This is why the $1/r^2$ force is special: it is the highest power that supports stable closed orbits for all energies and angular momenta (Bertrand's theorem proves that only $1/r^2$ and $r^2$ forces have this property).
+
+\textit{``How does Kepler's third law help us weigh stars?''}
+
+By measuring the period and semi-major axis of a companion (a planet or another star), you can directly compute the total mass of the system. For a single star with a planet: $M_\star = 4\pi^2 a^3/(GT^2)$, assuming $M_\star \gg M_p$. For a binary star where both components are visible: measure $T$ from the light curve (eclipsing binary) or radial velocity curves, measure $a$ from the angular separation and distance, and get $M_1 + M_2$. This is the most direct and reliable method for measuring stellar masses, and it has been applied to thousands of binary systems. The result: most stars have masses between $0.08$ and $100\,M_\odot$, with the most common stars (red dwarfs) being about $0.1$--$0.5\,M_\odot$. The mass--luminosity relation ($L \propto M^{3.5}$ for main-sequence stars) was empirically calibrated using Kepler's third law masses.
+
+\textit{``What happens to Kepler's third law when we account for general relativity?''}
+
+In general relativity, orbits are not exact ellipses; they precess, and the period--distance relation acquires correction terms. The most famous consequence is Mercury's perihelion precession: $43$ arcseconds per century beyond the Newtonian prediction from other planetary perturbations. For a binary pulsar, the deviations from Kepler's third law include the emission of gravitational waves, which cause the orbit to shrink and the period to decrease. The Hulse--Taylor pulsar (PSR B1913+16) has a period that decreases at exactly the rate predicted by general relativity---providing the first indirect evidence for gravitational waves (1974 Nobel Prize). The Keplerian formula $T^2 = 4\pi^2 a^3/(GM)$ is the leading term in a post-Newtonian expansion: $T^2 = (4\pi^2 a^3/GM)[1 - \text{corrections of order $(GM/ac^2)^2$}]$.
+
+\textit{``Could Kepler's law be used to detect dark matter in the solar system?''}
+
+Feynman would note that this is already being done---with null results. If there were a significant amount of dark matter distributed throughout the solar system, it would contribute to the enclosed mass and modify Kepler's third law for the outer planets. By precisely measuring the orbital periods and distances of the Voyager spacecraft, the Cassini spacecraft, and the Pioneer probes, we can test whether the effective $M(r)$ is constant (as Newtonian gravity predicts) or increases with radius (as dark matter would imply). So far, the measurements are consistent with no dark matter contribution within the solar system, placing upper limits on the local dark matter density of $\rho_{\text{DM}} < 10^{-20}\,\text{kg/m}^3$. This is much smaller than the galactic dark matter density ($\sim 10^{-22}\,\text{kg/m}^3$), suggesting that the solar system is in a region where dark matter has been largely evacuated by the Sun's formation or by gravitational dynamics.
+
+\bigskip
+\hrule
+\bigskip
+%=============================================================================
+\section*{FAQ}
+
+\textit{Q: Does Kepler's third law apply to artificial satellites?}
+A: Yes. For a satellite orbiting Earth, $T^2 = (4\pi^2/GM_\oplus)a^3$. A geostationary satellite has $T = 24\,\text{hours}$, which gives $a \approx 42{,}164\,\text{km}$ from Earth's center (altitude $\approx 35{,}786\,\text{km}$). GPS satellites orbit at $T = 12\,\text{hours}$ and $a \approx 26{,}560\,\text{km}$. The International Space Station at $a \approx 6{,}770\,\text{km}$ has $T \approx 92\,\text{minutes}$.
+
+\textit{Q: Why does $T^2 \propto a^3$ specifically (as opposed to some other power)?}
+A: Because gravity is a $1/r^2$ force. For a $1/r^n$ force, Kepler's law becomes $T^2 \propto a^{n+1}$. The inverse-square law ($n = 2$) gives $T^2 \propto a^3$. A linear restoring force ($n = -1$, like a spring) gives $T = $ const (independent of amplitude), which is the isochronism of the harmonic oscillator. This generalization reveals Kepler's third law as a fingerprint of the inverse-square nature of gravity.
+
+\textit{Q: Does Kepler's third law work for galaxies?}
+A: Not directly---and the failure is one of the most important pieces of evidence for dark matter. In a galaxy, if most of the mass were concentrated in the center (like the solar system), stars farther from the center would orbit more slowly ($v \propto a^{-1/2}$, i.e., $T^2 \propto a^3$). Instead, the rotation curves of galaxies are nearly flat: $v \approx $ const at large radii, implying $T \propto a$ rather than $T \propto a^{3/2}$. This means the enclosed mass $M(r)$ increases linearly with radius, requiring a massive dark matter halo extending far beyond the visible galaxy.
+\section*{Important Bibliography}
+\begin{enumerate}
+\item Goldstein, H., Poole, C., and Safko, J., \textit{Classical Mechanics}, 3rd ed. (Pearson, 2002), Chapters 3 and 9.
+\item Kepler, J., \textit{Harmonices Mundi} (Linz, 1619); English translation by E.J. Aiton, A.M. Duncan, and J.V. Field (American Philosophical Society, 1992).
+\item Newton, I., \textit{Philosophiae Naturalis Principia Mathematica} (1687); English translation by I.B. Cohen and A. Whitman (University of California Press, 1999), Book I, Propositions 1--13.
+\item Hulse, R.A. and Taylor, J.H., ``Discovery of a pulsar in a binary system,'' \textit{Astrophysical Journal} \textbf{195}, L51--L53 (1975).
+\end{enumerate}
+
+

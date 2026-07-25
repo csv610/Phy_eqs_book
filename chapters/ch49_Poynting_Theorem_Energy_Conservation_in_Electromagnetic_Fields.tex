@@ -1,0 +1,153 @@
+\chapter{Poynting Theorem — Energy Conservation in Electromagnetic Fields}
+
+\section*{Introduction}
+
+The Poynting theorem maps the abstract mathematical structure of Maxwell's equations onto the physical reality of energy flow. The Poynting vector $\mathbf{S} = \frac{1}{\mu_0}\mathbf{E} \times \mathbf{B}$ is not merely a convenient construct---it tells us exactly where electromagnetic energy goes and how much power crosses any surface in space.
+\section*{Fundamental Equation Used}
+
+\begin{equation}
+\mathbf{S} = \frac{1}{\mu_0}\,\mathbf{E} \times \mathbf{B}
+\end{equation}
+\section*{Assumptions}
+
+\textbf{Assumptions:} Classical electromagnetic fields; no quantum corrections; linear media assumed (or generalized with $\mathbf{D}$ and $\mathbf{H}$).
+
+
+\textbf{Limitations:} Breaks down at quantum scales where field quantization becomes important; not applicable in strong-field QED regimes.
+
+
+\section*{Mathematical Derivation}
+
+\textbf{Step 1: Start from Maxwell's equations in vacuum.}
+
+The four Maxwell equations in vacuum (Gaussian or SI units) are:
+\begin{align}
+\nabla\cdot\mathbf{E} &= \frac{\rho}{\varepsilon_0}, \\
+\nabla\cdot\mathbf{B} &= 0, \\
+\nabla\times\mathbf{E} &= -\frac{\partial\mathbf{B}}{\partial t}, \\
+\nabla\times\mathbf{B} &= \mu_0\mathbf{J} + \mu_0\varepsilon_0\frac{\partial\mathbf{E}}{\partial t}.
+\end{align}
+
+\textbf{Step 2: Take the dot product of $\mathbf{E}$ with the Amp\`ere--Maxwell law.}
+
+Dotting equation (4) with $\mathbf{E}$:
+\begin{equation}
+\mathbf{E}\cdot(\nabla\times\mathbf{B}) = \mu_0\,\mathbf{E}\cdot\mathbf{J} + \mu_0\varepsilon_0\,\mathbf{E}\cdot\frac{\partial\mathbf{E}}{\partial t}.
+\end{equation}
+
+\textbf{Step 3: Take the dot product of $\mathbf{B}$ with Faraday's law.}
+
+Dotting equation (3) with $\mathbf{B}$:
+\begin{equation}
+\mathbf{B}\cdot(\nabla\times\mathbf{E}) = -\mathbf{B}\cdot\frac{\partial\mathbf{B}}{\partial t}.
+\end{equation}
+
+\textbf{Step 4: Subtract the two results.}
+
+Subtracting equation (6) from equation (5):
+\begin{equation}
+\mathbf{E}\cdot(\nabla\times\mathbf{B}) - \mathbf{B}\cdot(\nabla\times\mathbf{E}) = \mu_0\,\mathbf{E}\cdot\mathbf{J} + \mu_0\varepsilon_0\,\mathbf{E}\cdot\frac{\partial\mathbf{E}}{\partial t} + \mathbf{B}\cdot\frac{\partial\mathbf{B}}{\partial t}.
+\end{equation}
+
+\textbf{Step 5: Apply the vector identity.}
+
+The left-hand side is:
+\begin{equation}
+\mathbf{E}\cdot(\nabla\times\mathbf{B}) - \mathbf{B}\cdot(\nabla\times\mathbf{E}) = -\nabla\cdot(\mathbf{E}\times\mathbf{B}).
+\end{equation}
+The time derivatives on the right can be written as:
+\begin{equation}
+\mu_0\varepsilon_0\,\frac{\partial}{\partial t}\!\left(\frac{E^{2}}{2}\right) + \frac{\partial}{\partial t}\!\left(\frac{B^{2}}{2}\right) = \mu_0\varepsilon_0\,\frac{\partial u_E}{\partial t} + \mu_0\,\frac{\partial u_B}{\partial t},
+\end{equation}
+where $u_E = \varepsilon_0 E^{2}/2$ and $u_B = B^{2}/(2\mu_0)$ are the electric and magnetic energy densities.
+
+\textbf{Step 6: Assemble the Poynting theorem.}
+
+Substituting back and dividing by $\mu_0$:
+\begin{equation}
+-\frac{1}{\mu_0}\nabla\cdot(\mathbf{E}\times\mathbf{B}) = \mathbf{E}\cdot\mathbf{J} + \frac{\partial}{\partial t}\!\left(\frac{\varepsilon_0 E^{2}}{2} + \frac{B^{2}}{2\mu_0}\right).
+\end{equation}
+Defining the Poynting vector $\mathbf{S} = \mathbf{E}\times\mathbf{B}/\mu_0$ and the electromagnetic energy density $u = \varepsilon_0 E^{2}/2 + B^{2}/(2\mu_0)$:
+\begin{equation}
+\boxed{\;\frac{\partial u}{\partial t} + \nabla\cdot\mathbf{S} = -\mathbf{E}\cdot\mathbf{J}.\;}
+\end{equation}
+This is the Poynting theorem: the rate of change of electromagnetic energy density plus the divergence of the energy flux equals the negative of the power delivered to charges. In the absence of currents ($\mathbf{J} = 0$), energy is locally conserved: $\partial u/\partial t + \nabla\cdot\mathbf{S} = 0$, a continuity equation for electromagnetic energy.
+
+\section*{Characteristics of the Equation}
+
+\begin{itemize}
+    \item $\mathbf{S}$ is a vector quantity pointing in the direction of energy propagation.
+    \item The full conservation law reads $\frac{\partial u}{\partial t} + \nabla \cdot \mathbf{S} = -\mathbf{J} \cdot \mathbf{E}$, where $u = \frac{1}{2}(\epsilon_0 E^2 + \frac{1}{\mu_0}B^2)$ is the electromagnetic energy density.
+    \item In the absence of currents, energy is conserved and merely redistributes between electric and magnetic forms.
+    \item Named after John Henry Poynting, who published this result in 1884.
+\end{itemize}
+\section*{Solution Methods}
+
+\begin{itemize}
+    \item \textbf{Direct calculation:} Given $\mathbf{E}$ and $\mathbf{B}$ from a known field configuration, compute $\mathbf{S}$ pointwise.
+    \item \textbf{Surface integration:} Integrate $\mathbf{S}$ over a closed surface to find the total power radiated or absorbed.
+    \item \textbf{Complex phasor form:} For time-harmonic fields, use $\mathbf{S}_{\text{avg}} = \frac{1}{2}\text{Re}(\mathbf{E} \times \mathbf{H}^*)$.
+\end{itemize}
+\section*{Verifications}
+
+\begin{itemize}
+    \item For a plane wave in free space, $\mathbf{S} = \frac{E_0^2}{\mu_0 c}\hat{k}$, which matches the known energy flux $u \cdot c$.
+    \item The total power radiated by an isotropic source agrees with the Larmor formula for an accelerating charge.
+    \item Dimensional analysis confirms $\mathbf{S}$ has units of W/m$^2$.
+\end{itemize}
+\section*{Applications}
+
+\begin{itemize}
+    \item Radiated power from antennas and point sources.
+    \item Power flow in waveguides and transmission lines.
+    \item Electromagnetic energy balance in plasmas and ionospheres.
+    \item Design of energy-harvesting and wireless power-transfer systems.
+\end{itemize}
+\section*{What Richard Feynman Would Have Asked}
+
+\subsection*{Plain-English Translation}
+\textit{``If you had to explain the Poynting theorem to someone who has never heard of Maxwell's equations, what is the one sentence that captures the essence of it?''}
+
+The Poynting theorem says that electromagnetic energy flows through space exactly like a fluid, carried by the Poynting vector, and wherever there is a divergence in this flow the local energy density changes accordingly. It is the continuity equation for electromagnetic energy---no more, no less. Energy is not destroyed; it simply moves from one place to another, and the Poynting vector tells you exactly where it is going. The genius of Poynting's insight was recognizing that Maxwell's equations already contained this conservation law in disguise, waiting to be extracted.
+
+\subsection*{Localized Mechanics}
+\textit{``What is actually happening at a single point in space when the Poynting vector points in a certain direction? Does energy really flow through that point?''}
+
+At any single point, the electric and magnetic fields define a plane, and the Poynting vector is perpendicular to that plane. The energy flow at that point is the instantaneous exchange rate between field energy and whatever is happening locally---whether it is the work done on charges or the redistribution of energy density. In a propagating wave, the energy passes through each point at speed $c$, carried entirely by the fields themselves without any material medium. The key subtlety is that the Poynting vector gives instantaneous energy flux, which for oscillating fields can have components that time-average to zero while still carrying energy in more subtle ways.
+
+\subsection*{Testing Extreme Limits}
+\textit{``What happens to the Poynting theorem in the limit of incredibly strong fields, or in the vacuum limit where fields approach zero?''}
+
+For extremely strong fields approaching the Schwinger limit ($\sim 10^{18}$ V/m), the linear superposition underlying the Poynting theorem begins to break down as nonlinear quantum electrodynamic effects---vacuum polarization, pair production---become important. The classical Poynting theorem must be replaced by the quantum electrodynamic stress-energy tensor. In the opposite limit of vanishing fields, $\mathbf{S}$ goes to zero quadratically, meaning even tiny residual fields carry negligible energy flux. The vacuum limit is exact in classical electromagnetism: the vacuum truly carries energy flow without any medium.
+
+\subsection*{Dimensionality and Geometry}
+\textit{``How does the shape of a surface affect the total power we compute from the Poynting vector, and does the geometry matter?''}
+
+The total power through a surface is the flux integral of $\mathbf{S}$, and this is fundamentally a geometric quantity---it depends on the orientation and shape of the surface relative to the field pattern. For a point source, spherical surfaces give the familiar inverse-square law for power per unit area. For a line source, cylindrical surfaces are natural. The key principle is that the flux through any closed surface surrounding a source is independent of the surface shape, as guaranteed by the divergence theorem---energy conservation does not care about geometry, only about sources and sinks.
+
+\subsection*{Cross-Disciplinary Connection}
+\textit{``Where else in physics does a conservation law take the form of a flux equation, and how does the Poynting theorem compare?''}
+
+The Poynting theorem is structurally identical to the conservation of mass in fluid dynamics (continuity equation), the conservation of probability in quantum mechanics, and the first law of thermodynamics in heat transfer. In every case, the rate of change of a density plus the divergence of a flux equals a source term. This universality reflects the deep structure of conservation laws in physics: whenever a conserved quantity exists, its conservation can be written as a continuity equation with an associated current density. The Poynting theorem is simply the electromagnetic instance of this general principle.
+
+% ------------------------------------------------------------
+\section*{FAQ}
+
+\textbf{Q: Is the Poynting vector the same as the direction of light propagation?}
+A: For transverse electromagnetic waves in free space, yes---$\mathbf{S}$ points along the wavevector. But in waveguides, near-field regions, or anisotropic media, the direction of energy flow can differ from the phase propagation direction.
+
+\textbf{Q: Does the Poynting theorem apply to evanescent waves?}
+A: Yes. Evanescent waves carry energy along interfaces even though the time-averaged Poynting vector in the decay direction is zero. The energy simply circulates rather than propagating through the evanescent region.
+
+\textbf{Q: How does the Poynting theorem relate to the stress-energy tensor?}
+A: The Poynting vector is the spatial part of the electromagnetic stress-energy tensor's energy-momentum density. In special relativity, energy conservation becomes the vanishing divergence of the full stress-energy tensor.
+\section*{Important Bibliography}
+
+\begin{enumerate}
+\item Griffiths, D.J., \textit{Introduction to Electrodynamics}, 4th ed. (Cambridge University Press, 2017), Chapter 8.
+\item Jackson, J.D., \textit{Classical Electrodynamics}, 3rd ed. (Wiley, 1999), Chapter 6.
+\item Poynting, J.H., ``On the Transfer of Energy in the Electromagnetic Field,'' \textit{Philosophical Transactions of the Royal Society of London} \textbf{175}, 343--361 (1884).
+\item Zangwill, A., \textit{Modern Electrodynamics} (Cambridge University Press, 2013), Chapter 17.
+\end{enumerate}
+
+

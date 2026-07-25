@@ -1,0 +1,143 @@
+\chapter{Hamilton's Equations}
+
+\section*{Introduction}
+
+The Hamiltonian $H(q,p,t)$ is obtained from the Lagrangian by a Legendre transformation: $H = p_i\dot{q}^i - L$, where $p_i = \partial L/\partial\dot{q}^i$ is the canonical momentum. For most classical systems, $H$ equals the total energy $T + V$ (note: $T + V$, not $T - V$ as in the Lagrangian). Hamilton's equations are $\dot{q}^i = \partial H/\partial p_i$ and $\dot{p}_i = -\partial H/\partial q^i$. These are beautiful in their symmetry: position evolves according to the momentum gradient of $H$, and momentum evolves according to the position gradient of $H$ (with a minus sign). The phase space trajectory $\bigl(q(t), p(t)\bigr)$ traces out a curve that preserves volume (Liouville's theorem), a fact that is foundational for statistical mechanics.
+\section*{Fundamental Equation Used}
+
+\[
+\dot{q}^i = \frac{\partial H}{\partial p_i},\qquad \dot{p}_i = -\frac{\partial H}{\partial q^i}
+\]
+\section*{Assumptions}
+
+\textbf{Assumptions:} The Lagrangian is a smooth function of $q$, $\dot{q}$, and $t$. The Legendre transformation is invertible (the Hessian $\partial^2 L/\partial\dot{q}^i\partial\dot{q}^j$ is non-singular). The system is holonomic with no velocity-dependent potentials.
+
+
+\textbf{Limitations:} The invertibility condition excludes systems where the momentum is not a unique function of velocity (e.g., systems with constraints on velocity). For systems with velocity-dependent forces (magnetic Lorentz force), the canonical momenta differ from mechanical momenta, and care is needed in defining $H$. Non-holonomic systems require alternative formulations.
+
+
+\section*{Mathematical Derivation}
+
+\textbf{Step 1: The Lagrangian and canonical momentum.}
+
+Start with the Lagrangian $L(q^i, \dot{q}^i, t)$, from which the equations of motion follow via the Euler--Lagrange equations:
+\begin{align}
+\frac{d}{dt}\frac{\partial L}{\partial\dot{q}^i} - \frac{\partial L}{\partial q^i} = 0.
+\end{align}
+Define the canonical momentum conjugate to $q^i$:
+\begin{align}
+p_i = \frac{\partial L}{\partial\dot{q}^i}.
+\end{align}
+This defines a mapping from velocity space to momentum space. We assume this mapping is invertible: the Hessian matrix $\partial^2 L/\partial\dot{q}^i\partial\dot{q}^j$ is non-singular, so $\dot{q}^i = \dot{q}^i(q, p, t)$.
+
+\textbf{Step 2: The Legendre transformation.}
+
+The Hamiltonian is defined by the Legendre transformation of $L$ with respect to the velocities:
+\begin{align}
+H(q, p, t) = p_i\dot{q}^i - L(q, \dot{q}, t),
+\end{align}
+where $\dot{q}^i$ is understood as a function of $(q, p, t)$ through the inversion of $p_i = \partial L/\partial\dot{q}^i$. For a standard system with $L = T - V$ where $T = \frac{1}{2}m_{ij}\dot{q}^i\dot{q}^j$, we have $p_i = m_{ij}\dot{q}^j$, and $H = p_i\dot{q}^i - (\frac{1}{2}m_{ij}\dot{q}^i\dot{q}^j - V) = \frac{1}{2}m^{ij}p_ip_j + V = T + V$, the total energy.
+
+\textbf{Step 3: Derive Hamilton's equations.}
+
+Take the total differential of $H$:
+\begin{align}
+dH = \dot{q}^i\,dp_i + p_i\,d\dot{q}^i - \frac{\partial L}{\partial q^i}\,dq^i - \frac{\partial L}{\partial\dot{q}^i}\,d\dot{q}^i - \frac{\partial L}{\partial t}\,dt.
+\end{align}
+The terms $p_i\,d\dot{q}^i$ and $(\partial L/\partial\dot{q}^i)\,d\dot{q}^i$ cancel because $p_i = \partial L/\partial\dot{q}^i$. Using the Euler--Lagrange equation $\dot{p}_i = \partial L/\partial q^i$, we get
+\begin{align}
+dH = \dot{q}^i\,dp_i - \dot{p}_i\,dq^i - \frac{\partial L}{\partial t}\,dt.
+\end{align}
+Comparing with $dH = (\partial H/\partial q^i)\,dq^i + (\partial H/\partial p_i)\,dp_i + (\partial H/\partial t)\,dt$, we identify:
+\begin{align}
+\boxed{\dot{q}^i = \frac{\partial H}{\partial p_i}, \qquad \dot{p}_i = -\frac{\partial H}{\partial q^i}.}
+\end{align}
+These are Hamilton's equations---a system of $2n$ first-order ODEs for $n$ degrees of freedom.
+
+\textbf{Step 4: Conserved quantities and Poisson brackets.}
+
+For any phase-space function $f(q, p, t)$, its total time derivative is
+\begin{align}
+\frac{df}{dt} = \frac{\partial f}{\partial q^i}\dot{q}^i + \frac{\partial f}{\partial p_i}\dot{p}_i + \frac{\partial f}{\partial t} = \{f, H\} + \frac{\partial f}{\partial t},
+\end{align}
+where the Poisson bracket is defined as
+\begin{align}
+\{f, g\} = \frac{\partial f}{\partial q^i}\frac{\partial g}{\partial p_i} - \frac{\partial f}{\partial p_i}\frac{\partial g}{\partial q^i}.
+\end{align}
+If $H$ has no explicit time dependence, $dH/dt = \{H, H\} + \partial H/\partial t = 0$, so $H$ is conserved. More generally, $df/dt = 0$ if $\{f, H\} = 0$ and $f$ has no explicit time dependence.
+
+\section*{Characteristics of the Equation}
+
+Hamilton's equations are first-order in time, making them well-suited for numerical integration and phase space analysis. Phase space has twice the dimension of configuration space ($2n$ for $n$ degrees of freedom). The equations are time-reversible: reversing $p \to -p$ reverses the trajectory. Liouville's theorem states that phase space volume is preserved along trajectories: $d\Gamma/dt = 0$. The Poisson bracket $\{f, g\} = \sum_i(\partial f/\partial q^i \partial g/\partial p_i - \partial f/\partial p_i \partial g/\partial q^i)$ provides a powerful algebraic tool: $\dot{f} = \{f, H\}$ for any observable $f$.
+\section*{Solution Methods}
+
+\textbf{Canonical transformations:} Find new coordinates $(Q, P)$ in which the new Hamiltonian $K(Q, P, t)$ is simpler (possibly zero, giving $Q = \text{const}$). The generating function method classifies canonical transformations by type ($F_1(q,Q)$, $F_2(q,P)$, etc.). \textbf{Hamilton--Jacobi theory:} Solve the Hamilton--Jacobi equation $\partial S/\partial t + H(q, \partial S/\partial q, t) = 0$ to find a generating function that transforms the system to trivial motion. \textbf{Poisson bracket evolution:} Compute $\dot{f} = \{f, H\}$ for any observable $f$ without solving the equations of motion explicitly. \textbf{Numerical symplectic integration:} Use symplectic integrators (Verlet, leapfrog) that exactly preserve the symplectic structure and Liouville's theorem.
+\section*{Verifications}
+
+For a free particle ($H = p^2/2m$), Hamilton's equations give $\dot{q} = p/m$ and $\dot{p} = 0$, recovering uniform motion. For a harmonic oscillator ($H = p^2/2m + \frac{1}{2}kq^2$), check that the equations yield $\ddot{q} + (k/m)q = 0$. Verify Liouville's theorem: the Jacobian of the time evolution map has unit determinant. Check that the Poisson bracket satisfies the Jacobi identity: $\{f, \{g, h\}\} + \{g, \{h, f\}\} + \{h, \{f, g\}\} = 0$. Confirm that the Hamiltonian is conserved when $H$ has no explicit time dependence: $dH/dt = \partial H/\partial t = 0$.
+\section*{Applications}
+
+Hamilton's equations are the starting point for statistical mechanics (the Liouville equation describes the evolution of the phase space distribution). In celestial mechanics, they enable the study of orbital stability and chaos (the KAM theorem). In plasma physics, they govern charged particle motion in electromagnetic fields. In quantum mechanics, the canonical commutation relations $[\hat{q}, \hat{p}] = i\hbar$ are the quantum analogue of the classical Poisson bracket $\{q, p\} = 1$. In accelerator physics, Hamilton's equations describe particle beam dynamics. In optics, the Hamiltonian formulation leads to ray optics as the geometric limit of wave optics.
+\section*{What Richard Feynman Would Have Asked}
+
+\subsection*{1. Plain-English Translation}
+\textit{``What are Hamilton's equations really saying? Why should I care about phase space?''}
+
+Hamilton's equations say that the state of a mechanical system is a point in phase space, and that point moves according to a simple rule: it flows in the direction of the steepest increase of the Hamiltonian with respect to momentum, and it flows in the direction opposite to the steepest increase with respect to position. Think of phase space as a map where every point represents a complete state of the system (position and momentum). The trajectory through phase space is the system's entire history.
+
+The deep insight is that the same Hamiltonian that governs the motion also generates the motion through its gradients. The Hamiltonian is both the energy function and the ``engine'' that drives the system through phase space. This is why the Hamiltonian formulation is so powerful: it packages both the dynamics and the conserved quantities into a single function.
+
+\subsection*{2. Localized Mechanics}
+\textit{``At a single point in phase space, what determines the direction the system will move?''}
+
+At any point $(q, p)$ in phase space, the velocity of the system is $(\partial H/\partial p, -\partial H/\partial q)$. This is a vector field on phase space---at every point, there is an arrow telling the system which way to go. The Hamiltonian generates this vector field. The $+\partial H/\partial p$ component says: if increasing momentum increases the energy, the system moves forward in position. The $-\partial H/\partial q$ component says: if increasing position increases the energy, the system loses momentum (like a ball rolling uphill slows down).
+
+The minus sign in the second equation is crucial. It ensures that the flow preserves phase space volume (Liouville's theorem) and that the equations are time-reversible. Without it, phase space would be stretched or compressed, and the deep connection to statistical mechanics would be lost.
+
+\subsection*{3. Testing Extreme Limits}
+\textit{``What happens when the system is chaotic, when the Hamiltonian is time-dependent, or when we go to the quantum limit?''}
+
+Chaotic Systems: In chaotic systems (double pendulum, three-body problem), nearby trajectories in phase space diverge exponentially. The Hamiltonian equations are still perfectly valid, but the extreme sensitivity to initial conditions makes long-term prediction impossible. The KAM theorem guarantees that some regular orbits survive perturbation, but most orbits become chaotic.
+
+Time-Dependent Hamiltonians: If $H$ depends explicitly on time (driven systems), the Hamiltonian is not conserved. The system can gain or lose energy from the driving force. The equations themselves are unchanged---the time dependence simply means that the vector field on phase space changes with time.
+
+Quantum Limit: The transition from classical to quantum mechanics replaces Poisson brackets with commutators. The Hamiltonian becomes an operator $\hat{H}$, and the equations of motion become the Heisenberg equation $d\hat{A}/dt = (i/\hbar)[\hat{H}, \hat{A}]$. Phase space itself becomes fuzzy---the uncertainty principle prevents simultaneous specification of $q$ and $p$ with arbitrary precision.
+
+\subsection*{4. Dimensionality and Geometry}
+\textit{``What is the geometry of phase space? Why is it different from ordinary space?''}
+
+Phase space has a symplectic structure---a mathematical object that makes it fundamentally different from ordinary Euclidean space. In ordinary space, you measure distances with the metric $ds^2 = dx^2 + dy^2 + dz^2$. In phase space, you measure ``areas'' with the symplectic form $\omega = dp \wedge dq$. A transformation is canonical if and only if it preserves this area-measuring structure.
+
+This symplectic geometry explains why Hamiltonian dynamics has special properties: Liouville's theorem (volume preservation), the existence of action-angle variables, and the Poincare--Bendixson theorem (trajectories in 2D phase space cannot be chaotic). The geometry of phase space is not just a mathematical curiosity---it determines the qualitative behavior of all Hamiltonian systems.
+
+\subsection*{5. Cross-Disciplinary Connection}
+\textit{``Where else does the Hamiltonian framework show up outside of classical mechanics?''}
+
+The Hamiltonian framework appears in optics (Hamilton's original motivation was a geometric theory of optics), where rays of light follow Hamilton's equations in a phase space of position and direction. In quantum field theory, the Hamiltonian density generates time evolution of the fields. In statistical mechanics, the Liouville equation (the phase space version of the continuity equation) describes how probability distributions evolve under Hamiltonian dynamics.
+
+In control theory, the Hamilton--Jacobi--Bellman equation is the Hamiltonian framework applied to optimal control. In finance, the Black--Scholes equation can be cast in Hamiltonian form. In neural networks, the dynamics of certain recurrent networks can be described by Hamilton's equations with a learned Hamiltonian. The mathematical structure---a scalar function generating first-order equations through its partial derivatives---is universal.
+
+%=============================================================
+\section*{FAQ}
+
+\textbf{Q: Why is the Hamiltonian $T + V$ while the Lagrangian is $T - V$?}
+
+A: The Legendre transformation $H = p\dot{q} - L$ introduces the sign change. Since $p = \partial L/\partial\dot{q} = m\dot{q}$ for a simple system, $H = m\dot{q}^2 - (\frac{1}{2}m\dot{q}^2 - V) = \frac{1}{2}m\dot{q}^2 + V = T + V$. The minus sign in $L = T - V$ is needed for the variational principle; the plus sign in $H = T + V$ is needed for the energy interpretation.
+
+\textbf{Q: What is a canonical transformation?}
+
+A: A canonical transformation is a change of variables $(q, p) \to (Q, P)$ that preserves the form of Hamilton's equations. Mathematically, it preserves the Poisson bracket structure: $\{Q_i, P_j\} = \delta_{ij}$, $\{Q_i, Q_j\} = 0$, $\{P_i, P_j\} = 0$. Canonical transformations include rotations, translations, and more exotic changes of variables that simplify the Hamiltonian.
+
+\textbf{Q: How does the Poisson bracket relate to quantum mechanics?}
+
+A: The canonical quantization prescription replaces the Poisson bracket with a commutator: $\{A, B\} \to (i/\hbar)[\hat{A}, \hat{B}]$. In particular, $\{q, p\} = 1$ becomes $[\hat{q}, \hat{p}] = i\hbar$. This replacement is not a derivation but a postulate, but it works remarkably well: the structure of the Poisson bracket algebra is preserved in the quantum theory.
+\section*{Important Bibliography}
+
+\begin{enumerate}
+\item Goldstein, H., Poole, C., and Safko, J., \textit{Classical Mechanics}, 3rd ed. (Addison-Wesley, 2002), Chapter 9.
+\item Landau, L.D. and Lifshitz, E.M., \textit{Mechanics}, 3rd ed. (Butterworth-Heinemann, 1976), Chapter 4.
+\item Arnold, V.I., \textit{Mathematical Methods of Classical Mechanics}, 2nd ed. (Springer, 1989), Chapter 8.
+\item Hamilton, W.R., ``On a General Method in Dynamics,'' \textit{Philosophical Transactions of the Royal Society of London} \textbf{124}, 247--308 (1834).
+\end{enumerate}
+
+
