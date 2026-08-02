@@ -1,0 +1,209 @@
+\chapter{Fundamental Equations}
+
+This chapter mixes equations from different levels of physics. Start with the conservation laws and Newton's laws, then return to Maxwell's equations, relativity, and quantum mechanics after the symbols feel familiar. For each item, read the sentence before the formula first; the formula is the compact version of that sentence.
+
+\textbf{Reality Mapping:} These equations are the grammar of physics---they tell us what can and cannot happen in the universe. Conservation laws say that certain quantities (energy, momentum, angular momentum) are the same before and after any process. Maxwell's equations say that electric and magnetic fields are two aspects of one thing, and that light is an electromagnetic wave. Einstein's equations say that mass and energy are interchangeable, and that gravity is the curvature of spacetime. Quantum equations say that particles behave like waves, that you cannot know everything at once, and that the vacuum is seething with activity. Together, these equations describe the rules that govern everything from falling apples to exploding stars.
+
+\section*{Conservation Laws}
+
+The deepest principles in physics are conservation laws. They hold in every regime---classical, relativistic, quantum---and they constrain what processes are possible regardless of the details.
+
+\begin{enumerate}
+
+\item \textbf{Conservation of Energy:} Energy can change form but the total amount stays the same. This is the first law of thermodynamics and one of the most thoroughly tested principles in all of science.
+\[
+\Delta E_{\text{total}}=0
+\]
+
+\item \textbf{Conservation of Momentum:} The total momentum of an isolated system does not change. This is why rockets accelerate in empty space and why ice skaters spin when they pull their arms in.
+\[
+\sum \mathbf{p}_i = \text{const}
+\]
+
+\item \textbf{Conservation of Angular Momentum:} The total angular momentum of an isolated system is constant. This conservation law arises from the rotational symmetry of space and governs everything from planetary orbits to the stability of atoms.
+\[
+\mathbf{L} = \text{const}
+\]
+
+\item \textbf{Conservation of Mass:} In non-relativistic physics, mass is conserved. In relativity, mass and energy are equivalent, so the conserved quantity is mass--energy together.
+\[
+\Delta m = 0
+\]
+
+\end{enumerate}
+
+\section*{Classical Mechanics}
+
+Newton's laws, formulated in 1687, govern the motion of everyday objects. They are accurate to parts per billion for most engineering applications, though they break down at high speeds (requiring relativity) and small scales (requiring quantum mechanics).
+
+\begin{enumerate}
+
+\item \textbf{Newton's First Law (Inertia):} A body stays at rest or moves in a straight line at constant speed unless a net force acts on it. This law defines inertial reference frames.
+\[
+\sum \mathbf{F} = 0 \; \Rightarrow \; \mathbf{v} = \text{const}
+\]
+
+\item \textbf{Newton's Second Law:} The net force on an object equals its mass times acceleration. This is the central equation of mechanics---a second-order differential equation that determines trajectories.
+\[
+\mathbf{F} = m\mathbf{a}
+\]
+
+\item \textbf{Newton's Third Law:} Every force has an equal and opposite partner. This law ensures momentum conservation and is fundamental to understanding interactions.
+\[
+\mathbf{F}_{12} = -\mathbf{F}_{21}
+\]
+
+\item \textbf{Newton's Law of Universal Gravitation:} Any two masses attract each other with a force proportional to their masses and inversely proportional to the square of the distance. This single law explains planetary orbits, tides, and the structure of galaxies.
+\[
+F = \frac{GMm}{r^2}
+\]
+
+\end{enumerate}
+
+\section*{Electromagnetism}
+
+Maxwell's equations, finalized in 1865, describe all electromagnetic phenomena. They predict electromagnetic waves, unify optics with electricity and magnetism, and form the foundation of all modern technology.
+
+\begin{enumerate}
+
+\item \textbf{Gauss's Law:} Electric charges produce electric fields. The total electric flux through a closed surface equals the enclosed charge divided by $\epsilon_0$.
+\[
+\nabla \cdot \mathbf{E} = \frac{\rho}{\epsilon_0}
+\]
+
+\item \textbf{Gauss's Law for Magnetism:} There are no magnetic monopoles---magnetic field lines always form closed loops. This is a profound statement about the structure of magnetic fields.
+\[
+\nabla \cdot \mathbf{B} = 0
+\]
+
+\item \textbf{Faraday's Law:} A changing magnetic field creates an electric field. This is how electric generators work and the basis for electromagnetic induction.
+\[
+\nabla \times \mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t}
+\]
+
+\item \textbf{Ampere--Maxwell Law:} Electric currents and changing electric fields both create magnetic fields. The displacement current term (Maxwell's addition) completes the symmetry and predicts electromagnetic waves.
+\[
+\nabla \times \mathbf{B} = \mu_0 \mathbf{J} + \mu_0 \epsilon_0 \frac{\partial \mathbf{E}}{\partial t}
+\]
+
+\end{enumerate}
+
+\section*{Thermodynamics}
+
+The laws of thermodynamics govern energy, entropy, and the direction of physical processes. They are empirical in origin but have profound implications for what is physically possible.
+
+\begin{enumerate}
+
+\item \textbf{Zeroth Law:} If two objects are both in thermal equilibrium with a third, they are in equilibrium with each other. This law defines temperature.
+\[
+\text{If } A \sim C \text{ and } B \sim C, \text{ then } A \sim B
+\]
+
+\item \textbf{First Law:} Energy is conserved. The heat added to a system goes into increasing its internal energy or doing work.
+\[
+dU = \delta Q - \delta W
+\]
+
+\item \textbf{Second Law:} Entropy (disorder) of an isolated system never decreases. Heat flows from hot to cold, never the other way, without external work. This law gives time its arrow.
+\[
+\Delta S \geq 0
+\]
+
+\item \textbf{Third Law:} As temperature approaches absolute zero, entropy approaches a minimum value. You can never actually reach absolute zero in a finite number of steps.
+\[
+\lim_{T \to 0} S = S_0
+\]
+
+\end{enumerate}
+
+\section*{Relativity}
+
+Einstein's theories of relativity revolutionized our understanding of space, time, and gravity. Special relativity (1905) deals with uniform motion; general relativity (1915) includes acceleration and gravity.
+
+\begin{enumerate}
+
+\item \textbf{Mass--Energy Equivalence:} Mass and energy are interchangeable. This equation, the most famous in physics, explains nuclear energy and the power of stars.
+\[
+E = mc^2
+\]
+
+\item \textbf{Lorentz Transformation:} The equations that replace Newton's Galilean transformations when objects move close to the speed of light. They show that time slows down and lengths contract for moving objects.
+\[
+x' = \gamma(x - vt), \qquad t' = \gamma\left(t - \frac{vx}{c^2}\right)
+\]
+
+\item \textbf{Einstein Field Equations:} The core of general relativity. They say that mass and energy curve spacetime, and curved spacetime tells mass how to move. They predict black holes, gravitational waves, and the expansion of the universe.
+\[
+R_{\mu\nu} - \frac{1}{2}Rg_{\mu\nu} + \Lambda g_{\mu\nu} = \frac{8\pi G}{c^4}T_{\mu\nu}
+\]
+
+\end{enumerate}
+
+\section*{Quantum Mechanics}
+
+Quantum mechanics governs the microscopic world. Its equations are probabilistic, counterintuitive, and extraordinarily accurate. They describe atoms, molecules, solids, and the fundamental particles.
+
+\begin{enumerate}
+
+\item \textbf{Schr\"odinger Equation:} The central equation of quantum mechanics. It predicts how the wave function $\psi$ of a particle evolves over time. If you know the wave function, you can calculate the probability of finding the particle anywhere.
+\[
+i\hbar \frac{\partial \psi}{\partial t} = \hat{H}\psi
+\]
+
+\item \textbf{Heisenberg Uncertainty Principle:} You cannot simultaneously know a particle's position and momentum with arbitrary precision. This is not a limitation of measurement but a fundamental property of nature.
+\[
+\Delta x \Delta p \geq \frac{\hbar}{2}
+\]
+
+\item \textbf{Dirac Equation:} The relativistic quantum equation for spin-1/2 particles. It predicts antimatter and explains electron spin as a consequence of combining quantum mechanics with special relativity.
+\[
+(i\gamma^\mu \partial_\mu - m)\psi = 0
+\]
+
+\end{enumerate}
+
+\section*{Key Relationships}
+
+Beyond the fundamental equations, these relationships connect different areas of physics and appear repeatedly in applications.
+
+\begin{enumerate}
+
+\item \textbf{De Broglie Wavelength:} Every particle has a wavelength $\lambda = h/p$. This wave--particle duality is the foundation of quantum mechanics.
+\[
+\lambda = \frac{h}{p}
+\]
+
+\item \textbf{Planck's Relation:} The energy of a photon is proportional to its frequency. This equation launched quantum mechanics.
+\[
+E = h\nu = \hbar\omega
+\]
+
+\item \textbf{Ideal Gas Law:} For a dilute gas, pressure, volume, and temperature are related by the number of particles. This equation connects microscopic motion to macroscopic observables.
+\[
+PV = Nk_BT
+\]
+
+\item \textbf{Boltzmann Entropy:} Entropy measures the number of microstates compatible with a macrostate. This statistical definition bridges thermodynamics and mechanics.
+\[
+S = k_B \ln \Omega
+\]
+
+\end{enumerate}
+
+\section*{Why These Equations Matter}
+
+These equations are not arbitrary. They are the distilled essence of centuries of experimentation and thought. Each one has been tested to extraordinary precision. Each one reveals something deep about the structure of reality.
+
+The conservation laws tell us what is \textit{possible}. The dynamical equations (Newton, Schr\"odinger, Maxwell) tell us what \textit{happens}. The thermodynamic laws tell us what \textit{direction} processes take. Together, they form a complete description of the physical world---at least within their domains of validity.
+
+No single equation explains everything. But taken together, they explain everything we have observed, from the behavior of subatomic particles to the evolution of the cosmos. That is why they deserve to be memorized, understood, and applied.
+
+\section*{Important Bibliography}
+
+\begin{enumerate}
+\item Feynman, R.P., Leighton, R.B. and Sands, M., \textit{The Feynman Lectures on Physics}, Vol. I--III (Addison-Wesley, 1963).
+\item Landau, L.D. and Lifshitz, E.M., \textit{Course of Theoretical Physics}, Vols. 1--10 (Pergamon Press, 1976--1988).
+\item Griffiths, D.J., \textit{Introduction to Quantum Mechanics}, 2nd ed. (Prentice Hall, 2004).
+\item Jackson, J.D., \textit{Classical Electrodynamics}, 3rd ed. (Wiley, 1998).
+\item MTW, \textit{Gravitation} (Freeman, 1973).
+\end{enumerate}

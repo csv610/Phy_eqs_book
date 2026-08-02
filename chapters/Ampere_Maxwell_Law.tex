@@ -1,0 +1,141 @@
+\chapter{Ampere-Maxwell Law}
+
+\section*{Introduction}
+
+The Ampere-Maxwell law is the fourth and final equation in Maxwell's set. It states that magnetic fields are created by electric currents and by changing electric fields. Maxwell's crucial addition was the displacement current term, which completed the symmetry with Faraday's law and predicted electromagnetic waves.
+
+Without the displacement current, Ampere's law would be inconsistent for time-varying fields. Maxwell's correction ensures charge conservation and reveals that light is an electromagnetic wave.
+
+\begin{equation}
+\boxed{\nabla \times \mathbf{B} = \mu_0 \mathbf{J} + \mu_0 \varepsilon_0 \frac{\partial \mathbf{E}}{\partial t}}
+\end{equation}
+
+\section*{Fundamental Equations Used}
+
+The derivation starts from Ampere's law for steady currents and the continuity equation for charge conservation.
+
+\section*{Assumptions}
+
+\textbf{Assumptions:} The law holds in classical electromagnetism. The fields are well-defined and differentiable. The displacement current term is valid for all time-varying fields.
+
+\textbf{Limitations:} At quantum scales, the law is reformulated in QED. In superconductors, the London equations modify the relationship between $\mathbf{B}$ and $\mathbf{J}$.
+
+\section*{Mathematical Derivation}
+
+\textbf{Step 1: Start from Ampere's law.}
+
+For steady currents, Ampere's law relates the magnetic field to the current density:
+\begin{equation}
+\nabla \times \mathbf{B} = \mu_0 \mathbf{J}
+\end{equation}
+This law works for steady currents but fails for time-varying situations.
+
+\textbf{Step 2: Check consistency with charge conservation.}
+
+Take the divergence of both sides:
+\begin{equation}
+\nabla \cdot (\nabla \times \mathbf{B}) = 0 = \mu_0 \nabla \cdot \mathbf{J}
+\end{equation}
+But the continuity equation requires $\nabla \cdot \mathbf{J} = -\partial \rho/\partial t$, which is not generally zero. Ampere's law is inconsistent with charge conservation for time-varying fields.
+
+\textbf{Step 3: Add the displacement current.}
+
+Maxwell's insight was to add a term whose divergence cancels the continuity equation term. Using Gauss's law $\nabla \cdot \mathbf{E} = \rho/\varepsilon_0$:
+\begin{equation}
+\nabla \cdot \left(\mathbf{J} + \varepsilon_0 \frac{\partial \mathbf{E}}{\partial t}\right) = \nabla \cdot \mathbf{J} + \varepsilon_0 \frac{\partial}{\partial t}\left(\frac{\rho}{\varepsilon_0}\right) = -\frac{\partial \rho}{\partial t} + \frac{\partial \rho}{\partial t} = 0
+\end{equation}
+The additional term $\varepsilon_0 \partial \mathbf{E}/\partial t$ is the displacement current density.
+
+\textbf{Step 4: Write the complete law.}
+
+The corrected Ampere-Maxwell law is:
+\begin{equation}
+\boxed{\nabla \times \mathbf{B} = \mu_0 \mathbf{J} + \mu_0 \varepsilon_0 \frac{\partial \mathbf{E}}{\partial t}}
+\end{equation}
+The first term is the conduction current; the second is the displacement current.
+
+\section*{Characteristics of the Equation}
+
+\begin{itemize}
+\item \textbf{Two sources of B:} Both currents and changing electric fields create magnetic fields.
+\item \textbf{Symmetry:} Completes the symmetry with Faraday's law.
+\item \textbf{Displacement current:} The $\varepsilon_0 \partial \mathbf{E}/\partial t$ term is Maxwell's crucial addition.
+\item \textbf{Wave prediction:} Together with Faraday's law, the equation predicts electromagnetic waves.
+\end{itemize}
+
+\section*{Solution Methods}
+
+\begin{enumerate}
+\item \textbf{Biot-Savart extension:} For given $\mathbf{J}$ and $\partial \mathbf{E}/\partial t$, integrate to find $\mathbf{B}$.
+\item \textbf{Vector potential:} Solve for $\mathbf{A}$ where $\mathbf{B} = \nabla \times \mathbf{A}$.
+\item \textbf{Numerical methods:} Finite-element methods solve the coupled Maxwell equations.
+\end{enumerate}
+
+\section*{Verifications}
+
+The Ampere-Maxwell law has been verified extensively:
+
+\begin{itemize}
+\item \textbf{Electromagnetic waves:} Hertz's experiments (1887) confirmed Maxwell's prediction.
+\item \textbf{Capacitor circuits:} Displacement current explains magnetic fields around charging capacitors.
+\item \textbf{Antenna radiation:} Radio wave generation relies on the displacement current term.
+\end{itemize}
+
+\section*{Applications}
+
+\begin{itemize}
+\item \textbf{Electromagnetic waves:} Radio, microwaves, light all propagate according to this law.
+\item \textbf{Inductors:} Magnetic fields in coils depend on both current and changing voltage.
+\item \textbf{Transmission lines:} Signal propagation in cables.
+\item \textbf{Waveguides:} Electromagnetic mode propagation.
+\end{itemize}
+
+\section*{What Richard Feynman Would Have Asked}
+
+\subsection*{1. Plain-English Translation}
+\textit{``What is the Ampere-Maxwell law saying?''}
+
+The Ampere-Maxwell law says: magnetic fields are created by two things---electric currents and changing electric fields. Maxwell's genius was adding the second term. Without it, you can't have electromagnetic waves, and you can't explain what happens inside a charging capacitor.
+
+\subsection*{2. Localized Mechanics}
+\textit{``What is happening at a point where the electric field is changing?''}
+
+Wherever the electric field is changing with time, a magnetic field is being created that curls around the direction of change. This is true even in empty space with no currents present. The changing electric field acts as a source of magnetic field, just as electric charges act as sources of electric field.
+
+\subsection*{3. Testing Extreme Limits}
+\textit{``What happens at extremely high frequencies?''}
+
+At optical frequencies, the displacement current dominates over conduction current in most materials. This is why light can propagate through dielectrics: the oscillating electric field creates an oscillating magnetic field, which creates an oscillating electric field, and so on. The wave propagates through the mutual regeneration of the two fields.
+
+\subsection*{4. Dimensionality and Geometry}
+\textit{``How does the law generalize to different dimensions?''}
+
+In any number of dimensions, the Ampere-Maxwell law relates the curl of $\mathbf{B}$ to the current and displacement current. The mathematical structure is the same, but the physical interpretation of ``curl'' depends on the dimensionality.
+
+\subsection*{5. Cross-Disciplinary Connection}
+\textit{``Where else does this structure appear?''}
+
+The coupling between two fields (here $\mathbf{E}$ and $\mathbf{B}$) through their time derivatives appears in wave equations throughout physics. The same mathematical structure describes sound waves, water waves, and quantum mechanical waves.
+
+\section*{FAQ}
+
+\textbf{Q: Why did Maxwell add the displacement current?}
+
+A: To make Ampere's law consistent with charge conservation. Without the displacement current, Ampere's law violated the continuity equation for time-varying fields.
+
+\textbf{Q: Is the displacement current a real current?}
+
+A: No, it's not a flow of charge. But it has the same effect as a current: it creates a magnetic field. The term ``current'' is used because of this equivalence.
+
+\textbf{Q: How does this law predict electromagnetic waves?}
+
+A: Combine Faraday's law and the Ampere-Maxwell law. A changing $\mathbf{B}$ creates $\mathbf{E}$, and a changing $\mathbf{E}$ creates $\mathbf{B}$. This mutual regeneration propagates as a wave at speed $c = 1/\sqrt{\mu_0 \varepsilon_0}$.
+
+\section*{Important Bibliography}
+
+\begin{enumerate}
+\item Griffiths, D.J., \textit{Introduction to Electrodynamics}, 4th ed. (Cambridge University Press, 2017), Chapter 7.
+\item Jackson, J.D., \textit{Classical Electrodynamics}, 3rd ed. (Wiley, 1999), Chapter 7.
+\item Feynman, R.P., Leighton, R.B., and Sands, M., \textit{The Feynman Lectures on Physics}, Vol. II (Addison-Wesley, 1964), Chapter 18.
+\item Maxwell, J.C., \textit{A Dynamical Theory of the Electromagnetic Field}, \textit{Philosophical Transactions} \textbf{155}, 459--512 (1865).
+\end{enumerate}

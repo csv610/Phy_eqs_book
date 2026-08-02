@@ -1,0 +1,149 @@
+\chapter{Bernoulli Equation}
+
+\section*{Introduction}
+
+The Bernoulli equation is the conservation-of-energy principle applied to a flowing fluid. Formulated by Daniel Bernoulli in 1738 in his masterwork \textit{Hydrodynamica}, it relates the pressure, velocity, and elevation of a fluid particle along a streamline: $P + \frac{1}{2}\rho v^2 + \rho gh = \text{const}$. This deceptively simple equation explains why airplanes fly, why chimneys draft, and why your shower curtain blows inward when the water is on. It is the most widely applied equation in fluid mechanics, and its implications pervade engineering, biology, and meteorology.
+
+Imagine a fluid particle flowing along a streamline in an ideal (inviscid, incompressible) fluid. As it moves, its energy takes three forms: pressure energy ($P$), kinetic energy ($\frac{1}{2}\rho v^2$), and gravitational potential energy ($\rho gh$). The Bernoulli equation says that the sum of these three energies per unit volume is constant along the streamline. If the fluid speeds up (kinetic energy increases), something else must decrease---either the pressure or the height. In a horizontal pipe that narrows (a constriction), the fluid speeds up and the pressure drops. This pressure drop is the Bernoulli effect, and it is the mechanism behind the Venturi meter, the atomizer on a perfume bottle, and the lift on an airplane wing.
+
+
+\begin{equation}
+P + \tfrac{1}{2}\rho v^2 + \rho gh = \text{const along a streamline}
+\end{equation}
+
+\section*{Fundamental Equations Used}
+
+The derivation starts from Newton's second law applied to a fluid element, giving the Euler equation for inviscid flow.
+
+\section*{Assumptions}
+
+\textbf{Assumptions:} The fluid is inviscid (no viscosity---no friction between fluid layers). The flow is steady (no time dependence). The fluid is incompressible ($\rho$ = const). The flow is along a streamline (the constant may differ between streamlines; in irrotational flow, the constant is the same for all streamlines). Body forces are conservative (gravity is the only body force).
+
+
+\textbf{Limitations:} Does not apply to viscous fluids (boundary layers, pipe friction require corrections or the full Navier--Stokes equations). Fails for unsteady flows (pulsating flow, water hammer). Breaks down for compressible flows at high Mach numbers ($v > 0.3c_{\text{sound}}$, where density changes are significant). Cannot be applied across a shock wave or through a region of separated flow (turbulence, vortices).
+
+
+\section*{Mathematical Derivation}
+
+\textbf{Step 1: Start from Newton's second law applied to a fluid element.}
+
+Consider a fluid element of mass $dm = \rho\,dV$ moving along a streamline. The forces acting on it are pressure forces (from the surrounding fluid) and gravity. In the inviscid limit (no viscosity), Newton's second law gives the Euler equation:
+\begin{equation}
+\rho\frac{D\mathbf{v}}{Dt} = -\nabla P + \rho\mathbf{g}
+\end{equation}
+where $D/Dt = \partial/\partial t + \mathbf{v}\cdot\nabla$ is the material derivative.
+
+\textbf{Step 2: Restrict to steady flow.}
+
+For steady flow ($\partial\mathbf{v}/\partial t = 0$), the Euler equation simplifies to:
+\begin{equation}
+\rho(\mathbf{v}\cdot\nabla)\mathbf{v} = -\nabla P + \rho\mathbf{g}
+\end{equation}
+
+\textbf{Step 3: Use the vector identity for the convective derivative.}
+
+The identity $(\mathbf{v}\cdot\nabla)\mathbf{v} = \nabla(\frac{1}{2}v^2) - \mathbf{v}\times(\nabla\times\mathbf{v})$ transforms the Euler equation into:
+\begin{equation}
+\rho\left[\nabla\left(\frac{1}{2}v^2\right) - \mathbf{v}\times(\nabla\times\mathbf{v})\right] = -\nabla P + \rho\mathbf{g}
+\end{equation}
+
+\textbf{Step 4: Integrate along a streamline.}
+
+Take the dot product with $d\mathbf{l}$ (an element along a streamline, parallel to $\mathbf{v}$). The term $\mathbf{v}\times(\nabla\times\mathbf{v})$ is perpendicular to $\mathbf{v}$, so its dot product with $d\mathbf{l}$ vanishes. Assuming gravity is conservative ($\mathbf{g} = -\nabla(gh)$ with $h$ the height):
+\begin{equation}
+\rho\,\nabla\left(\frac{1}{2}v^2\right)\cdot d\mathbf{l} = -\nabla P\cdot d\mathbf{l} - \rho\nabla(gh)\cdot d\mathbf{l}
+\end{equation}
+which integrates to:
+\begin{equation}
+\frac{1}{2}\rho v^2 + P + \rho gh = \text{const along a streamline}
+\end{equation}
+
+\textbf{Step 5: Identify the terms physically.}
+
+Rearranging:
+\begin{equation}
+P + \frac{1}{2}\rho v^2 + \rho gh = \text{const}
+\end{equation}
+The three terms are:
+\begin{itemize}
+\item $P$: static pressure (energy per unit volume from compression)
+\item $\frac{1}{2}\rho v^2$: dynamic pressure (kinetic energy per unit volume)
+\item $\rho gh$: hydrostatic pressure (gravitational potential energy per unit volume)
+\end{itemize}
+
+\textbf{Step 6: Verify with the Venturi effect.}
+
+For a horizontal pipe ($h_1 = h_2$) with cross-sections $A_1$ and $A_2$, the continuity equation $A_1 v_1 = A_2 v_2$ gives:
+\begin{equation}
+P_1 - P_2 = \frac{1}{2}\rho(v_2^2 - v_1^2) = \frac{1}{2}\rho v_1^2\left[\left(\frac{A_1}{A_2}\right)^2 - 1\right]
+\end{equation}
+If $A_2 < A_1$ (constriction), then $v_2 > v_1$ and $P_2 < P_1$: the pressure drops where the fluid speeds up. This is the Venturi effect, used in flow meters and atomizers.
+
+\textbf{Step 7: Derive Torricelli's theorem.}
+
+For a large open tank with a small hole at depth $h$ below the surface, apply Bernoulli between the surface (point 1) and the hole (point 2): $P_1 = P_2 = P_{\text{atm}}$, $v_1 \approx 0$ (large tank), $h_1 - h_2 = h$. Bernoulli gives:
+\begin{equation}
+P_{\text{atm}} + 0 + \rho gh = P_{\text{atm}} + \frac{1}{2}\rho v_2^2 + 0
+\end{equation}
+Solving for the efflux velocity:
+\begin{equation}
+v_2 = \sqrt{2gh}
+\end{equation}
+This is Torricelli's theorem: the speed of efflux equals the speed of a freely falling body dropped from height $h$.
+
+\section*{Characteristics of the Equation}
+
+The Bernoulli equation is a statement of energy conservation, not momentum conservation (Newton's second law applied to fluids gives Euler's equation, from which Bernoulli's equation is derived by integration along a streamline). The three terms have dimensions of pressure (energy per unit volume): $P$ is the static pressure, $\frac{1}{2}\rho v^2$ is the dynamic pressure, and $\rho gh$ is the hydrostatic pressure. The sum $P + \frac{1}{2}\rho v^2$ is the stagnation pressure (the pressure at a point where the fluid is brought to rest). The equation is exact for ideal fluids and an excellent approximation for many real flows where viscous effects are small (away from walls, outside boundary layers).
+\section*{Solution Methods}
+
+\textbf{Simple applications:} identify two points on the same streamline, write $P_1 + \frac{1}{2}\rho v_1^2 + \rho gh_1 = P_2 + \frac{1}{2}\rho v_2^2 + \rho gh_2$, and solve for the unknown. \textbf{Venturi effect:} for a pipe with cross-sections $A_1$ and $A_2$, use continuity ($A_1 v_1 = A_2 v_2$) with Bernoulli to find $P_1 - P_2 = \frac{1}{2}\rho(v_2^2 - v_1^2)$. \textbf{Torricelli's theorem:} for a hole at depth $h$ below the surface of a large tank, $v = \sqrt{2gh}$. \textbf{Pitot tube:} the stagnation pressure minus the static pressure gives the flow velocity: $v = \sqrt{2(P_0 - P)/\rho}$. \textbf{Combined with continuity:} for complex duct geometries, solve the system of Bernoulli equations (one per streamline) with the continuity equation.
+\section*{Verifications}
+
+The Bernoulli equation is verified experimentally in every fluid mechanics laboratory. The Venturi effect is demonstrated by measuring pressure drops in constricted pipes and confirming $P_1 - P_2 = \frac{1}{2}\rho(v_2^2 - v_1^2)$. Pitot-static tubes on wind tunnels and in flight measure stagnation and static pressures to compute airspeed, agreeing with Bernoulli to within the limits of the inviscid assumption. The equation's predictions for flow through orifices, over weirs, and in open channels have been confirmed to high precision in hydraulic engineering.
+\section*{Applications}
+
+Airplane lift (the Bernoulli effect contributes to pressure differences over curved wings), Pitot tubes (airspeed measurement in aircraft and ships), Venturi meters and orifice plates (flow rate measurement in pipes), atomizers and carburetors (air accelerated through a constriction creates low pressure that draws in liquid), chimney design (wind over the chimney top creates low pressure that draws air through the fireplace), blood flow measurement (Doppler ultrasound measures blood velocity, related to pressure via Bernoulli), and the design of nozzles, diffusers, and draft tubes in hydraulic engineering.
+\section*{What Richard Feynman Would Have Asked}
+
+\textit{``If the Bernoulli equation is just energy conservation, why do fluid dynamicists make such a big deal of it? Isn't it obvious?''}
+
+Feynman would appreciate the irony: it is obvious in hindsight, but the power of the Bernoulli equation lies in what it \emph{implies} for fluid behavior. Energy conservation applies to every system, but for fluids, the energy is carried by a continuous medium with complex internal dynamics. The Bernoulli equation distills this complexity into a single algebraic relation along a streamline, bypassing the need to solve the full Navier--Stokes equations. For an inviscid, steady, incompressible flow, it is exact---and the conditions are met surprisingly often in practice. The equation's power is that it converts a differential equation (Euler's equation) into an algebraic one, making rapid engineering calculations possible. Feynman would say: the equation is obvious; the fact that it is \emph{useful} is not.
+
+\textit{``What happens to Bernoulli's equation when the flow becomes turbulent?''}
+
+In turbulent flow, the fluid has random velocity fluctuations in addition to the mean flow. The Bernoulli equation does not directly apply to the instantaneous turbulent velocity field because the flow is no longer steady and the streamlines are chaotic. However, if you average over the turbulence (Reynolds averaging), you get a modified equation that includes the Reynolds stresses---additional effective pressures from the turbulent fluctuations. The mean-flow Bernoulli equation is then an approximation that works well away from boundaries (where turbulence is weak) but fails in boundary layers and wakes (where turbulence dominates). This is one of the central challenges of turbulence theory: the Reynolds-averaged equations have more unknowns than equations, requiring turbulence models (like the $k$-$\epsilon$ model) to close the system.
+
+\textit{``Can the Bernoulli equation explain why a spinning ball curves in flight (the Magnus effect)?''}
+
+Yes---and Feynman would trace the physics step by step. A spinning ball drags a thin layer of air around it (the boundary layer). On the side where the spin direction matches the airflow, the boundary layer is energized and stays attached longer; on the opposite side, it separates earlier. This asymmetry deflects the wake to one side, and by Newton's third law, the ball is pushed in the opposite direction. The Bernoulli explanation is complementary: the spinning surface drags air faster on one side, creating lower pressure there, and the pressure imbalance produces the lateral force. Both explanations are correct, but the Bernoulli version is more intuitive: faster air = lower pressure = the ball curves toward the fast side. This is why a curveball in baseball, a banana kick in soccer, and a sliced golf shot all curve in the direction of the spin.
+
+\textit{``If airspeed increases over a wing and pressure drops, why doesn't the air just slow down to equalize the pressure?''}
+
+Feynman would point out that the air \emph{does\ldots\ sort of}. The air accelerates over the wing because the wing's shape (and angle of attack) forces the streamlines to converge, increasing the velocity. The lower pressure is a \emph{consequence} of this acceleration, not a separate effect. The air cannot ``slow down to equalize the pressure'' because it has already been deflected by the wing's geometry; by the time it is over the wing, it is following a curved streamline, and the pressure gradient is what provides the centripetal force to keep it on that curve. The pressure and velocity are determined \emph{simultaneously} by the boundary conditions (the wing shape) and the equations of motion (Euler's equation). You cannot change one without changing the other---they are coupled, not independent.
+
+\textit{``What is the physical meaning of stagnation pressure?''}
+
+The stagnation pressure $P_0 = P + \frac{1}{2}\rho v^2$ is the pressure you would measure if you brought the fluid to rest isentropically (without friction or heat exchange). Imagine placing a small probe pointing directly into the flow: the fluid at the probe tip is brought to rest, and the pressure measured is the stagnation pressure. This is what a Pitot tube measures. The stagnation pressure is constant along a streamline in an inviscid flow (even if the static pressure and velocity vary), so it is a useful quantity for measuring flow velocity: measure $P_0$ with a Pitot tube and $P$ with a static pressure tap, and compute $v = \sqrt{2(P_0 - P)/\rho}$. In compressible flow, the stagnation pressure also depends on the Mach number and the temperature, making it a key variable in jet engine and rocket nozzle design.
+
+\bigskip
+\hrule
+\bigskip
+%=============================================================================
+\section*{FAQ}
+
+\textit{Q: How does Bernoulli's equation explain airplane lift?}
+A: An airplane wing (airfoil) is shaped so that air flows faster over the top surface than the bottom. By Bernoulli's equation, faster flow means lower pressure: $P_{\text{top}} + \frac{1}{2}\rho v_{\text{top}}^2 = P_{\text{bottom}} + \frac{1}{2}\rho v_{\text{bottom}}^2$. Since $v_{\text{top}} > v_{\text{bottom}}$, we get $P_{\text{top}} < P_{\text{bottom}}$, creating a net upward force. The full explanation also requires Newton's third law (the wing deflects air downward, and the reaction pushes the wing up) and the Kutta condition (which determines how much circulation the wing generates). Both explanations are correct and complementary.
+
+\textit{Q: Why does your shower curtain blow inward?}
+A: The showerhead creates a stream of fast-moving air (entrained by the water droplets). By Bernoulli's equation, this fast-moving air has lower pressure than the still air on the outside of the curtain. The pressure difference pushes the curtain inward toward the shower. The same effect causes two passing ships to be drawn together and why standing too close to a fast train is dangerous.
+
+\textit{Q: Is the Bernoulli equation the same as conservation of energy?}
+A: Yes---it \emph{is} conservation of energy, written in the specific context of an ideal fluid flowing along a streamline. The three terms are energy per unit volume: pressure energy, kinetic energy, and potential energy. You can derive it by applying the work-energy theorem to a fluid element moving along a streamline: the work done by pressure forces plus the work done by gravity equals the change in kinetic energy. The result, after dividing by the fluid element's volume, is the Bernoulli equation.
+\section*{Important Bibliography}
+\begin{enumerate}
+\item White, F.M., \textit{Fluid Mechanics}, 8th ed. (McGraw-Hill, 2016), Chapters 3--5.
+\item Feynman, R.P., Leighton, R.B., and Sands, M., \textit{The Feynman Lectures on Physics}, Vol. II (Pearson, 2011), Chapter 40.
+\item Bernoulli, D., \textit{Hydrodynamica} (Strasbourg, 1738); English translation by T. Carmody (Pergamon Press, 1968).
+\item Batchelor, G.K., \textit{An Introduction to Fluid Dynamics} (Cambridge University Press, 1967), Chapter 3.
+\end{enumerate}
+

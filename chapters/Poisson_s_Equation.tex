@@ -1,0 +1,157 @@
+\chapter{Poisson's Equation}
+
+\section*{Introduction}
+
+Poisson's equation is the workhorse of potential theory in physics. It relates a scalar potential $\phi$ to its source distribution: in electrostatics, the source is charge density $\rho$; in gravitation, it is mass density; in heat conduction, it is the heat source. Written as $\nabla^2\phi = -\rho/\epsilon_0$, it is the inhomogeneous version of Laplace's equation ($\nabla^2\phi = 0$), which describes source-free regions. Named after Siméon Denis Poisson, who published it in 1813, this equation appears in virtually every branch of physics and engineering where potentials are used.
+
+Poisson's equation says that the curvature of the potential at any point is proportional to the local source density. Where there is charge (positive $\rho$), the potential curves downward (in the convention where $\mathbf{E} = -\nabla\phi$ and positive charges create fields pointing outward). Where there is no charge ($\rho = 0$), the potential is harmonic (its value at any point is the average of its values on a surrounding sphere). The mathematical structure is identical to the heat equation in steady state: $\phi$ plays the role of temperature, and $\rho$ plays the role of a heat source. This analogy means that any technique for solving Poisson's equation in electrostatics can be applied to steady-state heat flow, and vice versa.
+
+
+\begin{equation}
+\nabla^2\phi = -\frac{\rho}{\epsilon_0}
+\end{equation}
+
+\section*{Fundamental Equations Used}
+
+The derivation starts from Gauss's law in differential form, $\nabla\cdot\mathbf{E} = \rho/\epsilon_0$.
+
+\section*{Assumptions}
+
+\textbf{Assumptions:} The potential $\phi$ is a well-defined scalar field (the region is simply connected, or the gauge is fixed). The charge density $\rho(\mathbf{r})$ is a known function. The medium is linear and isotropic with permittivity $\epsilon_0$ (in a dielectric, replace $\epsilon_0$ with $\epsilon$).
+
+
+\textbf{Limitations:} Does not include time-varying fields (for those, use the full wave equation $\nabla^2\phi - \mu_0\epsilon_0\,\partial^2\phi/\partial t^2 = -\rho/\epsilon_0$). In nonlinear media, $\epsilon$ depends on $\phi$ or $\mathbf{E}$, and the equation becomes nonlinear. Does not directly handle magnetic fields (those require the vector potential, $\nabla^2\mathbf{A} = -\mu_0\mathbf{J}$ in the Coulomb gauge).
+
+
+\section*{Mathematical Derivation}
+
+\textbf{Step 1: Start from Gauss's law in differential form.}
+
+Gauss's law for electrostatics relates the divergence of the electric field to the charge density:
+\begin{equation}
+\nabla\cdot\mathbf{E} = \frac{\rho}{\epsilon_0}
+\end{equation}
+This is one of Maxwell's equations and is the starting point for deriving Poisson's equation.
+
+\textbf{Step 2: Express the electric field in terms of a scalar potential.}
+
+In electrostatics, the electric field is conservative (its curl vanishes):
+\begin{equation}
+\nabla\times\mathbf{E} = 0
+\end{equation}
+This means $\mathbf{E}$ can be written as the gradient of a scalar potential:
+\begin{equation}
+\mathbf{E} = -\nabla\phi
+\end{equation}
+where the minus sign is the convention that $\phi$ decreases in the direction of $\mathbf{E}$.
+
+\textbf{Step 3: Substitute the potential into Gauss's law.}
+
+Replacing $\mathbf{E}$ in Gauss's law:
+\begin{equation}
+\nabla\cdot(-\nabla\phi) = \frac{\rho}{\epsilon_0}
+\end{equation}
+Since $\nabla\cdot(\nabla\phi) = \nabla^2\phi$ (the Laplacian), we obtain:
+\begin{equation}
+\nabla^2\phi = -\frac{\rho}{\epsilon_0}
+\end{equation}
+This is Poisson's equation: the Laplacian of the potential at any point is proportional to the local charge density.
+
+\textbf{Step 4: Construct the solution using Green's function.}
+
+The Green's function for the Laplacian in free space satisfies:
+\begin{equation}
+\nabla^2 G(\mathbf{r},\mathbf{r}') = -\delta^3(\mathbf{r} - \mathbf{r}')
+\end{equation}
+By the superposition principle, the solution to Poisson's equation is:
+\begin{equation}
+\phi(\mathbf{r}) = \int G(\mathbf{r},\mathbf{r}')\frac{\rho(\mathbf{r}')}{\epsilon_0}\,d^3r'
+\end{equation}
+
+\textbf{Step 5: Find the Green's function.}
+
+For an infinite, source-free region with boundary conditions at infinity, the Green's function depends only on $|\mathbf{r} - \mathbf{r}'|$ due to translational and rotational symmetry. For a point source at the origin, $\nabla^2 G = -\delta^3(\mathbf{r})$ and the solution must be spherically symmetric:
+\begin{equation}
+G(r) = \frac{1}{4\pi r}
+\end{equation}
+Verifying: for $r \neq 0$, $\nabla^2(1/r) = 0$ (Laplace's equation), and the delta function is recovered at the origin by the divergence theorem. The full Green's function is:
+\begin{equation}
+G(\mathbf{r},\mathbf{r}') = \frac{1}{4\pi|\mathbf{r} - \mathbf{r}'|}
+\end{equation}
+
+\textbf{Step 6: Write the integral solution (Coulomb's law).}
+
+Substituting the Green's function:
+\begin{equation}
+\phi(\mathbf{r}) = \frac{1}{4\pi\epsilon_0}\int\frac{\rho(\mathbf{r}')}{|\mathbf{r} - \mathbf{r}'|}\,d^3r'
+\end{equation}
+This is the Coulomb superposition principle: the potential at $\mathbf{r}$ is the sum of contributions from all charge elements $\rho(\mathbf{r}')\,d^3r'$, each contributing a $1/(4\pi\epsilon_0 r)$ potential.
+
+\textbf{Step 7: Verify with a point charge.}
+
+For a point charge $q$ at the origin, $\rho(\mathbf{r}) = q\,\delta^3(\mathbf{r})$. Substituting into the integral:
+\begin{equation}
+\phi(\mathbf{r}) = \frac{1}{4\pi\epsilon_0}\int\frac{q\,\delta^3(\mathbf{r}')}{|\mathbf{r} - \mathbf{r}'|}\,d^3r' = \frac{q}{4\pi\epsilon_0 r}
+\end{equation}
+This is the familiar Coulomb potential, confirming that Poisson's equation correctly reproduces the known result. The electric field is then $\mathbf{E} = -\nabla\phi = q\hat{\mathbf{r}}/(4\pi\epsilon_0 r^2)$, as expected.
+
+\textbf{Step 8: Uniqueness theorem.}
+
+If $\phi_1$ and $\phi_2$ both satisfy $\nabla^2\phi = -\rho/\epsilon_0$ with the same boundary conditions, then $\psi = \phi_1 - \phi_2$ satisfies $\nabla^2\psi = 0$ (Laplace's equation). By the maximum principle for harmonic functions, $\psi$ must be constant on any closed boundary, and if the boundary condition fixes $\psi = 0$ at infinity, then $\psi = 0$ everywhere. Therefore $\phi_1 = \phi_2$---the solution is unique. This justifies the use of any method (including image charges, guessing, or numerical computation) to find the solution.
+
+\section*{Characteristics of the Equation}
+
+Poisson's equation is a second-order linear partial differential equation of elliptic type. It satisfies the superposition principle: if $\phi_1$ solves $\nabla^2\phi_1 = -\rho_1/\epsilon_0$ and $\phi_2$ solves $\nabla^2\phi_2 = -\rho_2/\epsilon_0$, then $\phi_1 + \phi_2$ solves $\nabla^2\phi = -(\rho_1 + \rho_2)/\epsilon_0$. The Green's function for the Laplacian in free space is $G(\mathbf{r}, \mathbf{r}') = -1/(4\pi|\mathbf{r} - \mathbf{r}'|)$, which gives the integral solution $\phi(\mathbf{r}) = \frac{1}{4\pi\epsilon_0}\int\frac{\rho(\mathbf{r}')}{|\mathbf{r} - \mathbf{r}'|}\,d^3r'$---this is just the Coulomb superposition principle.
+\section*{Solution Methods}
+
+\textbf{Separation of variables:} in Cartesian, cylindrical, or spherical coordinates, when the boundary surfaces match a coordinate system. \textbf{Green's function method:} construct the Green's function for the given boundary conditions and integrate over the source. \textbf{Image charges:} for point charges near conducting planes or spheres, replace the boundary with equivalent image charges. \textbf{Numerical methods:} finite difference, finite element, or boundary element methods discretize the domain and solve the resulting linear system. \textbf{Relaxation methods:} iteratively update a trial solution on a grid until convergence (Gauss--Seidel, successive over-relaxation). \textbf{Multipole expansion:} for localized charge distributions, expand $\phi$ in powers of $1/r$ (monopole, dipole, quadrupole terms).
+\section*{Verifications}
+
+Poisson's equation can be verified by checking that the potential from a known solution satisfies both the equation and the boundary conditions. For a point charge, $\phi = q/(4\pi\epsilon_0 r)$ satisfies $\nabla^2\phi = -q\delta^3(\mathbf{r})/\epsilon_0$. For a uniformly charged sphere of radius $R$ and total charge $Q$: inside, $\phi(r) = \frac{Q}{8\pi\epsilon_0 R}\left(3 - \frac{r^2}{R^2}\right)$, which satisfies $\nabla^2\phi = -\rho/\epsilon_0$ with $\rho = 3Q/(4\pi R^3)$; outside, $\phi(r) = Q/(4\pi\epsilon_0 r)$, which satisfies $\nabla^2\phi = 0$. Numerical solutions are verified by checking convergence under grid refinement and comparing with analytical solutions where available.
+\section*{Applications}
+
+Electrostatics (computing the electric potential and field from known charge distributions on conductors and dielectrics), gravitational potential theory (computing the gravitational field of mass distributions, including planets, stars, and dark matter halos), semiconductor device modeling (Poisson's equation determines the electrostatic potential in junctions and transistors, self-consistently with the charge distribution), groundwater flow (the hydraulic head satisfies a Poisson-type equation with source terms from wells), and heat conduction in steady state (temperature distribution with internal heat sources).
+\section*{What Richard Feynman Would Have Asked}
+
+\textit{``Poisson's equation looks like it says the potential is the average of its neighbors plus a source term. Why should this be true?''}
+
+Feynman would point you to the mean value property of harmonic functions: for Laplace's equation ($\nabla^2\phi = 0$), the value of $\phi$ at any point equals the average of $\phi$ over any sphere centered on that point. This is because the Laplacian measures the ``excess'' of $\phi$ at a point relative to its neighbors: $\nabla^2\phi > 0$ means $\phi$ is less than the average of its neighbors (a valley), and $\nabla^2\phi < 0$ means $\phi$ is greater (a hill). Poisson's equation says this excess is proportional to the source density: where there is positive charge, the potential is lower than the average of its surroundings (because the field points away from positive charge, creating a potential well). The equation $\nabla^2\phi = -\rho/\epsilon_0$ is, at its core, a statement about local averaging: the potential at a point is determined by its values in the neighborhood, modified by the local source strength.
+
+\textit{``Is there a deep reason why the gravitational potential satisfies the same equation as the electric potential?''}
+
+Yes---and Feynman would insist on making it explicit. Both gravity and electrostatics are mediated by massless particles (gravitons, photons) in three spatial dimensions, leading to $1/r$ potentials and $1/r^2$ forces. The mathematical structure of the field theory is identical: a scalar potential satisfying a Poisson equation with the appropriate source (mass density for gravity, charge density for electricity). The key difference is that gravity is always attractive (positive mass always produces a potential well), while electrostatics has both signs (positive and negative charges). In general relativity, the gravitational potential equation is modified by nonlinear terms (the Einstein field equations), but in the weak-field limit, it reduces exactly to Poisson's equation with $\rho$ replaced by the mass-energy density $T^{00}$.
+
+\textit{``What is the image charge method, and why does it work?''}
+
+When a point charge $q$ sits near an infinite grounded conducting plane, the plane develops an induced surface charge that modifies the potential. The image method replaces the plane with an ``image charge'' $-q$ at the mirror-image position, on the other side of where the plane was. The resulting potential from the two charges satisfies Laplace's equation everywhere (except at the charge positions) and automatically satisfies the boundary condition $\phi = 0$ on the plane (because the potentials from $q$ and $-q$ cancel at the midpoint). By the uniqueness theorem, this must be the correct answer. Feynman would emphasize: the image charge is not ``real''---it is a mathematical trick that produces the correct potential in the region of interest. The actual physical situation has surface charges on the conductor, not a mirror charge in empty space. But the mathematics doesn't care about the physical interpretation; it only cares that the boundary conditions are satisfied.
+
+\textit{``How does Poisson's equation in semiconductor physics determine the behavior of a transistor?''}
+
+In a semiconductor, the charge density $\rho$ depends on the local concentrations of electrons and holes, which in turn depend on the potential $\phi$ through the Boltzmann (or Fermi--Dirac) statistics. So Poisson's equation is coupled to the charge transport equations: the potential determines the charge distribution, which determines the potential. This self-consistent problem is solved iteratively: guess $\phi$, compute $\rho(\phi)$, solve Poisson's equation for a new $\phi$, repeat until convergence. The result is the band bending at a junction: the potential varies across a $p$-$n$ junction to create a depletion region, a built-in voltage, and the exponential current--voltage characteristic that makes diodes and transistors work. Every semiconductor device simulation (for computer chips, solar cells, LEDs) starts with Poisson's equation.
+
+\textit{``Could Poisson's equation be used to find the potential inside a black hole?''}
+
+Feynman would enjoy the provocation of this question. Inside a black hole's event horizon, the metric of spacetime is so strongly curved that the Newtonian potential approximation completely breaks down. Poisson's equation is a Newtonian (weak-field) result; to describe the interior of a black hole, you need the full Einstein field equations, which are nonlinear and far more complex. However, \emph{outside} the event horizon, in the weak-field limit, the gravitational potential does satisfy Poisson's equation. The Schwarzschild solution for a non-rotating black hole gives $\phi = -GM/(rc^2)$ in the weak-field limit, which satisfies $\nabla^2\phi = 4\pi G\rho$ with a point-source $\rho = M\delta^3(\mathbf{r})$. The interior of a black hole is one of the great unsolved problems of physics, where quantum gravity---not Poisson's equation---is expected to be necessary.
+
+\bigskip
+\hrule
+\bigskip
+%=============================================================================
+\section*{FAQ}
+
+\textit{Q: What is the difference between Poisson's equation and Laplace's equation?}
+A: Laplace's equation ($\nabla^2\phi = 0$) is the special case of Poisson's equation when there is no source ($\rho = 0$). Laplace's equation governs the potential in source-free regions (the interior of a charge-free cavity, for example). Poisson's equation includes the source term and governs regions where charges or masses are present. The mathematical techniques (separation of variables, Green's functions, etc.) are the same for both; Poisson's equation just has an extra inhomogeneous term.
+
+\textit{Q: Why is the uniqueness theorem important?}
+A: The uniqueness theorem guarantees that if you find \emph{any} solution to Poisson's equation that satisfies the boundary conditions, it is \emph{the} solution---there are no others. This means you can use any method you like (guessing, symmetry arguments, numerical computation) to find the solution, and you don't have to worry about whether your method found ``all'' solutions. It also justifies the method of image charges: even though the image charge is unphysical, the resulting potential satisfies both Poisson's equation and the boundary conditions, so it must be the correct answer.
+
+\textit{Q: Can Poisson's equation be solved analytically for arbitrary charge distributions?}
+A: No---only for special geometries with high symmetry (spherical, cylindrical, planar) or separable boundaries. For arbitrary $\rho(\mathbf{r})$, the integral solution $\phi(\mathbf{r}) = \frac{1}{4\pi\epsilon_0}\int\frac{\rho(\mathbf{r}')}{|\mathbf{r}-\mathbf{r}'|}\,d^3r'$ is exact but often intractable analytically. Numerical methods (finite element, boundary element) are the standard approach for complex geometries. The multipole expansion provides an approximate solution at large distances from a localized source.
+\section*{Important Bibliography}
+\begin{enumerate}
+\item Griffiths, D.J., \textit{Introduction to Electrodynamics}, 4th ed. (Cambridge University Press, 2017), Chapter 3.
+\item Jackson, J.D., \textit{Classical Electrodynamics}, 3rd ed. (Wiley, 1999), Chapter 1.
+\item Arfken, G.B. and Weber, H.J., \textit{Mathematical Methods for Physicists}, 7th ed. (Academic Press, 2013), Chapter 16.
+\item Smythe, W.R., \textit{Static and Dynamic Electricity}, 3rd ed. (McGraw-Hill, 1968), Chapters 1--4.
+\end{enumerate}
+

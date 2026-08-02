@@ -1,0 +1,143 @@
+\chapter{Fermi--Dirac Distribution}
+
+\section*{Introduction}
+
+At absolute zero, fermions fill energy states from the bottom up, one per state, like water filling a container layer by layer. The highest occupied energy level at $T = 0$ is the Fermi energy $E_F$. As temperature increases, some fermions are thermally excited above $E_F$, leaving holes below. The probability that a state at energy $E$ is occupied is $\langle n \rangle = 1/(e^{(E-\mu)/kT} + 1)$, where $\mu$ is the chemical potential (approximately $E_F$ at low temperatures) and $k$ is Boltzmann's constant. The $+1$ in the denominator (as opposed to $-1$ for bosons) is the mathematical signature of the Pauli exclusion principle. At high temperatures ($kT \gg E_F$), the distribution reduces to the classical Maxwell--Boltzmann distribution: quantum statistics become irrelevant when particles are far apart and rarely try to occupy the same state.
+
+
+\[
+\langle n \rangle = \frac{1}{e^{(E-\mu)/kT}+1}
+\]
+
+\section*{Fundamental Equations Used}
+
+The derivation starts from the grand canonical partition function for a single quantum state, with the Pauli exclusion principle restricting occupation numbers to 0 or 1.
+
+\section*{Assumptions}
+
+\textbf{Assumptions:} The system is in thermal equilibrium with a heat bath at temperature $T$. The fermions are non-interacting (or interactions are captured by an effective mass). The particles are indistinguishable and obey Ferm--Dirac statistics (half-integer spin). The density of states is well-defined.
+
+
+\textbf{Limitations:} Does not account for interactions between fermions beyond mean-field approximations (need Hartree--Fock or density functional theory for correlated systems). Breaks down for strongly correlated systems (high-$T_c$ superconductors, Mott insulators). Assumes equilibrium---non-equilibrium distributions require the Boltzmann transport equation or Keldysh formalism.
+
+
+\section*{Mathematical Derivation}
+
+\textbf{Step 1: Statistical mechanics setup.}
+
+Consider a system of $N$ non-interacting, indistinguishable fermions (half-integer spin) in thermal equilibrium with a heat bath at temperature $T$ and chemical potential $\mu$. The grand canonical ensemble is the natural framework because particle number can fluctuate. The grand partition function for a single quantum state of energy $E$ is
+\begin{align}
+\mathcal{Z}_1 &= \sum_{n=0}^{1} e^{-\beta(E - \mu)n} = 1 + e^{-\beta(E-\mu)},
+\end{align}
+where $\beta = 1/(k_B T)$ and the sum runs over $n = 0$ (empty) or $n = 1$ (occupied). The restriction to $n = 0, 1$ is the Pauli exclusion principle: no two fermions can occupy the same quantum state.
+
+\textbf{Step 2: Grand potential and average occupation.}
+
+The grand potential for this single state is $\Omega_1 = -k_B T \ln \mathcal{Z}_1$. The average number of particles in the state is
+\begin{align}
+\langle n \rangle &= -\frac{\partial \Omega_1}{\partial \mu} = \frac{1}{\beta}\frac{\partial}{\partial \mu}\ln\mathcal{Z}_1 = \frac{e^{-\beta(E-\mu)}}{1 + e^{-\beta(E-\mu)}}.
+\end{align}
+Multiplying numerator and denominator by $e^{\beta(E-\mu)}$, we obtain
+\begin{align}
+\langle n \rangle &= \frac{1}{e^{\beta(E-\mu)} + 1} = \frac{1}{e^{(E-\mu)/k_BT} + 1}.
+\end{align}
+This is the Fermi--Dirac distribution.
+
+\textbf{Step 3: Alternative derivation from combinatorics.}
+
+Alternatively, consider $g$ degenerate states at energy $E$ and $n$ fermions to be distributed among them. Because of the exclusion principle, each state holds at most one fermion. The number of ways to choose $n$ occupied states out of $g$ is
+\begin{align}
+W = \binom{g}{n} = \frac{g!}{n!\,(g-n)!}.
+\end{align}
+The entropy is $S = k_B \ln W$. Using Stirling's approximation $\ln N! \approx N\ln N - N$,
+\begin{align}
+S \approx k_B\bigl[g\ln g - n\ln n - (g-n)\ln(g-n)\bigr].
+\end{align}
+Maximizing $S$ subject to fixed total energy $E_{\text{tot}} = \sum_j n_j E_j$ and fixed particle number $N = \sum_j n_j$ using Lagrange multipliers gives
+\begin{align}
+\frac{\partial}{\partial n_j}\bigl[S - \alpha N - \beta E_{\text{tot}}\bigr] = 0 \implies k_B\ln\frac{g_j - n_j}{n_j} - \alpha - \beta E_j = 0,
+\end{align}
+which yields $n_j = g_j/(\exp[\alpha + \beta E_j] + 1)$. Identifying $e^\alpha = e^{-\mu/k_BT}$ recovers the Fermi--Dirac distribution.
+
+\textbf{Step 4: Limiting cases and physical interpretation.}
+
+At $T = 0$, the distribution becomes a step function:
+\begin{align}
+\langle n \rangle = \begin{cases} 1, & E < \mu = E_F, \\ 0, & E > E_F. \end{cases}
+\end{align}
+The Fermi energy $E_F \equiv \mu(T=0)$ is the highest occupied energy. At high temperatures ($k_BT \gg E - \mu$ with $E > \mu$), the $+1$ in the denominator is negligible and $\langle n \rangle \approx e^{-(E-\mu)/k_BT}$, recovering the Maxwell--Boltzmann distribution. At $E = \mu$ exactly, $\langle n \rangle = 1/2$ for all $T$---a universal property of Fermi--Dirac statistics.
+
+\section*{Characteristics of the Equation}
+
+The Fermi--Dirac distribution has several key features. At $E = \mu$, the occupation probability is exactly $1/2$, regardless of temperature. The distribution function is a sigmoid centered at $\mu$. For $E \ll \mu$, $\langle n \rangle \approx 1$ (states are fully occupied); for $E \gg \mu$, $\langle n \rangle \approx e^{-(E-\mu)/kT}$ (Boltzmann tail). The width of the transition region (from $\approx 1$ to $\approx 0$) is approximately $4kT$. At $T = 0$, the distribution is a step function: all states below $E_F$ are occupied, all above are empty. This sharp Fermi surface is responsible for many of the distinctive properties of metals.
+\section*{Solution Methods}
+
+\textbf{Analytical approximations:} At low $T$, the Sommerfeld expansion gives thermodynamic quantities as power series in $T/T_F$. At high $T$, expand the exponential to recover Maxwell--Boltzmann statistics. \textbf{Numerical integration:} For arbitrary $T$ and $\mu$, compute the density of states numerically and integrate $\int g(E)\langle n(E)\rangle\,dE$ to find $\mu$. \textbf{Self-consistent methods:} In interacting systems, solve the Hartree--Fock or DFT equations iteratively until the electron density and potential are mutually consistent. \textbf{Green's function methods:} For strongly correlated systems, use the Matsubara formalism (imaginary time) or the Keldysh formalism (real time) to compute the full spectral function.
+\section*{Verifications}
+
+Check the high-temperature limit: for $kT \gg E - \mu$ with $E - \mu > 0$, the distribution reduces to $e^{-(E-\mu)/kT}$ (Maxwell--Boltzmann). Check $T = 0$: the distribution is a step function with $\langle n \rangle = 1$ for $E < \mu$ and $\langle n \rangle = 0$ for $E > \mu$. Verify that at $E = \mu$, $\langle n \rangle = 1/2$ for all $T$. Check the sum rule: for a single state, $\langle n \rangle + \langle n_{\text{hole}} \rangle = 1$ (particle-hole symmetry). Confirm that the Sommerfeld expansion reproduces the electronic heat capacity $C_V = \frac{\pi^2}{2}Nk_B(T/T_F)$ for a free electron gas.
+\section*{Applications}
+
+The Fermi--Dirac distribution is central to solid-state physics. It explains the electronic heat capacity of metals (only electrons near $E_F$ can absorb thermal energy, so $C_V \propto T$, not the classical $3Nk/2$). It determines the Fermi energy and Fermi velocity of conduction electrons, which control electrical and thermal conductivity. In semiconductor physics, the distribution determines carrier concentrations in the conduction and valence bands, and thus the behavior of transistors, diodes, and solar cells. In astrophysics, it describes the electron gas in white dwarfs, where electron degeneracy pressure supports the star against gravitational collapse. It also underlies the theory of neutron stars (with neutrons as the fermions).
+\section*{What Richard Feynman Would Have Asked}
+
+\subsection*{1. Plain-English Translation}
+\textit{``What is this equation really telling me about the behavior of electrons in a metal?''}
+
+Fermions are antisocial particles. The $+1$ in the denominator is the mathematical expression of a strict social rule: no two electrons can be in the exact same quantum state. At low temperatures, electrons fill up energy levels from the bottom like a crowded theater---every seat gets taken one by one. The Fermi energy is the energy of the last seat filled. If you heat the metal, only the electrons near the top of the crowd can jump to higher seats; those deep in the middle are boxed in by their neighbors and cannot move.
+
+This is why metals conduct heat poorly compared to what classical physics predicts. Classical physics says every electron should carry $\frac{3}{2}kT$ of thermal energy. But the Fermi--Dirac distribution says only a fraction $\sim T/T_F$ of electrons (those near the Fermi surface) can participate. Since $T_F$ is typically $10{,}000$ K and room temperature is $300$ K, only about $3\%$ of electrons contribute to heat capacity---explaining why the measured electronic heat capacity is far smaller than the classical prediction.
+
+\subsection*{2. Localized Mechanics}
+\textit{``If I focus on a single electron near the Fermi surface, what determines whether it can participate in conduction?''}
+
+An electron deep below the Fermi energy is surrounded by occupied states on all sides. To move---to conduct electricity or carry heat---it must jump to an empty state, but there are none available at nearby energies. Only electrons within about $kT$ of the Fermi energy have empty states available at similar energies. These are the only electrons that matter for transport, heat capacity, and most physical properties of metals. This is the ``active fraction'' of the electron gas.
+
+The chemical potential sets the reference level. An electron at energy $E$ has an activation energy of $E - \mu$ to escape the metal (this is the work function). At the Fermi surface ($E = \mu$), the occupation is exactly one-half: the electron is equally likely to be found in the state as not. This half-occupation is a universal feature, independent of temperature, material, or dimensionality.
+
+\subsection*{3. Testing Extreme Limits}
+\textit{``What happens at extreme temperatures, densities, or when the Pauli principle is pushed to its limits?''}
+
+The Ultra-Dense Limit: In white dwarf stars, electrons are compressed to such high densities that $E_F$ reaches millions of electron volts. The degeneracy pressure---the resistance of electrons to being squeezed into already-occupied states---supports the star against gravity. If the mass exceeds the Chandrasekhar limit ($\sim 1.4 M_\odot$), electron degeneracy pressure fails and the star collapses. The Fermi--Dirac distribution is literally the physics that determines stellar structure.
+
+The High-Temperature Limit: As $T \to \infty$, the exponential $e^{(E-\mu)/kT}$ becomes very large for all $E > \mu$, and the $+1$ becomes negligible. The distribution reduces to the Maxwell--Boltzmann distribution. This is why classical physics works at high temperatures: thermal energy overwhelms the exclusion principle, and the particles become effectively distinguishable.
+
+The Zero-Temperature Limit: At $T = 0$, the distribution is a perfect step function. The Fermi surface is infinitely sharp. All properties become determined entirely by the density of states at $E_F$---a profound simplification that makes the low-temperature physics of metals remarkably universal.
+
+\subsection*{4. Dimensionality and Geometry}
+\textit{``Does the Fermi--Dirac distribution depend on whether the electrons live in 2D or 3D?''}
+
+The distribution function itself---the probability of occupying a state at energy $E$---is universal and independent of dimensionality. What changes is the density of states $g(E)$, which determines how many states are available at each energy. In 3D, $g(E) \propto \sqrt{E}$ for free electrons. In 2D (as in a semiconductor quantum well or graphene), $g(E)$ is constant. In 1D (a quantum wire), $g(E) \propto 1/\sqrt{E}$. These different density-of-states shapes lead to very different physical properties even though the Fermi--Dirac distribution is the same.
+
+In graphene, the density of states vanishes linearly at the Fermi level (Dirac cone), leading to exotic transport properties. In topological insulators, the surface states have a linear dispersion and a density of states that reflects their topological protection. The interplay between the Fermi--Dirac distribution and the density of states is the key to understanding condensed matter physics.
+
+\subsection*{5. Cross-Disciplinary Connection}
+\textit{``You learned this for electrons, but where else does this exact same statistical principle apply?''}
+
+The Fermi--Dirac statistics apply to any system of indistinguishable half-integer-spin particles. Neutrons in a neutron star obey the same distribution, and neutron degeneracy pressure supports neutron stars. Protons in atomic nuclei follow Fermi--Dirac statistics, which explains the nuclear shell model and why certain ``magic numbers'' of protons and neutrons produce especially stable nuclei.
+
+Beyond physics, the mathematical structure---a Fermi function describing occupation of states subject to an exclusion principle---appears in information theory (source coding with constraints), in queueing theory (where servers have limited capacity), and even in ecology (where species compete for finite niches and exclusion principles govern community structure). The deep principle is that any system where entities cannot double up on the same resource will exhibit Fermi-like statistics.
+
+%=============================================================
+\section*{FAQ}
+
+\textbf{Q: What is the chemical potential $\mu$ physically?}
+
+A: The chemical potential is the energy required to add one more particle to the system. For a metal at $T = 0$, $\mu = E_F$: the Fermi energy. At finite temperature, $\mu$ shifts slightly (it decreases with increasing temperature for a free electron gas). It is the thermodynamic variable conjugate to particle number.
+
+\textbf{Q: Why does the Pauli exclusion principle apply only to fermions?}
+
+A: The exclusion principle is a consequence of the antisymmetry of the many-body wave function under particle exchange. Fermions have antisymmetric wave functions (they pick up a minus sign when two particles are swapped), which forces them into distinct states. Bosons have symmetric wave functions and prefer to cluster in the same state.
+
+\textbf{Q: How does this apply to real materials with interactions?}
+
+A: In real materials, electron-electron interactions modify the single-particle picture. The quasiparticle concept (Landau) preserves the Fermi--Dirac distribution but replaces bare electrons with quasiparticles with renormalized masses. In strongly correlated systems, the quasiparticle picture can break down entirely.
+\section*{Important Bibliography}
+
+\begin{enumerate}
+\item Pathria, R.K. and Beale, P.D., \textit{Statistical Mechanics}, 4th ed. (Academic Press, 2022), Chapter 8.
+\item Kittel, C. and Kroemer, H., \textit{Thermal Physics}, 2nd ed. (W.H.\ Freeman, 1980), Chapter 7.
+\item Ashcroft, N.W. and Mermin, N.D., \textit{Solid State Physics} (Harcourt, 1976), Chapter 2.
+\item Fermi, E., ``Zur Quantelung des idealen einatomigen Gases,'' \textit{Zeitschrift f\"ur Physik} \textbf{36}, 684--694 (1926).
+\end{enumerate}
+

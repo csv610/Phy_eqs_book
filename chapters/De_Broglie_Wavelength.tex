@@ -1,0 +1,161 @@
+\chapter{De Broglie Wavelength}
+
+\section*{Introduction}
+
+In 1924, Louis de Broglie proposed one of the most audacious ideas in the history of physics: every particle of matter, not just light, has wave properties. A baseball, an electron, a cloud of hydrogen gas---all of them have an associated wavelength inversely proportional to their momentum. This hypothesis, which earned de Broglie his doctorate and later the Nobel Prize, unified the wave-particle duality that had been creeping into physics since Einstein's explanation of the photoelectric effect in 1905. De Broglie's insight was the seed from which Schrödinger grew his wave mechanics, and it remains one of the most experimentally confirmed predictions in all of quantum theory.
+
+When you throw a baseball, the associated de Broglie wavelength is unimaginably small---on the order of $10^{-34}\,\text{m}$---so the wave nature is undetectable and the ball follows a classical trajectory. But when an electron moves through a crystal lattice with spacing comparable to its de Broglie wavelength, the wave nature becomes dominant: the electron diffracts, interferes, and behaves exactly like a wave passing through a grating. The de Broglie wavelength is the bridge between the quantum and classical worlds. It tells you when you need quantum mechanics (when $\lambda$ is comparable to the system's characteristic length) and when you can safely ignore it (when $\lambda$ is negligibly small).
+
+
+\begin{equation}
+\lambda = \frac{h}{p} = \frac{h}{mv}
+\end{equation}
+
+\section*{Fundamental Equations Used}
+
+The derivation starts from Einstein's photon energy--frequency relation $E = h\nu$ combined with $E = pc$ for massless particles.
+
+\section*{Assumptions}
+
+\textbf{Assumptions:} The particle is free (or approximately free) with a well-defined momentum $p$. The relationship is exact for a plane wave (infinite extent, perfectly defined momentum). For localized wave packets, the wavelength refers to the central wavelength of the momentum distribution.
+
+
+\textbf{Limitations:} Does not apply directly to composite objects in practice (a tennis ball has $\lambda \sim 10^{-34}\,\text{m}$, far too small to observe). For relativistic particles, use $p = \gamma mv$ or $E = pc$ for massless particles. The de Broglie relation is a single-particle statement; many-body effects (interactions, entanglement) require the full many-body wave function.
+
+
+\section*{Mathematical Derivation}
+
+\textbf{Step 1: Start from Einstein's energy--frequency relation for photons.}
+
+Einstein showed that the energy of a photon is proportional to its frequency:
+\begin{equation}
+E = h\nu = \hbar\omega
+\end{equation}
+where $h$ is Planck's constant and $\omega = 2\pi\nu$ is the angular frequency. For a photon (massless particle), the energy--momentum relation is:
+\begin{equation}
+E = pc
+\end{equation}
+
+\textbf{Step 2: Combine the two relations to find the photon wavelength.}
+
+Equating the two expressions for energy:
+\begin{equation}
+pc = h\nu = \frac{hc}{\lambda}
+\end{equation}
+Therefore the photon wavelength is:
+\begin{equation}
+\lambda = \frac{h}{p}
+\end{equation}
+
+\textbf{Step 3: De Broglie's bold hypothesis---extend to massive particles.}
+
+De Broglie proposed in 1924 that the relation $\lambda = h/p$ is universal, applying to all matter, not just light. For a massive particle of mass $m$ and velocity $v$:
+\begin{equation}
+\lambda = \frac{h}{p} = \frac{h}{mv}
+\end{equation}
+This is the de Broglie wavelength. The reasoning is symmetry: if waves (photons) behave as particles with momentum $p = h/\lambda$, then particles should behave as waves with wavelength $\lambda = h/p$.
+
+\textbf{Step 4: Relate to the phase of the matter wave.}
+
+The matter wave associated with a particle of momentum $p$ is a plane wave:
+\begin{equation}
+\Psi(\mathbf{r},t) = Ae^{i(\mathbf{k}\cdot\mathbf{r} - \omega t)}
+\end{equation}
+where the wave vector $\mathbf{k}$ and angular frequency $\omega$ are related to momentum and energy by:
+\begin{equation}
+\mathbf{p} = \hbar\mathbf{k}, \qquad E = \hbar\omega
+\end{equation}
+These are the de Broglie relations in their most general form. The wavelength is:
+\begin{equation}
+\lambda = \frac{2\pi}{k} = \frac{2\pi\hbar}{p} = \frac{h}{p}
+\end{equation}
+
+\textbf{Step 5: Verify with the Schrödinger equation.}
+
+The time-independent Schrödinger equation for a free particle with energy $E = p^2/(2m)$ is:
+\begin{equation}
+-\frac{\hbar^2}{2m}\nabla^2\Psi = E\Psi
+\end{equation}
+Substituting the plane wave $\Psi = Ae^{i\mathbf{k}\cdot\mathbf{r}}$:
+\begin{equation}
+\frac{\hbar^2 k^2}{2m} = E = \frac{p^2}{2m}
+\end{equation}
+This gives $p = \hbar k$, or equivalently $\lambda = h/p$, confirming the de Broglie relation as a direct consequence of the Schrödinger equation.
+
+\textbf{Step 6: Apply to non-relativistic particles with kinetic energy.}
+
+For a particle of mass $m$ accelerated through potential $V$ (charge $q$):
+\begin{equation}
+\frac{1}{2}mv^2 = qV \implies p = mv = \sqrt{2mqV}
+\end{equation}
+The de Broglie wavelength is:
+\begin{equation}
+\lambda = \frac{h}{\sqrt{2mqV}}
+\end{equation}
+For electrons accelerated through $V = 100\,\text{V}$: $\lambda \approx 0.12\,\text{nm}$, comparable to X-ray wavelengths and atomic spacings.
+
+\textbf{Step 7: Bohr quantization from de Broglie standing waves.}
+
+In the Bohr model, an electron in a circular orbit of radius $r$ must form a standing wave: the circumference must contain an integer number of wavelengths:
+\begin{equation}
+2\pi r = n\lambda = \frac{nh}{p} = \frac{nh}{mv}
+\end{equation}
+This gives $L = mvr = n\hbar$, which is exactly the Bohr quantization condition. De Broglie's hypothesis thus provides the physical justification for what was previously an ad hoc postulate.
+
+\section*{Characteristics of the Equation}
+
+The de Broglie wavelength is inversely proportional to momentum: faster particles have shorter wavelengths. This is why the wave nature of matter is only observable for light particles (electrons, neutrons, atoms) at accessible speeds, and for heavy particles only at absurdly low temperatures (ultracold neutrons, Bose--Einstein condensates). The wavelength of a thermal neutron at room temperature is about $0.18\,\text{nm}$---comparable to atomic spacings in crystals---which is why neutron diffraction is a powerful tool in materials science. An electron accelerated through 100 V has $\lambda \approx 0.12\,\text{nm}$, comparable to X-ray wavelengths and atomic lattice spacings.
+\section*{Solution Methods}
+
+The de Broglie relation itself is straightforward to apply: compute the particle's momentum from its kinetic energy or velocity, then invert to get $\lambda$. For a non-relativistic particle of mass $m$ accelerated through potential $V$: $p = \sqrt{2mVq}$, so $\lambda = h/\sqrt{2mqV}$. For a free particle with kinetic energy $K$: $\lambda = h/\sqrt{2mK}$. For a photon (massless): $\lambda = hc/E$. The power of the de Broglie relation becomes apparent when combined with Bragg's law ($2d\sin\theta = n\lambda$) for diffraction from crystal planes: it predicts the angles at which electrons, neutrons, or atoms will be diffracted by a crystal, allowing you to determine crystal structures from diffraction patterns.
+\section*{Verifications}
+
+The de Broglie hypothesis was confirmed experimentally by Davisson and Germer in 1927, who observed diffraction patterns when electrons were scattered from a nickel crystal, with angles matching the de Broglie wavelength prediction. Independently, G.P. Thomson (son of J.J. Thomson, who discovered the electron) observed electron diffraction through thin gold foils, obtaining ring patterns identical to those produced by X-rays. The agreement between the predicted $\lambda = h/p$ and the observed diffraction angles was exact. Today, electron diffraction is a routine laboratory technique, and its success is a continuous verification of de Broglie's hypothesis.
+\section*{Applications}
+
+Electron diffraction (used in transmission electron microscopes, which achieve sub-angstrom resolution because the de Broglie wavelength of a 200 keV electron is $\sim 0.0025\,\text{nm}$), neutron diffraction and neutron scattering (used to locate hydrogen atoms in crystals and study magnetic structures, since neutrons have a magnetic moment), atom interferometry (ultracold atoms split into paths and recombined to measure gravitational acceleration with extraordinary precision), the scanning tunneling microscope (which exploits the wave nature of electrons to image surfaces at atomic resolution), and the conceptual foundation of all of quantum mechanics---the Schrödinger equation is, at its heart, a wave equation for the de Broglie wave.
+\section*{What Richard Feynman Would Have Asked}
+
+\textit{``De Broglie said particles are waves. But when I look at an electron, I see a dot on a screen. Where exactly does the wave go?''}
+
+This is the measurement problem in miniature, and Feynman would have relished it. The electron \emph{is} a wave when it is propagating---it spreads out, interferes with itself, and explores multiple paths simultaneously. The wave function $|\psi(x)|^2$ describes the probability of finding the electron at each location. When you put a screen in its path, the electron is ``measured'' at a single point, and the wave collapses into a dot. But the \emph{pattern} of dots, accumulated over many electrons, reproduces the interference pattern predicted by the wave. Each individual electron lands at a single point (particle behavior), but the distribution of points follows the wave equation (wave behavior). Feynman would say: the electron does not ``become'' a particle at the screen---the act of measurement extracts a single outcome from a wave of possibilities. The wave was always there; you just only see one sample from it at a time.
+
+\textit{``If I send one electron at a time through a double slit, do I still get an interference pattern?''}
+
+Yes---and this is one of the most mind-boggling facts in all of physics. Feynman himself called the double-slit experiment with single electrons ``a phenomenon which is impossible, absolutely impossible, to explain in any classical way, and which has in it the heart of quantum mechanics.'' Each electron passes through \emph{both} slits simultaneously (in the sense that the wave function passes through both), interferes with itself, and arrives at the screen at a single point. After thousands of electrons, the interference fringes appear. If you put a detector at the slits to determine which slit each electron goes through, the interference pattern disappears and you get two simple bands---because the act of ``which-path'' measurement collapses the wave function at the slit. The wave nature is real, but it is fragile: any information that could reveal the electron's path destroys the interference.
+
+\textit{``Could we build an interference experiment with molecules large enough to see---say, a virus?''}
+
+Feynman would immediately start calculating. The de Broglie wavelength of a virus (mass $\sim 10^{-18}\,\text{kg}$) moving at $\sim 1\,\text{m/s}$ is $\lambda \sim 10^{-16}\,\text{m}$, far smaller than any conceivable slit spacing. So a direct double-slit experiment with a virus is hopeless. But there is a subtlety: in 2019, experiments achieved matter-wave interference with molecules containing over 2000 atoms (mass $\sim 25{,}000\,\text{amu}$), and proposals exist for pushing to even larger objects. The fundamental limit is not the de Broglie wavelength per se but the decoherence time---the time before the molecule interacts with its environment (air molecules, thermal photons, stray fields) and ``measures'' itself, destroying the interference. In ultra-high vacuum and at cryogenic temperatures, the decoherence time can be extended far enough to observe interference with increasingly massive objects. Whether this can be pushed to truly macroscopic scales remains one of the great open questions of quantum foundations.
+
+\textit{``What does the de Broglie wavelength tell us about the structure of atoms?''}
+
+Everything. If the electron in a hydrogen atom is a standing wave, its wavelength must fit the circumference of its orbit: $2\pi r = n\lambda = nh/p$. This is exactly the quantization condition that Bohr ad hoc postulated in 1913, but de Broglie's insight makes it natural rather than forced: the electron is a wave, bound states are standing waves, and only certain wavelengths (hence certain momenta and energies) are allowed. This is the conceptual foundation of the Schrödinger equation. The ground-state size of hydrogen ($a_0 \approx 0.053\,\text{nm}$) is set by the de Broglie wavelength of an electron with energy equal to the binding energy: the electron's wavelength is comparable to the atom's size, which is the defining characteristic of a quantum bound state. Classical physics, where the wavelength is negligibly small compared to any relevant length, cannot explain why atoms have the sizes they do.
+
+\textit{``Does the de Broglie relation apply to spacetime itself? Are there gravitational waves with a wavelength set by the momentum of spacetime?''}
+
+Feynman, who worked extensively on quantum gravity, would appreciate the audacity of this question. In the current framework of physics, spacetime is not a ``particle'' with a well-defined momentum, so the de Broglie relation does not directly apply. However, there are speculative approaches (string theory, loop quantum gravity) that suggest spacetime itself may have a quantum structure at the Planck scale ($\ell_P \sim 10^{-35}\,\text{m}$), where quantum fluctuations of the metric become significant. Gravitational waves are classical (in the same sense that electromagnetic waves are classical), but their quantum counterparts---gravitons---would be subject to the de Broglie relation. The wavelength of a graviton is $\lambda = h/p_{\text{graviton}}$, and for gravitons produced by astrophysical sources, this is macroscopic. The deep question remains: is spacetime itself a wave? This is one of the frontiers of physics.
+
+\bigskip
+\hrule
+\bigskip
+%=============================================================================
+\section*{FAQ}
+
+\textit{Q: If everything has a wavelength, why don't we see wave behavior in everyday objects?}
+A: Because the de Broglie wavelength is $\lambda = h/(mv)$, and for macroscopic objects, $mv$ is enormous compared to $h$. A 0.145 kg baseball thrown at 40 m/s has $\lambda \approx 1.2\times 10^{-34}\,\text{m}$, which is about $10^{-24}$ times smaller than the diameter of a proton. Wave effects (diffraction, interference) require the wavelength to be comparable to the system's characteristic size, and no everyday object is anywhere near this small.
+
+\textit{Q: What is the de Broglie wavelength of a photon?}
+A: For a photon, $p = E/c = h\nu/c = h/\lambda$, so the de Broglie relation $\lambda = h/p$ gives back the standard photon wavelength. This is consistent: the de Broglie wavelength of a massless particle is just its electromagnetic wavelength. The de Broglie relation is thus a generalization of the photon formula to massive particles.
+
+\textit{Q: Does the de Broglie wavelength change in a gravitational field?}
+A: Yes, indirectly. In a gravitational field, a particle gains or loses kinetic energy as it moves up or down, changing its momentum and therefore its de Broglie wavelength. More subtly, in general relativity, the local wavelength (as measured by a local observer) is affected by gravitational time dilation---a photon climbing out of a gravitational well is redshifted, and a massive particle's de Broglie wavelength is correspondingly stretched. Neutron interferometry experiments have measured gravitational phase shifts, confirming these predictions.
+\section*{Important Bibliography}
+\begin{enumerate}
+\item Griffiths, D.J., \textit{Introduction to Quantum Mechanics}, 3rd ed. (Cambridge University Press, 2018), Chapter 1.
+\item Davisson, C. and Germer, L.H., ``Diffraction of Electrons by a Crystal of Nickel,'' \textit{Physical Review} \textbf{30}, 705--740 (1927).
+\item De Broglie, L., \textit{Recherches sur la théorie des quanta} (PhD thesis, University of Paris, 1924); English translation in \textit{American Journal of Physics} \textbf{68}, 344 (2000).
+\item Tonomura, A., Endo, J., Matsuda, T., Kawasaki, T., and Ezawa, H., ``Demonstration of single-electron buildup of an interference pattern,'' \textit{American Journal of Physics} \textbf{57}, 117--120 (1989).
+\item Arndt, M., Nairz, O., Vos-Andreae, J., Keller, C., van der Zouw, G., and Zeilinger, A., ``Wave--particle duality of C$_{60}$ molecules,'' \textit{Nature} \textbf{401}, 680--682 (1999).
+\end{enumerate}
+

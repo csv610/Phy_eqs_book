@@ -1,0 +1,175 @@
+\chapter{Diffusion Equation}
+
+\section*{Introduction}
+
+Drop a pellet of food coloring into still water. The dye does not spread instantly---it forms a concentrated blob that gradually expands and dilutes until the color is uniform. The diffusion equation describes exactly how fast this spreading happens. The thermal diffusivity $\alpha$ is a material property measuring spreading speed: metals have high $\alpha$ (heat spreads quickly), wood has low $\alpha$. The equation says the rate of spreading at any point is proportional to the ``curvature'' of the temperature profile there.
+
+
+The diffusion equation for temperature $T$ (or concentration) is:
+\[
+\frac{\partial T}{\partial t} = \alpha \nabla^2 T
+\]
+where $\alpha = k/(\rho c_p)$ is the thermal diffusivity ($k$ = thermal conductivity, $\rho$ = density, $c_p$ = specific heat).
+
+\section*{Fundamental Equations Used}
+
+The derivation starts from Fourier's law of heat conduction together with conservation of energy.
+
+\section*{Assumptions}
+
+\textbf{Assumptions:} The medium is homogeneous and isotropic (constant $\alpha$). The diffusion coefficient does not depend on concentration or temperature. The process is driven by random molecular motion (Fick's law).
+
+
+\textbf{Limitations:} Fails at very short times (hyperbolic heat conduction models needed). Breaks down in heterogeneous media. Does not apply to ballistic transport (molecules traveling without collisions).
+
+
+\section*{Mathematical Derivation}
+
+\textbf{Step 1: State Fourier's law of heat conduction.}
+
+The heat flux vector $\mathbf{q}$ (energy per unit area per unit time) is proportional to the negative temperature gradient:
+\begin{equation}
+\mathbf{q} = -k\,\nabla T
+\end{equation}
+where $k$ is the thermal conductivity. The negative sign ensures heat flows from hot to cold. This is a phenomenological law, valid for a wide range of materials.
+
+\textbf{Step 2: Apply conservation of energy.}
+
+Consider a fixed volume $V$ with boundary $S$. The rate of decrease of thermal energy inside $V$ equals the net outward heat flux through $S$ (assuming no internal heat generation):
+\begin{equation}
+-\frac{\partial}{\partial t}\iiint_V \rho c_p T\, dV = \iint_S \mathbf{q} \cdot d\mathbf{S}
+\end{equation}
+where $\rho$ is the density and $c_p$ is the specific heat capacity at constant pressure.
+
+\textbf{Step 3: Apply the divergence theorem.}
+
+Convert the surface integral to a volume integral:
+\begin{equation}
+-\iiint_V \rho c_p \frac{\partial T}{\partial t}\, dV = \iiint_V \nabla \cdot \mathbf{q}\, dV
+\end{equation}
+Since $V$ is arbitrary, the integrands must satisfy:
+\begin{equation}
+\rho c_p \frac{\partial T}{\partial t} = -\nabla \cdot \mathbf{q}
+\end{equation}
+
+\textbf{Step 4: Substitute Fourier's law.}
+
+Replacing $\mathbf{q} = -k\nabla T$:
+\begin{equation}
+\rho c_p \frac{\partial T}{\partial t} = \nabla \cdot (k\,\nabla T)
+\end{equation}
+For a homogeneous, isotropic medium with constant $k$, this simplifies to:
+\begin{equation}
+\rho c_p \frac{\partial T}{\partial t} = k\,\nabla^2 T
+\end{equation}
+
+\textbf{Step 5: Introduce thermal diffusivity.}
+
+Define the thermal diffusivity:
+\begin{equation}
+\alpha = \frac{k}{\rho c_p}
+\end{equation}
+This material property (units of m$^2$/s) measures how rapidly heat spreads. High $\alpha$ (metals) means fast diffusion; low $\alpha$ (wood) means slow diffusion. The equation becomes:
+\begin{equation}
+\frac{\partial T}{\partial t} = \alpha\,\nabla^2 T
+\end{equation}
+
+\textbf{Step 6: Verify dimensions and identify structure.}
+
+The left side has units of K/s. The right side has units of (m$^2$/s)$\times$(K/m$^2$) = K/s, confirming dimensional consistency. The equation is first-order in time and second-order in space---parabolic, not hyperbolic. This parabolic structure means disturbances propagate infinitely fast (the Green's function is a Gaussian extending to infinity), which is physically unrealistic at very short times but an excellent approximation at macroscopic scales. For mass diffusion (Fick's law), replace $T$ by concentration $C$, $k$ by $D\rho$, and $\alpha$ by $D$ (the diffusion coefficient).
+
+\section*{Characteristics of the Equation}
+
+\begin{itemize}
+\item \textbf{Infinite propagation speed:} A point source instantaneously affects all points (however slightly)---the Green's function is a Gaussian extending to infinity. Physically unrealistic at very short times.
+\item \textbf{$\sqrt{t}$ scaling:} The diffusion length grows as $\delta \sim \sqrt{\alpha t}$---the classic ``random walk'' scaling.
+\item \textbf{Irreversibility:} First-order in time---a preferred direction. Diffusion is irreversible: ink spreads but does not unspread.
+\item \textbf{Schr\"odinger connection:} The Schr\"odinger equation is the diffusion equation with imaginary time ($t \to i\tau$).
+\item \textbf{Similarity solutions:} The fundamental solution depends on $\eta = x/\sqrt{4\alpha t}$, reducing the PDE to an ODE.
+\end{itemize}
+\section*{Solution Methods}
+
+\begin{enumerate}
+\item \textbf{Fundamental solution:} For an infinite domain with point source: $T(\mathbf{r}, t) = \frac{Q}{(4\pi \alpha t)^{d/2}} \exp(-r^2 / 4\alpha t)$ in $d$ dimensions.
+\item \textbf{Separation of variables:} Expand in eigenfunctions: $T = \sum_n c_n e^{-\alpha \lambda_n t} \phi_n(\mathbf{r})$.
+\item \textbf{Error function solutions:} For semi-infinite domains: $T(x, t) = T_0 \operatorname{erfc}(x / 2\sqrt{\alpha t})$.
+\item \textbf{Numerical methods:} Explicit, implicit (Crank--Nicolson), and spectral methods for complex geometries.
+\end{enumerate}
+\section*{Verifications}
+
+\begin{itemize}
+\item \textbf{Einstein relation:} Measured diffusion coefficients match $D = kT/(6\pi\mu R)$.
+\item \textbf{Heat conduction:} Measured temperature profiles in solids match Fourier's law.
+\item \textbf{Random walk:} Colloidal particle tracking confirms $\langle x^2 \rangle = 2Dt$.
+\item \textbf{Diffusion couples:} Measured concentration profiles match the error function.
+\end{itemize}
+\section*{Applications}
+
+\begin{itemize}
+\item \textbf{Heat conduction:} Temperature in engine blocks, buildings, electronics, Earth's crust.
+\item \textbf{Drug delivery:} Diffusion of pharmaceutical molecules through tissue.
+\item \textbf{Brownian motion:} Einstein's 1905 derivation: $\langle x^2 \rangle = 2Dt$.
+\item \textbf{Semiconductor processing:} Dopant diffusion in silicon wafers.
+\item \textbf{Groundwater:} Contaminant spread in aquifers through diffusion and dispersion.
+\end{itemize}
+\section*{What Richard Feynman Would Have Asked}
+
+\subsection*{1. Plain-English Translation}
+\textit{``What is the diffusion equation really saying, in terms a child could understand?''}
+
+It says: ``Things spread out from where there is a lot of them to where there is little, and they spread faster when the difference is bigger.'' If you put a drop of ink in water, the ink spreads because molecules randomly jostle and bounce. The rate depends on how concentrated the ink is at any point compared to its neighbors. Where very concentrated compared to nearby areas, spreading is fast. Where already uniform, spreading is slow.
+
+The thermal diffusivity $\alpha$ is the material's ``spreading personality.'' Metals have high $\alpha$---they spread heat quickly (that is why a metal spoon gets hot all over in tea). Wood has low $\alpha$---heat spreads slowly (that is why wood insulates). The equation tells you exactly how the temperature profile evolves: it smooths out, always moving toward uniformity.
+
+\subsection*{2. Localized Mechanics}
+\textit{``What is happening at a single point in the material as heat diffuses through it?''}
+
+At any point, temperature changes because heat flows in from hotter neighbors and out to colder neighbors. The Laplacian $\nabla^2 T$ measures how much the temperature at a point differs from the average of its neighbors. If hotter ($\nabla^2 T < 0$), heat flows out and temperature decreases. If colder ($\nabla^2 T > 0$), heat flows in and temperature increases. The equation says: the rate of temperature change equals diffusivity times this ``neighborhood difference.''
+
+He would press you on the microscopic origin: heat diffusion is the macroscopic manifestation of random molecular collisions. In a metal, conduction electrons carry energy from hot to cold regions. The mean free path sets the diffusivity: shorter mean free path means slower diffusion. The equation averages over trillions of molecular motions.
+
+\subsection*{3. Testing Extreme Limits}
+\textit{``What happens at very short times or very long times?''}
+
+At very short times ($t \to 0$), the equation predicts infinite propagation speed---heat penetrates an infinitely thin layer with infinite gradient. This is physically unrealistic: the continuum description breaks down, and the finite mean free path of heat carriers becomes important. The hyperbolic heat equation (Cattaneo equation) corrects this.
+
+At very long times ($t \to \infty$), temperature becomes uniform everywhere---maximum entropy. The approach is exponential with a time constant $\sim L^2/(\pi^2 \alpha)$ for a slab of thickness $L$. Doubling the thickness quadruples the equilibration time.
+
+\subsection*{4. Dimensionality and Geometry}
+\textit{``How does the dimensionality of space affect diffusion?''}
+
+In 1D, diffusion length grows as $\sqrt{4\alpha t}$. In 2D, it also grows as $\sqrt{t}$ but concentration falls as $1/t$ (versus $1/\sqrt{t}$ in 1D). In 3D, it falls as $1/t^{3/2}$. Higher dimensions have more directions to spread into, so concentration drops faster.
+
+In bounded geometries, the eigenfunctions of the Laplacian (sines, Bessel functions, spherical harmonics) determine spatial structure. A narrow tube confines diffusion in two dimensions while allowing it in one. The geometry shapes the solution, but the $\sqrt{t}$ scaling is universal.
+
+\subsection*{5. Cross-Disciplinary Connection}
+\textit{``Where else does this exact equation appear outside of heat transfer?''}
+
+The diffusion equation describes pollutant spreading in groundwater, neutron diffusion in reactors, the random walk of stock prices (Black--Scholes is a disguised diffusion equation), the spread of infectious diseases (SIR model in the diffusion limit), and signal propagation along neurons (cable equation). In each case, the same mathematics applies because all involve the random redistribution of a conserved quantity.
+
+
+%=============================================================
+% Chapter 20: Dirac Equation
+%=============================================================
+\section*{FAQ}
+
+\textbf{Q1: Why does the diffusion length grow as $\sqrt{t}$ rather than linearly?}
+
+A: Because diffusion is a random walk. After $N$ steps, the typical displacement is $\sqrt{N}$ (not $N$) because random steps partially cancel. Since $N \propto t$, displacement $\propto \sqrt{t}$. Linear growth would require directed motion (drift).
+
+\textbf{Q2: Does heat really travel at infinite speed in the diffusion equation?}
+
+A: Mathematically, yes---the Green's function is nonzero everywhere for $t > 0$. Physically, no---the signal is exponentially small far from the source. At very short times, the equation breaks down and must be replaced by the hyperbolic heat equation with finite propagation speed.
+
+\textbf{Q3: How is it related to the Schr\"odinger equation?}
+
+A: The Schr\"odinger equation $i\hbar \partial_t \psi = -\frac{\hbar^2}{2m}\nabla^2 \psi + V\psi$ becomes a diffusion equation under $t \to -i\tau$ (imaginary time). Solutions are related by analytic continuation: quantum mechanics is diffusion in imaginary time, used in lattice QCD and path integrals.
+\section*{Important Bibliography}
+
+\begin{enumerate}
+\item Carslaw, H.S. and Jaeger, J.C., \textit{Conduction of Heat in Solids}, 2nd ed. (Oxford University Press, 1959), Chapter 1.
+\item Crank, J., \textit{The Mathematics of Diffusion}, 2nd ed. (Oxford University Press, 1975), Chapter 2.
+\item Einstein, A., ``\"Uber die von der molekularkinetischen Theorie der W\"arme geforderte Bewegung von in ruhenden Fl\"ussigkeiten suspendierten Teilchen,'' \textit{Annalen der Physik} 322, 549--560 (1905).
+\item Incropera, F.P., DeWitt, D.P., Bergman, T.L., and Lavine, A.S., \textit{Fundamentals of Heat and Mass Transfer}, 8th ed. (Wiley, 2013), Chapter 2.
+\end{enumerate}
+

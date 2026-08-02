@@ -1,0 +1,159 @@
+\chapter{Kinematic Equations}
+
+\section*{Introduction}
+
+The kinematic equations apply whenever the acceleration is constant: free fall near the Earth's surface ($a = g \approx 9.81$ m/s$^2$ downward), a car braking at constant deceleration, a ball rolling down an inclined plane, or a charged particle in a uniform electric field. The variable $v_0$ is the initial velocity, $a$ is the constant acceleration, $t$ is the time elapsed, and $x - x_0$ is the displacement. The first equation says velocity increases linearly with time. The second says position increases quadratically. The third is a time-independent relation between velocity, acceleration, and displacement. Together, they completely characterize uniformly accelerated motion.
+
+
+\[
+v = v_0 + at,\qquad x = x_0 + v_0 t + \tfrac{1}{2}at^2,\qquad v^2 = v_0^2 + 2a(x - x_0)
+\]
+
+\section*{Fundamental Equations Used}
+
+The derivation starts from the definition of constant acceleration, $a = dv/dt$, integrated with respect to time.
+
+\section*{Assumptions}
+
+\textbf{Assumptions:} The acceleration $a$ is constant in magnitude and direction. The motion is one-dimensional (or the equations apply component-wise for each spatial direction). Air resistance and other velocity-dependent forces are negligible. The gravitational field is uniform.
+
+
+\textbf{Limitations:} Does not apply to variable acceleration (need calculus: $v = \int a\,dt$, $x = \int v\,dt$). Fails at relativistic speeds ($v \gtrsim 0.1c$), where the relativistic equations $v = v_0 + at$ and $x = x_0 + v_0 t + \frac{1}{2}at^2$ are replaced by the hyperbolic motion formulas. Does not account for air resistance, friction, or other velocity-dependent forces. The gravitational acceleration $g$ varies slightly with altitude and latitude.
+
+
+\section*{Mathematical Derivation}
+
+\textbf{Step 1: Definition of constant acceleration.}
+
+Consider one-dimensional motion with constant acceleration $a$. By definition:
+\begin{align}
+a = \frac{dv}{dt} = \text{const.}
+\end{align}
+This is the starting point: the acceleration does not depend on time, position, or velocity.
+
+\textbf{Step 2: Derive the velocity--time equation.}
+
+Integrating $a = dv/dt$ with respect to time:
+\begin{align}
+\int_{v_0}^{v} dv = \int_0^t a\,dt' \implies v - v_0 = at,
+\end{align}
+since $a$ is constant and can be pulled out of the integral. This gives:
+\begin{align}
+\boxed{v = v_0 + at.}
+\end{align}
+The velocity increases linearly with time.
+
+\textbf{Step 3: Derive the position--time equation.}
+
+Using the definition $v = dx/dt$ and substituting $v = v_0 + at$:
+\begin{align}
+\frac{dx}{dt} = v_0 + at.
+\end{align}
+Integrating from $t = 0$ (where $x = x_0$) to time $t$:
+\begin{align}
+\int_{x_0}^{x} dx = \int_0^t (v_0 + at')\,dt' \implies x - x_0 = v_0 t + \frac{1}{2}at^2.
+\end{align}
+Therefore:
+\begin{align}
+\boxed{x = x_0 + v_0 t + \tfrac{1}{2}at^2.}
+\end{align}
+The position depends quadratically on time, reflecting the constant acceleration.
+
+\textbf{Step 4: Derive the velocity--displacement equation.}
+
+Eliminate time between the first two equations. From $v = v_0 + at$, we have $t = (v - v_0)/a$. Substituting into $x - x_0 = v_0 t + \frac{1}{2}at^2$:
+\begin{align}
+x - x_0 &= v_0\frac{(v - v_0)}{a} + \frac{1}{2}a\left(\frac{v - v_0}{a}\right)^2 \\
+&= \frac{v_0(v - v_0)}{a} + \frac{(v - v_0)^2}{2a} \\
+&= \frac{2v_0(v - v_0) + (v - v_0)^2}{2a} \\
+&= \frac{(v - v_0)\bigl[2v_0 + v - v_0\bigr]}{2a} \\
+&= \frac{(v - v_0)(v + v_0)}{2a} = \frac{v^2 - v_0^2}{2a}.
+\end{align}
+Rearranging:
+\begin{align}
+\boxed{v^2 = v_0^2 + 2a(x - x_0).}
+\end{align}
+This time-independent equation connects velocity directly to displacement, bypassing the need to know the elapsed time.
+
+\textbf{Step 5: Connection to the work--energy theorem.}
+
+Multiply the third equation by $\frac{1}{2}m$:
+\begin{align}
+\tfrac{1}{2}mv^2 - \tfrac{1}{2}mv_0^2 = ma(x - x_0) = F\cdot\Delta x.
+\end{align}
+The left side is the change in kinetic energy, and the right side is the work done by the constant force $F = ma$. This is the work--energy theorem---a conservation law hidden within the kinematics.
+
+\section*{Characteristics of the Equation}
+
+The kinematic equations are polynomial: the first is linear in $t$, the second is quadratic in $t$, and the third has no explicit $t$. They are derived from the definitions $a = dv/dt$ and $v = dx/dt$ by simple integration. The velocity-time graph is a straight line (slope $= a$), the position-time graph is a parabola (concavity $= a$), and the velocity-displacement graph is a parabola (opening in the direction of $a$). The equations are symmetric under time reversal if $a$ is also reversed: replacing $t \to -t$ and $a \to -a$ gives the ``unwinding'' of the motion.
+\section*{Solution Methods}
+
+\textbf{Direct application:} Identify the known quantities ($v_0$, $a$, $t$, $x_0$) and the unknown, then select the appropriate equation. \textbf{Graphical method:} Draw velocity-time and position-time graphs; read slopes and areas. \textbf{Component decomposition:} For 2D/3D motion, decompose into components and apply the kinematic equations to each. \textbf{Calculus:} For variable acceleration, integrate $a(t)$ to get $v(t)$, then integrate $v(t)$ to get $x(t)$. The constant-acceleration equations are the special case where $a = \text{const}$.
+\section*{Verifications}
+
+For free fall from rest ($v_0 = 0$, $a = g$), check that the distance fallen is $\frac{1}{2}gt^2$: after 1 second, $d \approx 4.9$ m; after 2 seconds, $d \approx 19.6$ m. For a ball thrown upward, verify that it reaches maximum height ($v = 0$) at $t = v_0/g$ and falls back to the starting point at $t = 2v_0/g$. Check that the velocity-displacement equation gives the same result as the time-based equations. For projectile motion, verify that the range is $R = v_0^2\sin(2\theta)/g$ and the maximum height is $H = v_0^2\sin^2\theta/(2g)$.
+\section*{Applications}
+
+The kinematic equations are used in projectile motion (launching a ball, firing a cannon, orbital insertion burns), free fall (dropping objects, bungee jumping, skydiving), vehicle dynamics (braking distances, acceleration tests), sports physics (basketball trajectories, golf ball flight), and aerospace engineering (rocket launches, spacecraft maneuvers). They are also the starting point for deriving energy conservation ($v^2 = v_0^2 + 2a\Delta x$ multiplied by $\frac{1}{2}m$ gives the work-energy theorem) and for understanding more complex motions through perturbation or numerical methods.
+\section*{What Richard Feynman Would Have Asked}
+
+\subsection*{1. Plain-English Translation}
+\textit{``What are these equations really saying? Why three equations instead of one?''}
+
+The three kinematic equations are really one equation---the definition of constant acceleration---expressed in three different ways. If acceleration is constant, then velocity changes at a steady rate ($v = v_0 + at$), position changes quadratically ($x = x_0 + v_0 t + \frac{1}{2}at^2$), and velocity and position are linked without time ($v^2 = v_0^2 + 2a\Delta x$). Each equation is useful when you do not know a particular variable: the first when you do not know the displacement, the second when you do not know the final velocity, the third when you do not know the time.
+
+The three equations are not independent---any one can be derived from the other two. They are simply convenient packages of the same information. The deep content is: constant acceleration means the velocity-time graph is a straight line, and the position-time graph is a parabola.
+
+\subsection*{2. Localized Mechanics}
+\textit{``At a single instant during the motion, what determines the velocity and position?''}
+
+At any instant $t$, the velocity is determined by the initial velocity plus the accumulated change: $v(t) = v_0 + at$. The position is determined by the initial position plus the area under the velocity-time graph: $x(t) = x_0 + \int_0^t v(t')\,dt' = x_0 + v_0 t + \frac{1}{2}at^2$. The integral of a linear function is a quadratic---this is why the position is quadratic in time.
+
+The third equation, $v^2 = v_0^2 + 2a\Delta x$, is the work-energy theorem in disguise. Multiply both sides by $\frac{1}{2}m$: $\frac{1}{2}mv^2 - \frac{1}{2}mv_0^2 = ma\Delta x = F\Delta x$. The change in kinetic energy equals the work done by the force. This is a conservation law hidden in kinematics.
+
+\subsection*{3. Testing Extreme Limits}
+\textit{``What happens when the acceleration is not constant, when speeds approach $c$, or when the scale is astronomical?''}
+
+Variable Acceleration: If $a$ depends on time, position, or velocity, the kinematic equations fail. You must integrate the equation of motion directly. For a harmonic oscillator ($a = -\omega^2 x$), the solution is sinusoidal, not quadratic. For a rocket losing mass as it burns fuel, the acceleration increases with time.
+
+Relativistic Speeds: At $v \gtrsim 0.1c$, the kinematic equations break down. The relativistic equation of motion is $dp/dt = F$ where $p = \gamma mv$, and $\gamma = 1/\sqrt{1 - v^2/c^2}$. For constant proper acceleration (as measured by the accelerating object), the trajectory is a hyperbola in spacetime, not a parabola.
+
+Astronomical Scales: For orbital mechanics, the acceleration is not constant (it depends on distance). The kinematic equations are replaced by Kepler's laws and the vis-viva equation: $v^2 = GM(2/r - 1/a)$, where $a$ is the semi-major axis.
+
+\subsection*{4. Dimensionality and Geometry}
+\textit{``Do the kinematic equations work in 2D and 3D?''}
+
+Yes, the kinematic equations apply component-wise. For projectile motion in 2D, the horizontal component has $a_x = 0$ (constant velocity) and the vertical component has $a_y = -g$ (constant acceleration). The trajectory is a parabola because the horizontal position is linear in $t$ and the vertical position is quadratic in $t$: eliminating $t$ gives $y = x\tan\theta - (g/2v_0^2\cos^2\theta)x^2$, a parabola.
+
+In 3D, the same principle applies: each component evolves independently according to the kinematic equations. The trajectory is the vector sum of three independent motions. For curved motion (circular, elliptical), the acceleration is not constant and the kinematic equations do not apply directly---you need polar coordinates and the radial/azimuthal equations of motion.
+
+\subsection*{5. Cross-Disciplinary Connection}
+\textit{``Where else do these exact equations appear?''}
+
+The kinematic equations appear in any system with constant ``acceleration''---the rate of change of a rate. In economics, if a company's revenue grows at a constant rate (constant ``acceleration'' of revenue), the revenue-time graph is a parabola. In biology, if a population grows at a constant rate, the population-time graph is linear (constant velocity) or quadratic (constant acceleration). In signal processing, a linearly chirped signal (frequency increasing linearly with time) has the same mathematical form as the kinematic equations.
+
+The deep reason is that integration of a constant gives a linear function, and integration of a linear function gives a quadratic. Any system where the ``velocity'' changes at a constant rate will produce the same kinematic equations, regardless of the physical context. The mathematics is universal; only the interpretation changes.
+
+%=============================================================
+\section*{FAQ}
+
+\textbf{Q: Why do the kinematic equations not depend on mass?}
+
+A: In the absence of air resistance, all objects accelerate at the same rate regardless of mass---this is the universality of free fall (confirmed by Galileo and, more precisely, by Apollo 15 astronaut David Scott on the Moon). The kinematic equations describe the kinematics (motion), not the dynamics (forces). The mass enters through Newton's second law ($F = ma$), but if $a$ is given, the mass is irrelevant for the kinematics.
+
+\textbf{Q: How do the kinematic equations change with air resistance?}
+
+A: With linear drag ($F_{\text{drag}} = -bv$), the equation of motion becomes $ma = mg - bv$, which has the solution $v(t) = (mg/b)(1 - e^{-bt/m})$. The velocity approaches a terminal velocity $v_t = mg/b$ asymptotically. With quadratic drag ($F \propto v^2$), the solution involves hyperbolic functions. The kinematic equations no longer apply---calculus is required.
+
+\textbf{Q: Can the kinematic equations be used for circular motion?}
+
+A: Not directly. Uniform circular motion has constant speed but changing direction, so the acceleration is not constant (it changes direction). The centripetal acceleration is $a = v^2/r$, directed toward the center. For uniform circular motion, the kinematic equations apply to the angular variables: $\omega = \omega_0 + \alpha t$, $\theta = \theta_0 + \omega_0 t + \frac{1}{2}\alpha t^2$, $\omega^2 = \omega_0^2 + 2\alpha(\theta - \theta_0)$.
+\section*{Important Bibliography}
+
+\begin{enumerate}
+\item Halliday, D., Resnick, R., and Walker, J., \textit{Fundamentals of Physics}, 12th ed. (Wiley, 2021), Chapter 2.
+\item Kleppner, D. and Kolenkow, R.J., \textit{An Introduction to Mechanics}, 2nd ed. (Cambridge University Press, 2014), Chapter 2.
+\item Marion, J.B. and Thornton, S.T., \textit{Classical Dynamics of Particles and Systems}, 5th ed. (Brooks/Cole, 2004), Chapter 2.
+\item Galilei, G., \textit{Discorsi e dimostrazioni matematiche intorno a due nuove scienze} (Leiden, 1638), First Day.
+\end{enumerate}
+

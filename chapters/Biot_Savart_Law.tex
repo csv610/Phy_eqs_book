@@ -1,0 +1,138 @@
+\chapter{Biot--Savart Law}
+
+\section*{Introduction}
+
+The Biot--Savart law is the magnetostatic analogue of Coulomb's law: just as Coulomb tells you the electric field produced by a point charge, the Biot--Savart law tells you the magnetic field produced by a steady current element. Published in 1820 by Jean-Baptiste Biot and Félix Savart---just weeks after Oersted's discovery that a current-carrying wire deflects a compass needle---this law provides the foundational calculation tool for determining magnetic fields from known current distributions. It is, in a sense, the ``source equation'' for magnetostatics, complementing Ampère's law in the same way that Coulomb's law complements Gauss's law for electrostatics.
+
+A tiny segment of wire carrying current $I$ produces a magnetic field at a nearby point. The field is not directed radially outward from the wire (as the electric field is from a point charge); instead, it curls around the wire in loops, following the right-hand rule. The Biot--Savart law encodes this geometry precisely: the field $d\mathbf{B}$ from a current element $I\,d\mathbf{l}$ points in the direction of $d\mathbf{l}\times\hat{\mathbf{r}}$, which is always tangential to circles centered on the wire. The magnitude falls off as $1/r^2$, just like the Coulomb force, but the cross-product introduces an angular dependence---the field is strongest in the plane perpendicular to the wire element and vanishes along the wire's own axis. Integrating this elemental field over the entire current distribution gives the total magnetic field.
+
+
+\begin{equation}
+d\mathbf{B} = \frac{\mu_0}{4\pi}\frac{I\,d\mathbf{l}\times\hat{\mathbf{r}}}{r^2}
+\end{equation}
+
+\section*{Fundamental Equations Used}
+
+The derivation starts from Ampère's force law describing the force between two current-carrying wire elements.
+
+\section*{Assumptions}
+
+\textbf{Assumptions:} The currents are steady (magnetostatic---no time-varying fields). The medium is free space (or a linear, isotropic, non-magnetic medium where $\mu \approx \mu_0$). The wire is infinitesimally thin, or equivalently, the current distribution is a known surface or volume current.
+
+
+\textbf{Limitations:} Does not apply to time-varying currents (retardation effects and displacement currents become important---use the full Biot--Savart with retarded potentials or the Jefimenko generalization). Breaks down when the source region and field point overlap (self-field of an infinitesimal element is singular). Not useful for relativistic current distributions without covariant reformulation.
+
+
+\section*{Mathematical Derivation}
+
+\textbf{Step 1: Start from the force between two current elements.}
+
+Consider two infinitesimal current elements $I_1\,d\mathbf{l}_1$ and $I_2\,d\mathbf{l}_2$ separated by a displacement vector $\mathbf{r}$. Experimentally (Ampère's force law), the force between them is:
+\begin{equation}
+d\mathbf{F}_{12} = \frac{\mu_0}{4\pi}\frac{I_1 I_2}{r^3}\left(d\mathbf{l}_1\cdot d\mathbf{l}_2\right)\mathbf{r} - \frac{\mu_0}{4\pi}\frac{I_1 I_2}{r^3}\left(d\mathbf{l}_1\cdot\mathbf{r}\right)d\mathbf{l}_2
+\end{equation}
+The magnetic field $d\mathbf{B}_1$ produced by element 1 is defined as the force per unit current on element 2 divided by $I_2\,d\mathbf{l}_2$:
+\begin{equation}
+d\mathbf{F}_{12} = I_2\,d\mathbf{l}_2 \times d\mathbf{B}_1
+\end{equation}
+
+\textbf{Step 2: Extract the magnetic field from the force law.}
+
+From the force law, the field produced by current element $I_1\,d\mathbf{l}_1$ at a point displaced by $\mathbf{r}$ is identified as:
+\begin{equation}
+d\mathbf{B} = \frac{\mu_0}{4\pi}\frac{I_1\,d\mathbf{l}_1 \times \hat{\mathbf{r}}}{r^2}
+\end{equation}
+This is the Biot--Savart law. The cross-product ensures that $\mathbf{B}$ is perpendicular to both the current element and the displacement, consistent with the observed circular field lines around a wire.
+
+\textbf{Step 3: Verify compatibility with Ampère's circuital law.}
+
+Take the curl of $\mathbf{B}$ from the Biot--Savart integral:
+\begin{equation}
+\mathbf{B}(\mathbf{r}) = \frac{\mu_0}{4\pi}\int\frac{\mathbf{J}(\mathbf{r}')\times(\mathbf{r}-\mathbf{r}')}{|\mathbf{r}-\mathbf{r}'|^3}\,d^3r'
+\end{equation}
+Computing $\nabla\times\mathbf{B}$ using the identity $\nabla\times\left(\frac{\mathbf{J}\times\hat{\mathbf{r}}}{r^2}\right)$ and the properties of the Dirac delta function yields:
+\begin{equation}
+\nabla\times\mathbf{B} = \mu_0\mathbf{J}(\mathbf{r})
+\end{equation}
+This is Ampère's law (in the magnetostatic limit), confirming the Biot--Savart law is consistent.
+
+\textbf{Step 4: Verify $\nabla\cdot\mathbf{B} = 0$.}
+
+Since $\mathbf{B}$ is the curl of a vector field (it can be written as $\mathbf{B} = \nabla\times\mathbf{A}$ where $\mathbf{A}$ is the vector potential), its divergence vanishes identically:
+\begin{equation}
+\nabla\cdot\mathbf{B} = \nabla\cdot(\nabla\times\mathbf{A}) = 0
+\end{equation}
+This is Gauss's law for magnetism---no magnetic monopoles exist.
+
+\textbf{Step 5: Apply to an infinite straight wire.}
+
+For a wire along the $z$-axis carrying current $I$, integrate the Biot--Savart law:
+\begin{equation}
+\mathbf{B} = \frac{\mu_0 I}{4\pi}\int_{-\infty}^{\infty}\frac{d\mathbf{l}\times\hat{\mathbf{r}}}{r^2} = \frac{\mu_0 I}{2\pi r}\,\hat{\boldsymbol{\phi}}
+\end{equation}
+where $r$ is the perpendicular distance from the wire and $\hat{\boldsymbol{\phi}}$ is the azimuthal unit vector. The field lines are concentric circles, consistent with the right-hand rule.
+
+\textbf{Step 6: Apply to a circular loop on its axis.}
+
+For a circular loop of radius $R$ in the $xy$-plane carrying current $I$, at a point on the axis at height $z$:
+\begin{equation}
+B_z = \frac{\mu_0 I R^2}{2(R^2 + z^2)^{3/2}}
+\end{equation}
+At the center ($z=0$), this reduces to $B = \mu_0 I/(2R)$. The field on axis is directed along the axis, and the off-axis field has both radial and axial components.
+
+\section*{Characteristics of the Equation}
+
+The Biot--Savart law has the same mathematical structure as Coulomb's law---an inverse-square dependence on distance---but with two critical differences: the source is a vector ($I\,d\mathbf{l}$ rather than $dq$), and the field is obtained via a cross-product rather than a radial unit vector. This means the magnetic field lines always close on themselves (no magnetic monopoles exist, i.e., $\nabla\cdot\mathbf{B} = 0$). The law is linear: fields from separate current distributions add by superposition. The $\mu_0/(4\pi)$ constant sets the overall scale, and $\mu_0 = 4\pi\times 10^{-7}\,\text{T·m/A}$ is the permeability of free space.
+\section*{Solution Methods}
+
+For symmetric geometries, the Biot--Savart integral can be evaluated analytically. \textit{Straight wire of infinite length:} integrate along the wire axis; the result is $B = \mu_0 I / (2\pi r)$, with field lines forming concentric circles. \textit{Circular loop of radius $R$ on its axis at distance $z$:} $B_z = \mu_0 I R^2 / [2(R^2 + z^2)^{3/2}]$; at the center ($z=0$), $B = \mu_0 I/(2R)$. \textit{Solenoid of $n$ turns per unit length, radius $R$, length $L\gg R$:} inside, $B \approx \mu_0 n I$ (uniform); outside, $B\approx 0$. For complex geometries, the integral is evaluated numerically using discretized current elements, or Ampère's law is used when sufficient symmetry exists.
+\section*{Verifications}
+
+The Biot--Savart law can be verified by measuring the magnetic field of a known current geometry with a Hall probe or fluxmeter and comparing it to the calculated value. The field of a long straight wire ($B = \mu_0 I / 2\pi r$) is easily measured and has been confirmed to high precision. The axial field of a circular loop, which has a distinctive $1/(R^2+z^2)^{3/2}$ profile, serves as another standard test. Agreement between measurement and Biot--Savart prediction has been confirmed to better than 0.1\% in laboratory settings.
+\section*{Applications}
+
+The Biot--Savart law is used to design electromagnets, calculate the field inside MRI machines, compute the magnetic field of Helmholtz coils (used for field calibration), determine forces on current-carrying conductors in motors and generators, model the Earth's magnetic field (to first approximation as a dipole from core currents), and compute the field of superconducting magnets in particle accelerators. In astrophysics, it is used to model magnetic fields generated by stellar and galactic currents.
+\section*{What Richard Feynman Would Have Asked}
+
+\textit{``If the Biot--Savart law is just the magnetic version of Coulomb's law, why does magnetism seem so much more complicated than electrostatics?''}
+
+Feynman would immediately see the irony: magnetism is actually \emph{simpler} in one respect (there are no magnetic monopoles, so $\nabla\cdot\mathbf{B} = 0$ identically), but it appears more complicated because the field lines loop around and are never straight. The Biot--Savart law has a cross-product where Coulomb's law has a radial unit vector. This cross-product means the field is always ``sideways'' to the source, which is why magnetic field lines form closed loops instead of radiating outward. Electrostatics looks simple because we can use radial symmetry and Gauss's law; magnetostatics usually cannot exploit the same trick. But the underlying physics---both are $1/r^2$ laws from sources---is identical in structure. The apparent complexity is geometry, not physics.
+
+\textit{``What would happen to the Biot--Savart law if magnetic monopoles existed?''}
+
+If magnetic monopoles existed---particles carrying a net magnetic charge $g$---the Biot--Savart law would need a companion term. You would have a ``Coulomb law for magnetism'': $\mathbf{B}_{\text{monopole}} = (\mu_0/4\pi)(g/r^2)\hat{\mathbf{r}}$, exactly analogous to the electric field of a point charge. The current Biot--Savart law would remain valid as the field produced by \emph{moving} magnetic charges (analogous to how moving electric charges create magnetic fields). Maxwell's equations would become beautifully symmetric: the divergence equations for $\mathbf{E}$ and $\mathbf{B}$ would both have source terms, and the curl equations would both have current and displacement-current terms. Nature, as far as we know, chose not to make this symmetry exact---or if monopoles exist, they are extraordinarily rare.
+
+\textit{``Is there a simple physical picture that lets me see why $d\mathbf{B}$ points in the direction of $d\mathbf{l}\times\hat{\mathbf{r}}$ without doing any math?''}
+
+Yes. Imagine gripping the wire segment with your right hand, thumb pointing in the direction of the current $d\mathbf{l}$. Your fingers naturally curl around the wire in the direction of the magnetic field. The cross-product $d\mathbf{l}\times\hat{\mathbf{r}}$ is simply the mathematical encoding of this grip: it picks out the direction that is perpendicular to both the current direction and the line from the wire to the field point, which is exactly the tangential direction of the circular field line passing through that point. The reason it works this way is ultimately because the magnetic field is generated by the \emph{circulation} of charge, and the cross-product is the mathematical operation that captures circulation.
+
+\textit{``Why does the magnetic field fall off as $1/r^2$, the same as the electric field? Are all fundamental forces $1/r^2$?''}
+
+The $1/r^2$ fall-off is a consequence of living in three spatial dimensions: the field lines spread out over a sphere whose area grows as $4\pi r^2$, so the field strength (field lines per unit area) must decrease as $1/r^2$ to conserve the total flux. This argument applies to any force mediated by a massless particle (the photon for electromagnetism, the graviton for gravity), and it works in any number of dimensions $d$: the field falls as $1/r^{d-1}$. In two dimensions, it would be $1/r$; in four, $1/r^3$. The fact that both electric and magnetic fields fall as $1/r^2$ is not a coincidence---they are both aspects of the same massless-photon-mediated force.
+
+\textit{``Can I use the Biot--Savart law to calculate the force between two current-carrying wires?''}
+
+Not directly in one step---the Biot--Savart law gives you the magnetic \emph{field}, not a force. But it is the first step: use Biot--Savart to find $\mathbf{B}$ produced by wire 1 at the location of wire 2, then apply the Lorentz force law $\mathbf{F} = I_2\,d\mathbf{l}_2\times\mathbf{B}_1$ to find the force on wire 2. For two infinitely long parallel wires separated by distance $d$, this gives the force per unit length $F/L = \mu_0 I_1 I_2/(2\pi d)$---attractive if currents are in the same direction, repulsive if opposite. This was, in fact, the method used to define the ampere before the 2019 SI redefinition: one ampere is the current that produces a force of exactly $2\times 10^{-7}\,\text{N/m}$ between two parallel wires 1 meter apart in vacuum.
+
+\bigskip
+\hrule
+\bigskip
+%=============================================================================
+\section*{FAQ}
+
+\textit{Q: How does the Biot--Savart law compare to Ampère's law?}
+A: Both give the magnetic field from steady currents, but they approach the problem differently. Biot--Savart is a direct integral over all current elements---always valid but sometimes computationally intensive. Ampère's law ($\nabla\times\mathbf{B} = \mu_0\mathbf{J}$, or in integral form $\oint\mathbf{B}\cdot d\mathbf{l} = \mu_0 I_{\text{enc}}$) is much faster when high symmetry exists (infinite wire, infinite solenoid, toroid) but is harder to apply in asymmetric cases. They are mathematically equivalent.
+
+\textit{Q: Why does the Biot--Savart law look like Coulomb's law but with a cross-product?}
+A: Both are Green's function solutions to the same type of differential equation (Poisson's equation), but in different vector settings. Coulomb's law solves $\nabla^2\phi = -\rho/\epsilon_0$ for a scalar potential from a scalar source. The Biot--Savart law solves the magnetostatic equivalent for a vector field from a vector source, and the cross-product reflects the fact that magnetic fields are generated by the \emph{circulation} of current, not its divergence.
+
+\textit{Q: Can the Biot--Savart law be used for moving charges?}
+A: Yes, with care. A single point charge $q$ moving with velocity $\mathbf{v}$ is equivalent to a current element $I\,d\mathbf{l} = q\mathbf{v}$, and the Biot--Savart law gives the non-relativistic magnetic field. However, at relativistic speeds, you must use the Liénard--Wiechert potentials, which account for retardation and relativistic beaming. The Biot--Savart law, as a magnetostatic result, does not capture these effects.
+\section*{Important Bibliography}
+\begin{enumerate}
+\item Griffiths, D.J., \textit{Introduction to Electrodynamics}, 4th ed. (Cambridge University Press, 2017), Chapter 5.
+\item Jackson, J.D., \textit{Classical Electrodynamics}, 3rd ed. (Wiley, 1999), Chapter 5.
+\item Biot, J.B. and Savart, F., ``Mémoire sur l'action que le courant électrique exerce sur l'aiguille magnétique,'' \textit{Annales de Chimie et de Physique} \textbf{15}, 222--233 (1820).
+\item Zangwill, A., \textit{Modern Electrodynamics} (Cambridge University Press, 2013), Chapter 19.
+\end{enumerate}
+

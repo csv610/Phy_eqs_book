@@ -1,0 +1,144 @@
+\chapter{Reynolds Transport Theorem}
+
+\section*{Introduction}
+
+In fluid mechanics, we face a choice: follow individual fluid parcels (Lagrangian) or watch flow pass through a fixed region (Eulerian). The Reynolds transport theorem maps between these two viewpoints, converting the rate of change of a property carried by moving fluid into the local rate of change plus the flux through the boundary. This is the mathematical backbone of the Navier-Stokes equations and all continuum conservation laws.
+
+
+\begin{equation}
+\frac{d}{dt}\int_{CV} \rho\phi\, dV = \int_{CV} \frac{\partial(\rho\phi)}{\partial t}\, dV + \int_{CS} \rho\phi\,\mathbf{v}\cdot\hat{\mathbf{n}}\, dA
+\end{equation}
+
+\section*{Fundamental Equations Used}
+
+The derivation starts from the definition $N(t) = \int_{V(t)} \rho\phi\,dV$ of a property within a moving control volume.
+
+\section*{Assumptions}
+
+\textbf{Assumptions:} Continuum mechanics applies; the control volume moves with a prescribed velocity field; $\phi$ is any scalar property per unit mass.
+
+
+\textbf{Limitations:} Does not apply to discontinuous flows (shocks require special treatment); assumes smooth boundaries for the control volume.
+
+
+\section*{Mathematical Derivation}
+
+\textbf{Step 1: Define the moving control volume.}
+
+Let a control volume $V(t)$ move with a prescribed velocity field $\mathbf{w}(\mathbf{r},t)$ at each point on its boundary $S(t)$. The total amount of a property $\phi$ (per unit mass) carried by the fluid within this volume is
+\begin{equation}
+N(t) = \int_{V(t)} \rho\,\phi\,dV.
+\end{equation}
+We seek the rate of change $dN/dt$ as both the density and the domain change with time.
+
+\textbf{Step 2: Differentiate using the Leibniz rule for moving domains.}
+
+The Leibniz integral rule for a volume with moving boundaries states
+\begin{equation}
+\frac{d}{dt}\int_{V(t)} \rho\phi\,dV = \int_{V(t)} \frac{\partial(\rho\phi)}{\partial t}\,dV + \int_{S(t)} \rho\phi\,\mathbf{w}\cdot\hat{\mathbf{n}}\,dA,
+\end{equation}
+where $\hat{\mathbf{n}}$ is the outward normal to the boundary and $\mathbf{w}\cdot\hat{\mathbf{n}}$ is the normal velocity of the boundary surface.
+
+\textbf{Step 3: Relate boundary velocity to fluid velocity.}
+
+If the control volume moves with the fluid ($\mathbf{w} = \mathbf{v}$, the Lagrangian case), the surface integral represents the flux of $\phi$ carried by the fluid across the moving boundary. More generally, if $\mathbf{w}$ differs from $\mathbf{v}$, we decompose:
+\begin{equation}
+\mathbf{w}\cdot\hat{\mathbf{n}} = \mathbf{v}\cdot\hat{\mathbf{n}} + (\mathbf{w} - \mathbf{v})\cdot\hat{\mathbf{n}}.
+\end{equation}
+
+\textbf{Step 4: Apply the divergence theorem to the surface integral.}
+
+For a fixed control volume ($\mathbf{w} = \mathbf{0}$), the surface integral becomes a flux through a stationary boundary. Using the divergence theorem:
+\begin{equation}
+\int_{S} \rho\phi\,\mathbf{v}\cdot\hat{\mathbf{n}}\,dA = \int_{V} \nabla\cdot(\rho\phi\,\mathbf{v})\,dV.
+\end{equation}
+
+\textbf{Step 5: Combine and write the general result.}
+
+Combining the volume derivative and the flux:
+\begin{equation}
+\frac{d}{dt}\int_{V(t)} \rho\phi\,dV = \int_{V(t)} \left[\frac{\partial(\rho\phi)}{\partial t} + \nabla\cdot(\rho\phi\,\mathbf{v})\right]dV.
+\end{equation}
+Since the control volume is arbitrary, the integrand must vanish, yielding the differential form. The integral form is the Reynolds transport theorem:
+\begin{equation}
+\boxed{\frac{d}{dt}\int_{CV} \rho\phi\,dV = \int_{CV} \frac{\partial(\rho\phi)}{\partial t}\,dV + \int_{CS} \rho\phi\,\mathbf{v}\cdot\hat{\mathbf{n}}\,dA.}
+\end{equation}
+Setting $\phi = 1$ gives the continuity equation; $\phi = \mathbf{v}$ gives the momentum equation; $\phi = e$ gives the energy equation.
+
+\section*{Characteristics of the Equation}
+
+\begin{itemize}
+    \item Applies to any conserved quantity: mass ($\phi = 1$), momentum ($\phi = \mathbf{v}$), energy ($\phi = e$).
+    \item The surface integral represents the flux of the property through the moving boundary.
+    \item Reduces to the divergence theorem when the control volume is fixed.
+    \item Published by Osborne Reynolds in 1903, though the result was known earlier in various forms.
+\end{itemize}
+\section*{Solution Methods}
+
+\begin{itemize}
+    \item \textbf{Fixed control volume:} Set the control volume velocity to zero, reducing to $\frac{d}{dt}\int\rho\phi\,dV = \int\frac{\partial(\rho\phi)}{\partial t}dV + \oint\rho\phi\,\mathbf{v}\cdot\hat{\mathbf{n}}\,dA$.
+    \item \textbf{Moving with the fluid:} Follow a fluid parcel, where the surface integral vanishes and the theorem reduces to the material derivative.
+    \item \textbf{Derivation:} Use the Leibniz rule for differentiating integrals with moving boundaries, combined with the divergence theorem.
+\end{itemize}
+\section*{Verifications}
+
+\begin{itemize}
+    \item For $\phi = 1$, the theorem yields the continuity equation $\frac{\partial\rho}{\partial t} + \nabla\cdot(\rho\mathbf{v}) = 0$, which is a fundamental conservation law.
+    \item For a rigid body translating without deformation, the transport theorem correctly gives the rate of change of total mass.
+    \item Dimensional analysis confirms both sides have the same dimensions: [property]/[time].
+\end{itemize}
+\section*{Applications}
+
+\begin{itemize}
+    \item Derivation of the continuity equation ($\phi = 1$).
+    \item Derivation of the Navier-Stokes momentum equation ($\phi = \mathbf{v}$).
+    \item Derivation of the energy equation in thermofluid dynamics ($\phi = e$).
+    \item Atmospheric and oceanic modeling with moving domains.
+\end{itemize}
+\section*{What Richard Feynman Would Have Asked}
+
+\subsection*{Plain-English Translation}
+\textit{``What is the Reynolds transport theorem actually saying in plain words, and why do fluid mechanicians care so much about it?''}
+
+The Reynolds transport theorem says that if you want to know how much of something (mass, momentum, energy) is inside a region of moving fluid, you need to account for two things: how the density of that quantity is changing at each point inside the region, and how much of it is flowing in or out through the moving boundaries. It is the accounting rule for fluid properties, and it is the starting point for virtually every equation in fluid mechanics. Without it, you cannot write conservation laws for flowing fluids.
+
+\subsection*{Localized Mechanics}
+\textit{``At a single point on the boundary of a control volume, what physical process does the flux term $\rho\phi\,\mathbf{v}\cdot\hat{\mathbf{n}}$ represent?''}
+
+At any point on the boundary, the flux term tells you how much of the property $\phi$ is being carried across that point by the fluid flow. If the fluid velocity $\mathbf{v}$ has a component pointing outward through the surface ($\mathbf{v}\cdot\hat{\mathbf{n}} > 0$), then $\phi$ is being carried out; if inward, it is being carried in. The product $\rho\mathbf{v}\cdot\hat{\mathbf{n}}$ is the mass flux, and multiplying by $\phi$ gives the flux of the property itself. This is identical to the concept of probability current in quantum mechanics or energy flux in electromagnetism.
+
+\subsection*{Testing Extreme Limits}
+\textit{``What happens in the limit where the fluid velocity is zero everywhere? Does the theorem reduce to something trivial?''}
+
+When $\mathbf{v} = 0$, the surface integral vanishes entirely, and the theorem reduces to the ordinary time derivative of a volume integral with fixed boundaries: $\frac{d}{dt}\int\rho\phi\,dV = \int\frac{\partial(\rho\phi)}{\partial t}dV$. This is just the Leibniz rule for differentiating under the integral sign---a result from basic calculus. The Reynolds transport theorem is the generalization of this rule to moving boundaries, which is where all the richness of fluid mechanics enters.
+
+\subsection*{Dimensionality and Geometry}
+\textit{``How does the Reynolds transport theorem change in two dimensions compared to three? Is the surface integral replaced by something else?''}
+
+In two dimensions, the volume integral becomes an area integral and the surface integral becomes a line integral around the boundary of a region in the plane. The mathematical structure is identical: the rate of change of a property inside a region equals the local rate of change plus the flux across the boundary. The divergence theorem in two dimensions replaces the three-dimensional version. The theorem is dimension-independent in its conceptual content, but the specific forms of the divergence and surface integrals change with dimension.
+
+\subsection*{Cross-Disciplinary Connection}
+\textit{``Where else in physics do we see the same pattern of converting a rate of change of an integral into local and flux terms?''}
+
+This pattern---converting a global rate of change into local accumulation plus boundary flux---is the hallmark of every conservation law in physics. It appears in the continuity equation for mass, the Poynting theorem for electromagnetic energy, the quantum continuity equation for probability, the heat equation for thermal energy, and the Boltzmann transport equation for particle distributions. The Reynolds transport theorem is the most general statement of this pattern, from which all these specific conservation laws can be derived. It is the ``meta-law'' that tells you how to write conservation laws for flowing media.
+
+% ------------------------------------------------------------
+\section*{FAQ}
+
+\textbf{Q: What is the difference between a Lagrangian and Eulerian description?}
+A: The Lagrangian description follows individual fluid parcels as they move, tracking their properties over time. The Eulerian description observes properties at fixed points in space as fluid flows past. The Reynolds transport theorem provides the mathematical bridge between these two viewpoints.
+
+\textbf{Q: Can the Reynolds transport theorem be applied to solid mechanics?}
+A: Yes, in principle. The theorem is a purely mathematical statement about differentiating integrals over moving domains. In solid mechanics, it underlies the derivation of conservation laws for deformable bodies, though the terminology and specific applications differ.
+
+\textbf{Q: What happens at a shock wave where properties are discontinuous?}
+A: The theorem still applies, but the surface integrals must be interpreted in the distributional sense. The Rankine-Hugoniot conditions at a shock are derived by applying the transport theorem across the discontinuity, treating the shock as a moving surface with its own velocity.
+\section*{Important Bibliography}
+
+\begin{enumerate}
+\item Kundu, P.K., Cohen, I.M. and Dowling, D.R., \textit{Fluid Mechanics}, 7th ed. (Academic Press, 2015), Chapter 3.
+\item White, F.M., \textit{Fluid Mechanics}, 8th ed. (McGraw-Hill, 2016), Chapter 3.
+\item Batchelor, G.K., \textit{An Introduction to Fluid Dynamics} (Cambridge University Press, 1967), Chapter 3.
+\item Munson, B.R., Okiishi, T.H. and Huebsch, W.W., \textit{Fundamentals of Fluid Mechanics}, 7th ed. (Wiley, 2012), Chapter 5.
+\end{enumerate}
+

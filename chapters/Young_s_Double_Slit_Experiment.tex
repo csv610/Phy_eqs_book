@@ -1,0 +1,158 @@
+\chapter{Young's Double-Slit Experiment}
+
+\section*{Introduction}
+
+Thomas Young's double-slit experiment, performed in 1801, is arguably the single most important experiment in the history of physics. By shining light through two narrow slits and observing an alternating pattern of bright and dark fringes on a distant screen, Young demonstrated conclusively that light is a wave. This result overturned the Newtonian corpuscular theory and laid the groundwork for the entire field of wave optics. Over a century later, the experiment was repeated with electrons, neutrons, atoms, and even molecules, revealing that wave behavior is universal---a cornerstone of quantum mechanics.
+
+When coherent light illuminates two narrow slits separated by distance $d$, each slit acts as a secondary source of cylindrical wavelets (Huygens' principle). These wavelets overlap and interfere: where a crest meets a crest, constructive interference produces a bright fringe; where a crest meets a trough, destructive interference produces a dark fringe. The pattern on a distant screen consists of equally spaced bright and dark bands. The spacing depends on the wavelength $\lambda$, the slit separation $d$, and the screen distance $L$: for small angles, the fringe spacing is $\Delta y = \lambda L/d$. This is a purely wave phenomenon---a stream of particles (classically) would produce only two bright spots, one behind each slit.
+
+
+\begin{equation}
+d\sin\theta = m\lambda \qquad (m = 0, \pm 1, \pm 2, \ldots) \quad \text{(bright fringes, constructive)}
+\end{equation}
+\begin{equation}
+d\sin\theta = \left(m + \tfrac{1}{2}\right)\lambda \qquad (m = 0, \pm 1, \pm 2, \ldots) \quad \text{(dark fringes, destructive)}
+\end{equation}
+
+\section*{Fundamental Equations Used}
+
+The derivation starts from the geometry of two slits separated by distance $d$ illuminated by a coherent monochromatic source, using the principle of superposition.
+
+\section*{Assumptions}
+
+\textbf{Assumptions:} The two slits are illuminated by a coherent source (same phase relationship throughout). The slits are narrow enough ($a \ll \lambda$, where $a$ is the slit width) that each acts as a point source; otherwise, the single-slit diffraction envelope modulates the interference pattern. The screen is far enough away ($L \gg d^2/\lambda$) that the far-field (Fraunhofer) approximation holds.
+
+
+\textbf{Limitations:} Does not apply if the light is incoherent (different parts of the source have random phase relationships---sunlight, for example, requires a spatial filter to achieve coherence). The pattern washes out if the slit separation $d$ is not well-defined or if the source fluctuates during the observation. In the single-particle regime (one electron at a time), the pattern builds up statistically but individual outcomes are random.
+
+
+\section*{Mathematical Derivation}
+
+\textbf{Step 1: Set up the geometry and assume coherent sources.}
+
+Consider two narrow slits $S_1$ and $S_2$, separated by distance $d$, illuminated by a coherent monochromatic source of wavelength $\lambda$. At a distant screen (distance $L \gg d$), a point $P$ is located at angle $\theta$ from the central axis. The path lengths from the two slits to $P$ are $r_1$ and $r_2$ respectively.
+
+\textbf{Step 2: Compute the path difference.}
+
+From the geometry (for $L \gg d$, the rays from $S_1$ and $S_2$ to $P$ are approximately parallel at angle $\theta$):
+\begin{equation}
+\Delta r = r_2 - r_1 = d\sin\theta
+\end{equation}
+This path difference is the key quantity that determines whether the interference at $P$ is constructive or destructive.
+
+\textbf{Step 3: Write the electric fields from each slit.}
+
+Each slit acts as a point source (Huygens' principle) emitting a cylindrical wave. At the screen, the electric fields are:
+\begin{align}
+E_1 &= E_0\,e^{i(kr_1 - \omega t)} \\
+E_2 &= E_0\,e^{i(kr_2 - \omega t)}
+\end{align}
+where $k = 2\pi/\lambda$ is the wave number. By superposition, the total field is $E = E_1 + E_2$.
+
+\textbf{Step 4: Compute the resultant intensity.}
+
+The intensity is proportional to the time-averaged square of the electric field:
+\begin{align}
+I &= |E_1 + E_2|^2 = |E_0|^2|e^{ikr_1} + e^{ikr_2}|^2 \nonumber\\
+&= I_0\left(1 + e^{ik(r_2-r_1)}\right)\left(1 + e^{-ik(r_2-r_1)}\right) \nonumber\\
+&= I_0\left(2 + 2\cos(k\Delta r)\right) \nonumber\\
+&= 4I_0\cos^2\!\left(\frac{k\Delta r}{2}\right)
+\end{align}
+Substituting $\Delta r = d\sin\theta$ and $k = 2\pi/\lambda$:
+\begin{equation}
+I(\theta) = 4I_0\cos^2\!\left(\frac{\pi d\sin\theta}{\lambda}\right)
+\end{equation}
+
+\textbf{Step 5: Find the condition for constructive interference (bright fringes).}
+
+Constructive interference occurs when $\cos^2(\pi d\sin\theta/\lambda) = 1$, i.e., when:
+\begin{equation}
+\frac{\pi d\sin\theta}{\lambda} = m\pi \qquad (m = 0, \pm 1, \pm 2, \ldots)
+\end{equation}
+which gives:
+\begin{equation}
+d\sin\theta = m\lambda
+\end{equation}
+At these angles, the two waves arrive in phase and the intensity is maximum ($I = 4I_0$).
+
+\textbf{Step 6: Find the condition for destructive interference (dark fringes).}
+
+Destructive interference occurs when $\cos^2(\pi d\sin\theta/\lambda) = 0$, i.e., when:
+\begin{equation}
+\frac{\pi d\sin\theta}{\lambda} = \left(m + \frac{1}{2}\right)\pi \qquad (m = 0, \pm 1, \pm 2, \ldots)
+\end{equation}
+which gives:
+\begin{equation}
+d\sin\theta = \left(m + \frac{1}{2}\right)\lambda
+\end{equation}
+At these angles, the two waves arrive exactly out of phase and cancel completely ($I = 0$).
+
+\textbf{Step 7: Compute the fringe spacing in the small-angle approximation.}
+
+For small $\theta$ (valid when $L \gg d$ and the observation region is near the central axis), $\sin\theta \approx \theta \approx y/L$, where $y$ is the distance from the central maximum on the screen. The fringe positions are:
+\begin{equation}
+y_m = \frac{m\lambda L}{d}
+\end{equation}
+The spacing between adjacent bright fringes is:
+\begin{equation}
+\Delta y = \frac{\lambda L}{d}
+\end{equation}
+This is constant (equally spaced fringes) in the small-angle approximation.
+
+\section*{Characteristics of the Equation}
+
+The interference pattern is symmetric about the central maximum ($m = 0$). The fringe spacing $\Delta y = \lambda L/d$ is constant (for small angles), and it increases with wavelength (blue fringes are closer together than red fringes) and with screen distance. The intensity of each fringe follows the single-slit diffraction envelope: $I(\theta) = I_0[\sin(\beta)/\beta]^2 \cdot \cos^2(\delta/2)$, where $\beta = \pi a\sin\theta/\lambda$ and $\delta = \pi d\sin\theta/\lambda$. The envelope's central peak contains most of the light energy.
+\section*{Solution Methods}
+
+For two ideal point sources (infinitely narrow slits), the pattern is a pure cosine squared: $I(\theta) = 4I_0\cos^2(\pi d\sin\theta/\lambda)$. For finite slit width $a$, multiply by the single-slit diffraction envelope: $I(\theta) = I_0[\sin(\beta)/\beta]^2 \cdot 4\cos^2(\delta/2)$. The fringe positions are found by setting the phase difference $\delta = 2\pi d\sin\theta/\lambda = 2m\pi$ for maxima. For more complex configurations (multiple slits, non-uniform illumination), use the Fourier transform method: the far-field pattern is the Fourier transform of the aperture function. A grating with $N$ slits produces sharp principal maxima at the same angles as the double slit, with narrow secondary maxima in between.
+\section*{Verifications}
+
+Young's original experiment used sunlight and obtained colored fringes. Modern verification uses lasers and photodetectors to measure fringe positions with sub-wavelength accuracy. The predicted spacing $\Delta y = \lambda L/d$ has been confirmed to high precision. The quantum version---single electrons building up the interference pattern one at a time---has been performed by Tonomura (1989) with individual electrons and by Zeilinger's group (2012) with C$_{60}$ fullerene molecules (240 atoms, mass $\sim 720\,\text{amu}$), all confirming the de Broglie prediction.
+\section*{Applications}
+
+The double-slit experiment is the conceptual basis for all interferometry---including Michelson interferometry (testing for gravitational waves in LIGO), Fabry--Pérot interferometry (high-resolution spectroscopy), and stellar interferometry (measuring angular diameters of stars). It underpins diffraction grating spectrometers (used in astronomy, chemistry, and materials science). The quantum version (single-particle interference) is the foundation of electron interferometry, atom interferometry, and the ongoing experimental tests of quantum mechanics with increasingly massive objects.
+\section*{What Richard Feynman Would Have Asked}
+
+\textit{``If I send electrons through the slits one at a time, and each electron is detected as a single dot on the screen, how does the electron `know' about the other slit?''}
+
+This is the question that Feynman called the ``only'' mystery of quantum mechanics. The electron does not ``know'' about the other slit in any classical sense---it does not send a signal, check which slit is open, or communicate with other electrons. What happens is that the electron's wave function propagates through both slits simultaneously. The wave function is a mathematical object that encodes all the information about the electron's possible positions and momenta. When both slits are open, the wave function passes through both, and the two parts interfere with each other---constructively in some directions, destructively in others. When the electron reaches the screen, the wave function collapses to a single point, but the \emph{probability} of where that point is follows the interference pattern. Each electron is ``guided'' by its own wave function, and the wave function does not need to ``know'' about other electrons or even about the other slit---it simply follows the Schrödinger equation with the appropriate boundary conditions (both slits open, or one slit blocked).
+
+\textit{``What if I close one slit after the electron has already passed through both slits---does the pattern change?''}
+
+Feynman would recognize this as a variation of the quantum eraser experiment, and he would warn you about the subtleties. If the electron has already passed through both slits and its wave function has already interfered, closing a slit after the fact does not retroactively change the pattern on the screen---the electron is already on its way. However, if you have a which-path detector at the slits that records which slit each electron goes through, then the interference pattern disappears \emph{even if you never look at the detector's output}. The mere availability of which-path information destroys the interference. This is not ``closing the slit after the fact''---it is the more fundamental principle that entanglement with the environment (including which-path detectors) decoheres the quantum state. Feynman would emphasize: it is not that the electron ``knows'' you are watching; it is that the electron becomes entangled with the detector, and the combined system no longer has a well-defined relative phase between the two paths.
+
+\textit{``Could we ever see interference with something truly macroscopic, like a baseball?''}
+
+Feynman would calculate immediately. A 0.145 kg baseball at 40 m/s has a de Broglie wavelength of $1.2\times 10^{-34}\,\text{m}$. To observe interference, you would need slits separated by roughly this wavelength---$10^{-34}\,\text{m}$, which is $10^{-19}$ times smaller than the diameter of a proton. Building such slits is, to put it mildly, impossible with any conceivable technology. But Feynman would go deeper: the real problem is not the slits but \emph{decoherence}. A baseball in air interacts with $\sim 10^{23}$ air molecules per second. Each interaction is a ``measurement'' that collapses the superposition. The decoherence time in air is roughly $10^{-30}\,\text{s}$---far shorter than any timescale of interest. Even in perfect vacuum, thermal radiation from the baseball at room temperature decoheres the position superposition in $\sim 10^{-20}\,\text{s}$. To see interference, you would need to cool the baseball to $\sim 10^{-20}\,\text{K}$ (trillions of times colder than current records) and isolate it from all radiation. Feynman would conclude: it is not forbidden in principle, but it is practically impossible, and the reason is decoherence, not any fundamental limit.
+
+\textit{``Why are the fringes equally spaced? Is this an approximation?''}
+
+Yes, it is an approximation---and Feynman would insist you know exactly which one. The equal spacing $\Delta y = \lambda L/d$ comes from the small-angle approximation $\sin\theta \approx \theta \approx y/L$, which is valid when $y \ll L$. For large angles (high-order fringes far from center), the exact formula $y_m = L\tan\theta_m$ where $\sin\theta_m = m\lambda/d$ gives increasingly non-uniform spacing. The fringes get closer together as you move away from center, because the angular scale of the interference pattern is compressed by the geometry. In practice, the single-slit diffraction envelope kills the intensity of high-order fringes before the non-uniformity becomes noticeable, so the ``equally spaced'' description is an excellent approximation for the fringes you actually see.
+
+\textit{``Does the double-slit experiment prove that light is a wave?''}
+
+Feynman would give a characteristically provocative answer: no, it proves that light is \emph{not} a classical particle, but it does not quite prove that it is a classical wave either. A classical wave explanation works beautifully for the interference pattern, but it fails to explain the photoelectric effect, Compton scattering, and the fact that light energy arrives in discrete quanta. The double-slit experiment proves that light has wave properties; other experiments prove it has particle properties. The full truth is that light is neither a classical wave nor a classical particle---it is a quantum object that exhibits both behaviors depending on the experimental context. Feynman would say: ``The double-slit experiment has in it the heart of quantum mechanics. In reality, it contains the only mystery.''
+
+\bigskip
+\hrule
+\bigskip
+%=============================================================================
+\section*{FAQ}
+
+\textit{Q: If only one slit is open, do I still get an interference pattern?}
+A: No. With one slit, you get a single-slit diffraction pattern: a central bright maximum with weaker side maxima, but no interference fringes. Interference requires two (or more) coherent sources. The single-slit pattern is the diffraction envelope that modulates the double-slit interference pattern when both slits are open.
+
+\textit{Q: What determines which fringe a single photon (or electron) lands on?}
+A: Quantum mechanics says the probability of landing at position $y$ is proportional to $|\psi(y)|^2$, which is the interference pattern. Each individual particle lands at a random position, but the distribution of many particles reproduces the classical interference pattern. There is no hidden mechanism that ``tells'' the particle which fringe to land on; the outcome is fundamentally probabilistic.
+
+\textit{Q: How does the pattern change for white light?}
+A: White light contains all visible wavelengths. Each wavelength produces its own interference pattern with fringe spacing $\lambda L/d$. Since $\lambda$ varies from $\sim 400\,\text{nm}$ (violet) to $\sim 700\,\text{nm}$ (red), the fringe spacings differ. The central maximum ($m = 0$) is white (all wavelengths overlap there), but the higher-order fringes are colored, with red on the outside and violet on the inside of each order.
+\section*{Important Bibliography}
+\begin{enumerate}
+\item Hecht, E., \textit{Optics}, 5th ed. (Pearson, 2017), Chapter 9.
+\item Feynman, R.P., Leighton, R.B., and Sands, M., \textit{The Feynman Lectures on Physics}, Vol. III (Pearson, 2011), Chapter 1.
+\item Young, T., ``Experiments and Calculations Relative to Physical Optics,'' \textit{Philosophical Transactions of the Royal Society} \textbf{94}, 1--16 (1804).
+\item Tonomura, A., Endo, J., Matsuda, T., Kawasaki, T., and Ezawa, H., ``Demonstration of single-electron buildup of an interference pattern,'' \textit{American Journal of Physics} \textbf{57}, 117--120 (1989).
+\item Arndt, M., Nairz, O., Vos-Andreae, J., Keller, C., van der Zouw, G., and Zeilinger, A., ``Wave--particle duality of C$_{60}$ molecules,'' \textit{Nature} \textbf{401}, 680--682 (1999).
+\end{enumerate}
+
