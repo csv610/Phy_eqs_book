@@ -13,7 +13,10 @@
 \usepackage[hidelinks]{hyperref}
 \renewcommand{\chaptername}{}
 \usepackage{titlesec}
+\usepackage{titletoc}
 \usepackage{fancyhdr}
+\titlecontents{chapter}[0em]{\color{blue}\bfseries\large}{}{\hspace*{1.5em}}{\titlerule*[1pc]{}.}
+\titlecontents{part}[0em]{\color{blue}\bfseries\huge}{}{}{\titlerule*\rule{1em}{1pt}\quad}
 \setlist{itemsep=2pt,topsep=4pt}
 \setlength{\headheight}{15pt}
 \setlength{\headsep}{25pt}
